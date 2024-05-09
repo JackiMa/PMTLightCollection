@@ -1,0 +1,7 @@
+/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/install/strip.dir
+/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/install/local.dir
+/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/install.dir
+/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/list_install_components.dir
+/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/rebuild_cache.dir
+/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/edit_cache.dir
+/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/OpNovice.dir
