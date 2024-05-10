@@ -65,6 +65,13 @@ class OpNoviceRunAction : public G4UserRunAction
   OpNovicePrimaryGeneratorAction* fPrimary;
 
   std::ofstream outputFile;
+
+bool fileExists(const std::string& fileName);
+G4String getNewfileName(G4String baseFileName = "OpNovice");
+
+
 };
+
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 #endif

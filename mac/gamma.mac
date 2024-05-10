@@ -13,7 +13,7 @@
 # /gun/particle/number 1
 
 # 设置每次gamma的能量
-/gun/energy 511 keV
+/gun/energy 40 keV
 
 # 设置运行次数
-/run/beamOn 100
+/run/beamOn 1000

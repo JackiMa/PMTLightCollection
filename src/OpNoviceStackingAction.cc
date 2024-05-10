@@ -38,6 +38,8 @@
 #include "G4Track.hh"
 #include "G4VProcess.hh"
 
+#include "G4AnalysisManager.hh"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 OpNoviceStackingAction::OpNoviceStackingAction()
@@ -81,6 +83,13 @@ void OpNoviceStackingAction::NewStage()
     G4RunManager::GetRunManager()->GetNonConstCurrentRun());
   run->AddScintillation((G4double) fScintillationCounter);
   run->AddCerenkov((G4double) fCerenkovCounter);
+
+  G4int id;
+  G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+  id = analysisManager->GetH1Id("hPhotonGenerated");
+  analysisManager->FillH1(id, fScintillationCounter);
+  analysisManager->FillNtupleDColumn(0, fScintillationCounter);
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

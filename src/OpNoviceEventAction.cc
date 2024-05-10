@@ -39,35 +39,45 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 OpNoviceEventAction::OpNoviceEventAction()
-  : G4UserEventAction()
+    : G4UserEventAction()
 {
-  fPMTCounts   = 0;
-  fSVCounts    = 0;
+  fPMTCounts = 0;
+  fSVCounts = 0;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 OpNoviceEventAction::~OpNoviceEventAction() {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-void OpNoviceEventAction::BeginOfEventAction(const G4Event*)
+void OpNoviceEventAction::BeginOfEventAction(const G4Event *)
 {
-  fPMTCounts   = 0;
-  fSVCounts    = 0;
+  fPMTCounts = 0;
+  fSVCounts = 0;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-void OpNoviceEventAction::EndOfEventAction(const G4Event*)
+void OpNoviceEventAction::EndOfEventAction(const G4Event *event)
 {
-  OpNoviceRun* run = static_cast<OpNoviceRun*>(
-    G4RunManager::GetRunManager()->GetNonConstCurrentRun());
+    // Print per event (modulo n)
+    auto eventID = event->GetEventID();
+    auto totalEvents = G4RunManager::GetRunManager()->GetCurrentRun()->GetNumberOfEventToBeProcessed();
+    auto printModulo = totalEvents / 100; // 每1%的事件数
+    if ((printModulo > 0) && (eventID % printModulo == 0))
+    {
+        G4cout << "---> End of event: " << eventID << ", " << (eventID / printModulo) << "% completed" << std::endl;
+    }
+
+
+  OpNoviceRun *run = static_cast<OpNoviceRun *>(
+      G4RunManager::GetRunManager()->GetNonConstCurrentRun());
   run->AddPMT(fPMTCounts);
   run->AddSensitiveVolume(fSVCounts);
-  
+
   G4int id;
-  G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-  id = analysisManager->GetH1Id("hPhotonGenerated");
-  analysisManager->FillH1(id, fPMTCounts);
+  G4AnalysisManager *analysisManager = G4AnalysisManager::Instance();
   id = analysisManager->GetH1Id("hPhotonDetected");
-  analysisManager->FillH1(id, 555);  // 假定hPhoton的ID是0
+  analysisManager->FillH1(id, fSVCounts); // 假定hPhoton的ID是0
+  analysisManager->FillNtupleDColumn(1, fSVCounts);
+  analysisManager->AddNtupleRow();
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
