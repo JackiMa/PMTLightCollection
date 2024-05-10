@@ -12,6 +12,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o"
   "CMakeFiles/OpNovice.dir/src/OpNoviceStackingAction.cc.o"
   "CMakeFiles/OpNovice.dir/src/OpNoviceSteppingAction.cc.o"
+  "CMakeFiles/OpNovice.dir/src/utilities.cc.o"
   "OpNovice"
   "OpNovice.pdb"
 )

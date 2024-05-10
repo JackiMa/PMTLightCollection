@@ -38,6 +38,9 @@
 #include "G4UserRunAction.hh"
 #include <fstream>
 
+
+#include "G4RootAnalysisManager.hh"
+
 class OpNovicePrimaryGeneratorAction;
 class OpNoviceRun;
 
@@ -54,6 +57,8 @@ class OpNoviceRunAction : public G4UserRunAction
   G4Run* GenerateRun() override;
   void BeginOfRunAction(const G4Run*) override;
   void EndOfRunAction(const G4Run*) override;
+
+  G4RootAnalysisManager* analysisManager;
 
  private:
   OpNoviceRun* fRun;

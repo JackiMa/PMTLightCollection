@@ -37,6 +37,9 @@
 #include <fstream>
 #include <mutex>
 #include "G4UnitsTable.hh"
+#include "G4SystemOfUnits.hh"
+
+#include "G4RootAnalysisManager.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 OpNoviceRunAction::OpNoviceRunAction(OpNovicePrimaryGeneratorAction* prim)
@@ -44,6 +47,7 @@ OpNoviceRunAction::OpNoviceRunAction(OpNovicePrimaryGeneratorAction* prim)
   , fRun(nullptr)
   , fPrimary(prim)
 {
+  
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -66,6 +70,19 @@ void OpNoviceRunAction::BeginOfRunAction(const G4Run*)
     G4double energy = fPrimary->GetParticleGun()->GetParticleEnergy();
     fRun->SetPrimary(particle, energy);
   }
+
+  G4double gamma_eng = 511*keV; // 入射光子的能量
+  G4double LY = 40 / keV;       // 光产额 
+
+  // Create analysis manager in the master run
+  // Initialize the analysis manager and create a histogram
+  if (isMaster) {
+    analysisManager = G4RootAnalysisManager::Instance();
+    analysisManager->OpenFile("output.root");  // 打开一个文件
+    G4double xmax = gamma_eng * LY * 1.2; // 根据入射能量和光产额设置直方图的上限 
+    analysisManager->CreateH1("hPhotonGenerated","Spectrum of Generated Scintillation Photons", 100, 0, xmax); // 创建一个直方图
+    analysisManager->CreateH1("hPhotonDetected","Spectrum of Detected Photons", 100, 0, xmax); // 创建一个直方图
+}
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -80,6 +97,12 @@ void OpNoviceRunAction::EndOfRunAction(const G4Run* g4run)
   if(isMaster){
     fRun->EndOfRun();
   
+
+  // Fill the histogram and write it to a file
+  analysisManager->Write();
+  analysisManager->CloseFile();
+
+
   G4int numberOfEvent = run->GetNumberOfEvent();
   if(numberOfEvent == 0)
     return;

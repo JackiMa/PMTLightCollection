@@ -33,6 +33,7 @@
 #include "OpNoviceRunAction.hh"
 #include "OpNoviceStackingAction.hh"
 #include "OpNoviceSteppingAction.hh"
+#include "OpNoviceDetectorConstruction.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 OpNoviceActionInitialization::OpNoviceActionInitialization()
@@ -51,8 +52,8 @@ void OpNoviceActionInitialization::BuildForMaster() const
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void OpNoviceActionInitialization::Build() const
 {
-  OpNovicePrimaryGeneratorAction* primary =
-    new OpNovicePrimaryGeneratorAction();
+  OpNoviceDetectorConstruction* detectorConstruction = new OpNoviceDetectorConstruction();
+  OpNovicePrimaryGeneratorAction* primary = new OpNovicePrimaryGeneratorAction(detectorConstruction);
   SetUserAction(primary);
   SetUserAction(new OpNoviceRunAction(primary));
   OpNoviceEventAction* event = new OpNoviceEventAction();

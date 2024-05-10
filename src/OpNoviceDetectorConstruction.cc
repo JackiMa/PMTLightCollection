@@ -19,6 +19,8 @@
 #include "G4ThreeVector.hh"
 #include "G4VisAttributes.hh"
 
+#include "utilities.hh"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 OpNoviceDetectorConstruction::OpNoviceDetectorConstruction()
   : G4VUserDetectorConstruction()
@@ -120,6 +122,8 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
 
     // 闪烁体
     G4Box* solidScintillator = new G4Box("Scintillator", 0.5*scintillatorX, 0.5*scintillatorY, 0.5*scintillatorZ);
+    
+
     G4LogicalVolume* logicScintillator = new G4LogicalVolume(solidScintillator, GAGG_Ce_Mg, "Scintillator");
     G4LogicalVolume* topContainer = logicWorld; // 创建一个空的逻辑体作为顶层容器，便于处理多种条件下闪烁体的位置
     G4ThreeVector posScintillator;
@@ -254,7 +258,13 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
 
   // 闪烁体
   G4VPhysicalVolume* physScintillator = new G4PVPlacement(0, posScintillator, logicScintillator, "Scintillator", topContainer, false, 0);
+  fVolumeMap["Scintillator"] = physScintillator;
+
   
+    myPrint(lv, f("fVolumeMap length is {}\n",  fVolumeMap.size()));
+  for (const auto& pair : fVolumeMap) {
+      std::cout << "Volume name: " << pair.first << ", Volume address: " << pair.second << std::endl;
+  }
 
 
   if(fDumpGdml)
@@ -270,6 +280,22 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
 
   return physWorld;
 }
+
+G4VPhysicalVolume* OpNoviceDetectorConstruction::GetMyVolume(G4String volumeName) const
+{
+  auto it = fVolumeMap.find(volumeName);
+  if (it != fVolumeMap.end())
+  {
+    myPrint(lv, "Volume is found!\n");
+    return it->second;
+  }
+  else
+  {
+    myPrint(lv, "Volume not found!\n");
+    return 0;
+  }
+}
+
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void OpNoviceDetectorConstruction::SetDumpGdml(G4bool val) { fDumpGdml = val; }
@@ -301,6 +327,9 @@ void OpNoviceDetectorConstruction::PrintError(G4String ed)
   G4Exception("OpNoviceDetectorConstruction:MaterialProperty test", "op001",
               FatalException, ed);
 }
+
+
+
 
 G4Material* OpNoviceDetectorConstruction::matter_construct_water() {
     // Water elements and material definition

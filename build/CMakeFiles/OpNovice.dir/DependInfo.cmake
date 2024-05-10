@@ -17,6 +17,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wsl2/myGeant4/myOpNovice/src/OpNoviceRunAction.cc" "/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o"
   "/home/wsl2/myGeant4/myOpNovice/src/OpNoviceStackingAction.cc" "/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/OpNovice.dir/src/OpNoviceStackingAction.cc.o"
   "/home/wsl2/myGeant4/myOpNovice/src/OpNoviceSteppingAction.cc" "/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/OpNovice.dir/src/OpNoviceSteppingAction.cc.o"
+  "/home/wsl2/myGeant4/myOpNovice/src/utilities.cc" "/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/OpNovice.dir/src/utilities.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -32,6 +33,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "GEANT4_USE_GDML"
   "QT_CORE_LIB"
   "QT_GUI_LIB"
+  "QT_NO_DEBUG"
   "QT_OPENGL_LIB"
   "QT_PRINTSUPPORT_LIB"
   "QT_WIDGETS_LIB"

@@ -59,8 +59,11 @@ G4ClassificationOfNewTrack OpNoviceStackingAction::ClassifyNewTrack(
     {  // particle is secondary
       if(aTrack->GetCreatorProcess()->GetProcessName() == "Scintillation")
         ++fScintillationCounter;
-      else if(aTrack->GetCreatorProcess()->GetProcessName() == "Cerenkov")
+      else if(aTrack->GetCreatorProcess()->GetProcessName() == "Cerenkov"){
         ++fCerenkovCounter;
+        return fKill;  // kill the particle if it is created by Cerenkov process
+
+      }
     }
   }
   return fUrgent;

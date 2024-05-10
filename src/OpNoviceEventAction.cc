@@ -35,6 +35,8 @@
 #include "G4Event.hh"
 #include "G4RunManager.hh"
 
+#include "G4AnalysisManager.hh"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 OpNoviceEventAction::OpNoviceEventAction()
   : G4UserEventAction()
@@ -60,5 +62,12 @@ void OpNoviceEventAction::EndOfEventAction(const G4Event*)
     G4RunManager::GetRunManager()->GetNonConstCurrentRun());
   run->AddPMT(fPMTCounts);
   run->AddSensitiveVolume(fSVCounts);
+  
+  G4int id;
+  G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+  id = analysisManager->GetH1Id("hPhotonGenerated");
+  analysisManager->FillH1(id, fPMTCounts);
+  id = analysisManager->GetH1Id("hPhotonDetected");
+  analysisManager->FillH1(id, 555);  // 假定hPhoton的ID是0
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

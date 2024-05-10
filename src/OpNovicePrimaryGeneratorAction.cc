@@ -40,9 +40,18 @@
 #include "G4SystemOfUnits.hh"
 #include "Randomize.hh"
 
+#include "G4Box.hh"
+#include "G4VPhysicalVolume.hh"
+#include "G4LogicalVolume.hh"
+#include "G4RunManager.hh"
+
+#include "utilities.hh"
+
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-OpNovicePrimaryGeneratorAction::OpNovicePrimaryGeneratorAction()
-  : G4VUserPrimaryGeneratorAction()
+OpNovicePrimaryGeneratorAction::OpNovicePrimaryGeneratorAction(OpNoviceDetectorConstruction* detectorConstruction)
+  : fDetectorConstruction(detectorConstruction)
+  , G4VUserPrimaryGeneratorAction()
   , fParticleGun(nullptr)
 {
   G4int n_particle = 1;
@@ -55,11 +64,12 @@ OpNovicePrimaryGeneratorAction::OpNovicePrimaryGeneratorAction()
   G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindParticle("e-");
   fParticleGun->SetParticleDefinition(particle);
 
-    // 设置粒子发射位置
-  fParticleGun->SetParticlePosition(G4ThreeVector(0., 0., -1.45*cm));
+  // 设置粒子发射位置
+  source_position = G4ThreeVector(0., 0., 20.*mm);
+  fParticleGun->SetParticlePosition(source_position);
 
-  G4ThreeVector direction(0.4, 0.1, 0.8);
-  fParticleGun->SetParticleMomentumDirection(direction);
+  // G4ThreeVector direction(0.4, 0.1, 0.8);
+  // fParticleGun->SetParticleMomentumDirection(direction);
 
   // 随机设置粒子能量
   G4double energy = 1*keV;
@@ -77,26 +87,47 @@ OpNovicePrimaryGeneratorAction::~OpNovicePrimaryGeneratorAction()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void OpNovicePrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
-  // 设置粒子类型为电子
+
+  G4RunManager* runManager = G4RunManager::GetRunManager();
+  const OpNoviceDetectorConstruction* detector = dynamic_cast<const OpNoviceDetectorConstruction*>(runManager->GetUserDetectorConstruction());
+  if (!detector) {
+    G4ExceptionDescription msg;
+    msg << "Detector construction is not found!";
+    G4Exception("OpNovicePrimaryGeneratorAction::GeneratePrimaries()", "OpNovice_001", FatalException, msg);
+  }
+
+  // 获取闪烁体的位置和形状
+  G4VPhysicalVolume* physicalScintillator = detector->GetMyVolume("Scintillator");
+
+  G4ThreeVector position = physicalScintillator->GetObjectTranslation();
+  G4Box* box = dynamic_cast<G4Box*>(physicalScintillator->GetLogicalVolume()->GetSolid());
+
+  // 计算能照射到闪烁体的所有方向，假设闪烁体是长方体，相对XYZ轴没有旋转
+  /*          ↑Z
+              *
+              |
+              |     h = source_z - z
+           _____r_
+          |       | z
+    ———————————————————————→Y 
+          ↙ X
+  */
+  G4double halfX = box->GetXHalfLength();
+  G4double halfY = box->GetYHalfLength();
+  G4double halfZ = box->GetZHalfLength();
+  G4double r = std::sqrt(halfX * halfX + halfY * halfY);
+
+  G4double source_Z = source_position.z();
+  G4double h = source_Z - position.z() - halfZ; 
+  G4double thetaMin = CLHEP::pi - std::atan(r / h);
+  G4double thetaMax = CLHEP::pi;
 
 
-  // // 设置粒子发射位置
-  // fParticleGun->SetParticlePosition(G4ThreeVector(0., 0., -2*cm+7.*mm));
-
-  // // 随机设置粒子发射方向
-  // G4double phi = G4UniformRand() * 2 * M_PI;
-  // G4double costheta = 2 * G4UniformRand() - 1.;
-  // G4double sintheta = std::sqrt(1. - costheta * costheta);
-  // G4ThreeVector direction(sintheta * std::cos(phi), sintheta * std::sin(phi), costheta);
-  // fParticleGun->SetParticleMomentumDirection(direction);
-
-  // // 随机设置粒子能量
-  // G4double energy = 1 * keV + G4UniformRand() * (1000 * keV - 1 * keV);
-  // fParticleGun->SetParticleEnergy(energy);
-
-
-
-
+  // 在这些方向上随机抽样，生成粒子
+  G4double theta = G4UniformRand() * (thetaMax - thetaMin) + thetaMin;
+  G4double phi = G4UniformRand() * 2*CLHEP::pi;
+  G4ThreeVector direction(std::sin(theta) * std::cos(phi), std::sin(theta) * std::sin(phi), std::cos(theta));
+  fParticleGun->SetParticleMomentumDirection(direction);
 
   // 生成粒子
   fParticleGun->GeneratePrimaryVertex(anEvent);

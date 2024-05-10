@@ -520,6 +520,33 @@ src/OpNoviceSteppingAction.cc.s:
 	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceSteppingAction.cc.s
 .PHONY : src/OpNoviceSteppingAction.cc.s
 
+src/utilities.o: src/utilities.cc.o
+
+.PHONY : src/utilities.o
+
+# target to build an object file
+src/utilities.cc.o:
+	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/utilities.cc.o
+.PHONY : src/utilities.cc.o
+
+src/utilities.i: src/utilities.cc.i
+
+.PHONY : src/utilities.i
+
+# target to preprocess a source file
+src/utilities.cc.i:
+	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/utilities.cc.i
+.PHONY : src/utilities.cc.i
+
+src/utilities.s: src/utilities.cc.s
+
+.PHONY : src/utilities.s
+
+# target to generate assembly for a file
+src/utilities.cc.s:
+	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/utilities.cc.s
+.PHONY : src/utilities.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -572,6 +599,9 @@ help:
 	@echo "... src/OpNoviceSteppingAction.o"
 	@echo "... src/OpNoviceSteppingAction.i"
 	@echo "... src/OpNoviceSteppingAction.s"
+	@echo "... src/utilities.o"
+	@echo "... src/utilities.i"
+	@echo "... src/utilities.s"
 .PHONY : help
 
 

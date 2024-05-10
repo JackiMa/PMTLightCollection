@@ -432,6 +432,7 @@ CMakeFiles/OpNovice.dir/src/MyMaterials.cc.o
  /home/wsl2/myGeant4/myOpNovice/src/MyMaterials.cc
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o
  ../include/OpNoviceActionInitialization.hh
+ ../include/OpNoviceDetectorConstruction.hh
  ../include/OpNoviceEventAction.hh
  ../include/OpNovicePrimaryGeneratorAction.hh
  ../include/OpNoviceRunAction.hh
@@ -444,42 +445,189 @@ CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/ThreeVector.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Allocator.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AllocatorPool.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisManagerState.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisUtilities.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisVerbose.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BaseAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BaseFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BaseNtupleManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BinScheme.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ClassificationOfNewTrack.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DataVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DataVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Element.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ElementTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ElementVector.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4EnvironmentUtils.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exception.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ExceptionSeverity.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exp.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Fcn.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GlobalConfig.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4H1ToolsManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4H2ToolsManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4H3ToolsManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4HnInformation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4HnManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamElm.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamMat.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Isotope.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IsotopeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Log.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Material.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertiesIndex.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertiesTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertyVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NtupleBookingManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NtupleBookingManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4OpticalSurface.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4OrderedTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4P1ToolsManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4P2ToolsManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PDefManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleDefinition.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleDefinition.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleGun.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleMomentum.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Physics2DVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Physics2DVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsFreeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVectorType.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PrimaryParticle.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PrimaryVertex.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootAnalysisManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootFileDef.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootNtupleFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootNtupleManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootNtupleManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SandiaTable.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4String.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4String.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SurfaceProperty.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TFileInformation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TFileManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4THnManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4THnManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TNtupleDescription.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TNtupleManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TNtupleManager.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Threading.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ThreeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ToolsAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ToolsAnalysisManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ToolsAnalysisMessenger.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Types.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UIcommand.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UIdirectory.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UImessenger.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UIparameter.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UItokenNum.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UserEventAction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UserRunAction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UserStackingAction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UserSteppingAction.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VAnalysisManager.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VExceptionHandler.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VH1Manager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VH2Manager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VH3Manager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VNtupleFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VNtupleManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VP1Manager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VP2Manager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VPrimaryGenerator.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VTFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VTHnFileManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VUserActionInitialization.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VUserDetectorConstruction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VUserPrimaryGeneratorAction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ios.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/globals.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/pwdefs.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/templates.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tls.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/charp_out
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/cid
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/cids
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/eqT
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/forit
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/axes
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/axis
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/b1
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/b2
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/b3
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/base_histo
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h1
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h1d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h2
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h2d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h3
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h3d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/histo_data
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/hmpi
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p1
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p1d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p2
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p2d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/profile_data
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/impi
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/long_out
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/mem
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/mnmx
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/ntuple_booking
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/press_func
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/rcmp
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/realloc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/safe_cast
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/scast
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/snpf
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/sout
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/stype
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/touplow
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/typedefs
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/vdata
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/vfind
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/vmanip
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wcsv_ntuple
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/base_leaf
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/basket
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/branch
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/branch_element
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/branch_object
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/buffer
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/columns.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/date
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/ibo
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/icol
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/idir
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/ifile
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/imutex
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/iobject
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/itree
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/key
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/leaf
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/mpi_create_basket
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/named
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/ntuple
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/seek
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/tree
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/wbuf
  /home/wsl2/myGeant4/myOpNovice/src/OpNoviceActionInitialization.cc
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o
  ../include/MyMaterials.hh
  ../include/OpNoviceDetectorConstruction.hh
  ../include/OpNoviceDetectorMessenger.hh
+ ../include/utilities.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Evaluator/Evaluator.h
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Geometry/BasicVector3D.h
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Geometry/Normal3D.h
@@ -867,10 +1015,17 @@ CMakeFiles/OpNovice.dir/src/OpNoviceEventAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AffineTransform.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Allocator.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AllocatorPool.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisManagerState.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisUtilities.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisVerbose.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AuxiliaryNavServices.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AuxiliaryNavServices.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BaseAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BaseFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BinScheme.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BlockingList.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BlockingList.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ClassificationOfNewTrack.hh
@@ -890,15 +1045,25 @@ CMakeFiles/OpNovice.dir/src/OpNoviceEventAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ExceptionSeverity.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exp.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4FastVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Fcn.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ForceCondition.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GPILSelection.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSSolid.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSSolid.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericAnalysisManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericFileManager.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomSplitter.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GlobalConfig.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4H1ToolsManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4H2ToolsManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4H3ToolsManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4HCofThisEvent.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4HnInformation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4HnManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamElm.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamMat.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Isotope.hh
@@ -925,7 +1090,11 @@ CMakeFiles/OpNovice.dir/src/OpNoviceEventAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NoProcess.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NormalNavigation.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NormalNavigation.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NtupleBookingManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NtupleBookingManager.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4OrderedTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4P1ToolsManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4P2ToolsManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PDefManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParameterisedNavigation.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParameterisedNavigation.icc
@@ -983,8 +1152,13 @@ CMakeFiles/OpNovice.dir/src/OpNoviceEventAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SteppingManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4String.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4String.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4THnManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4THnManager.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Threading.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ThreeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ToolsAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ToolsAnalysisManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ToolsAnalysisMessenger.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TouchableHandle.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TouchableHistory.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TouchableHistory.icc
@@ -1009,10 +1183,19 @@ CMakeFiles/OpNovice.dir/src/OpNoviceEventAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UserStackingAction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UserSteppingAction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UserTrackingAction.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VAnalysisManager.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VDigiCollection.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VExceptionHandler.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VExternalNavigation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VH1Manager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VH2Manager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VH3Manager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VHitsCollection.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VNtupleManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VP1Manager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VP2Manager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VPVParameterisation.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VParticleChange.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VParticleChange.icc
@@ -1022,6 +1205,7 @@ CMakeFiles/OpNovice.dir/src/OpNoviceEventAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VSolid.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VSolid.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VSteppingVerbose.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VTHnFileManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VTouchable.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VTouchable.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VTrajectory.hh
@@ -1043,6 +1227,31 @@ CMakeFiles/OpNovice.dir/src/OpNoviceEventAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/rundefs.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/templates.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tls.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/cid
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/cids
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/eqT
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/forit
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/axes
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/axis
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/b1
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/b2
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/b3
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/base_histo
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h1
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h1d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h2
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h2d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h3
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h3d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/histo_data
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p1
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p1d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p2
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p2d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/profile_data
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/mem
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/ntuple_booking
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/typedefs
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/trkdefs.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/trkgdefs.hh
  /home/wsl2/myGeant4/myOpNovice/src/OpNoviceEventAction.cc
@@ -1420,8 +1629,17 @@ CMakeFiles/OpNovice.dir/src/OpNoviceGDMLDetectorConstruction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/windefs.hh
  /home/wsl2/myGeant4/myOpNovice/src/OpNoviceGDMLDetectorConstruction.cc
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o
+ ../include/OpNoviceDetectorConstruction.hh
  ../include/OpNovicePrimaryGeneratorAction.hh
  ../include/OpNovicePrimaryGeneratorMessenger.hh
+ ../include/utilities.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Geometry/BasicVector3D.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Geometry/Normal3D.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Geometry/Plane3D.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Geometry/Point3D.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Geometry/Transform3D.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Geometry/Transform3D.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Geometry/Vector3D.h
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Random/DualRand.h
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Random/JamesRandom.h
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Random/MTwistEngine.h
@@ -1471,20 +1689,100 @@ CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Utility/defs.h
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Utility/memory.h
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Utility/thread_local.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/AxisAngle.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/AxisAngle.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/LorentzVector.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/LorentzVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/Rotation.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/Rotation.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/RotationInterfaces.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/RotationInterfaces.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/RotationX.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/RotationX.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/RotationY.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/RotationY.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/RotationZ.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/RotationZ.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/ThreeVector.h
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/ThreeVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/TwoVector.h
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/TwoVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AffineTransform.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AffineTransform.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Allocator.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AllocatorPool.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AuxiliaryNavServices.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AuxiliaryNavServices.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BlockingList.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BlockingList.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BoundingEnvelope.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Box.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Box.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4CSGSolid.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ClassificationOfNewTrack.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DCofThisEvent.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DataVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DataVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DynamicParticle.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DynamicParticle.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ElectronOccupancy.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Element.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ElementTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ElementVector.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4EnvironmentUtils.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Event.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4EventManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exception.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ExceptionSeverity.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exp.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4FastVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ForceCondition.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GPILSelection.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSSolid.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSSolid.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomConfig.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomSplitter.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomTypes.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GlobalConfig.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4HCofThisEvent.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamElm.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamMat.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Isotope.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IsotopeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Log.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4LogicalVolume.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4LogicalVolume.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4LorentzVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Material.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertiesIndex.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertiesTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertyVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NavigationHistory.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NavigationHistory.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NavigationHistoryPool.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NavigationLevel.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NavigationLevel.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NavigationLevelRep.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NavigationLevelRep.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NavigationLogger.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Navigator.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Navigator.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NoProcess.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Normal3D.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NormalNavigation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NormalNavigation.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4OpticalSurface.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4OrderedTable.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PDefManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParameterisedNavigation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParameterisedNavigation.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleChange.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleChange.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleDefinition.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleDefinition.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleGun.hh
@@ -1492,41 +1790,135 @@ CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleTable.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleTable.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleTableIterator.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Physics2DVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Physics2DVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsFreeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsModelCatalog.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsTable.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVectorType.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Plane3D.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Point3D.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Polyhedron.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PrimaryParticle.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PrimaryTransformer.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PrimaryVertex.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ProcessManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ProcessManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ProcessType.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ProcessVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ProcessVector.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Profiler.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Profiler.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ReferenceCountedHandle.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Region.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Region.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RegularNavigation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ReplicaNavigation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ReplicaNavigation.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RotationMatrix.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RunManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RunManagerKernel.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SandiaTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SmartTrackStack.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SmartVoxelHeader.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SmartVoxelHeader.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SmartVoxelNode.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SmartVoxelNode.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SmartVoxelProxy.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SmartVoxelProxy.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4StackManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4StackedTrack.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Step.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Step.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4StepPoint.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4StepPoint.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4StepStatus.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SteppingControl.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SteppingManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4String.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4String.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SurfaceProperty.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SystemOfUnits.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Threading.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ThreeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TouchableHandle.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TouchableHistory.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TouchableHistory.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TouchableHistoryHandle.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Track.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Track.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TrackFastVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TrackStack.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TrackStatus.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TrackVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TrackingManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TrackingMessenger.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TrajectoryContainer.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Transform3D.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TwoVector.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Types.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UAdapter.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UBox.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UIcommand.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UIdirectory.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UImessenger.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UIparameter.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UItokenNum.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UserStackingAction.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UserSteppingAction.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UserTrackingAction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VDigiCollection.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VExceptionHandler.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VExternalNavigation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VGraphicsScene.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VHitsCollection.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VPVParameterisation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VParticleChange.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VParticleChange.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VPhysicalVolume.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VPhysicalVolume.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VPrimaryGenerator.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VProcess.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VSolid.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VSolid.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VSteppingVerbose.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VTouchable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VTouchable.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VTrajectory.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VUserDetectorConstruction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VUserEventInformation.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VUserPrimaryGeneratorAction.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VUserTrackInformation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VVolumeMaterialScanner.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VisExtent.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Visible.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Visible.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VoxelLimits.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VoxelLimits.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VoxelNavigation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VoxelNavigation.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ios.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/HepPolyhedron.h
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/PTL/Globals.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/PTL/Types.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/PTL/Utility.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/Randomize.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/evtdefs.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/geomdefs.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/geomwdefs.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/globals.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/pwdefs.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/rundefs.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/templates.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tls.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/trkdefs.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/trkgdefs.hh
  /home/wsl2/myGeant4/myOpNovice/src/OpNovicePrimaryGeneratorAction.cc
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o
+ ../include/OpNoviceDetectorConstruction.hh
  ../include/OpNovicePrimaryGeneratorAction.hh
  ../include/OpNovicePrimaryGeneratorMessenger.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Units/PhysicalConstants.h
@@ -1538,19 +1930,45 @@ CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AllocatorPool.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DataVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DataVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Element.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ElementTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ElementVector.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4EnvironmentUtils.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exception.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ExceptionSeverity.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exp.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GlobalConfig.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamElm.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamMat.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Isotope.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IsotopeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Log.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Material.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertiesIndex.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertiesTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertyVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4OpticalSurface.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4OrderedTable.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PDefManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleDefinition.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleDefinition.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleGun.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleMomentum.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Physics2DVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Physics2DVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsFreeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVectorType.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PrimaryParticle.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PrimaryVertex.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SandiaTable.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4String.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4String.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SurfaceProperty.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SystemOfUnits.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Threading.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ThreeVector.hh
@@ -1563,6 +1981,7 @@ CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UItokenNum.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VExceptionHandler.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VPrimaryGenerator.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VUserDetectorConstruction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VUserPrimaryGeneratorAction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ios.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/globals.hh
@@ -1606,6 +2025,7 @@ CMakeFiles/OpNovice.dir/src/OpNoviceRun.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tls.hh
  /home/wsl2/myGeant4/myOpNovice/src/OpNoviceRun.cc
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o
+ ../include/OpNoviceDetectorConstruction.hh
  ../include/OpNovicePrimaryGeneratorAction.hh
  ../include/OpNoviceRun.hh
  ../include/OpNoviceRunAction.hh
@@ -1616,31 +2036,112 @@ CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/ThreeVector.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Allocator.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AllocatorPool.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisManagerState.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisUtilities.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisVerbose.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BaseAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BaseFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BaseNtupleManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BinScheme.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DataVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DataVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Element.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ElementTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ElementVector.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4EnvironmentUtils.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exception.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ExceptionSeverity.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exp.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Fcn.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GlobalConfig.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4H1ToolsManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4H2ToolsManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4H3ToolsManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4HnInformation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4HnManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamElm.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamMat.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Isotope.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IsotopeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Log.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Material.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertiesIndex.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertiesTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialPropertyVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4MaterialTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NtupleBookingManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4NtupleBookingManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4OpticalSurface.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4OrderedTable.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4P1ToolsManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4P2ToolsManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PDefManager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleDefinition.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleDefinition.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleGun.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ParticleMomentum.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Physics2DVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Physics2DVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsFreeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVector.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PhysicsVectorType.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PrimaryParticle.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4PrimaryVertex.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Profiler.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Profiler.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootAnalysisManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootFileDef.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootNtupleFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootNtupleManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4RootNtupleManager.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Run.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SandiaTable.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4String.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4String.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SurfaceProperty.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4SystemOfUnits.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TFileInformation.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TFileManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4THnManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4THnManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TNtupleDescription.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TNtupleManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4TNtupleManager.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Threading.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ThreeVector.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ToolsAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ToolsAnalysisManager.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ToolsAnalysisMessenger.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Types.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UIcommand.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UIdirectory.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UImessenger.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UIparameter.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UItokenNum.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UnitsTable.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UnitsTable.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UserRunAction.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VAnalysisManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VAnalysisManager.icc
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VExceptionHandler.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VH1Manager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VH2Manager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VH3Manager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VNtupleFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VNtupleManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VP1Manager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VP2Manager.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VPrimaryGenerator.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VTFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VTHnFileManager.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VUserDetectorConstruction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4VUserPrimaryGeneratorAction.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ios.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/PTL/Globals.hh
@@ -1650,6 +2151,72 @@ CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/pwdefs.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/templates.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tls.hh
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/charp_out
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/cid
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/cids
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/eqT
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/forit
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/axes
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/axis
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/b1
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/b2
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/b3
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/base_histo
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h1
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h1d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h2
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h2d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h3
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/h3d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/histo_data
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/hmpi
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p1
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p1d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p2
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/p2d
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/histo/profile_data
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/impi
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/long_out
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/mem
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/mnmx
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/ntuple_booking
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/press_func
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/rcmp
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/realloc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/safe_cast
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/scast
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/snpf
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/sout
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/stype
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/touplow
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/typedefs
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/vdata
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/vfind
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/vmanip
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wcsv_ntuple
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/base_leaf
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/basket
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/branch
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/branch_element
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/branch_object
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/buffer
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/columns.icc
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/date
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/ibo
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/icol
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/idir
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/ifile
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/imutex
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/iobject
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/itree
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/key
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/leaf
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/mpi_create_basket
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/named
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/ntuple
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/seek
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/tree
+ /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/tools/wroot/wbuf
  /home/wsl2/myGeant4/myOpNovice/src/OpNoviceRunAction.cc
 CMakeFiles/OpNovice.dir/src/OpNoviceStackingAction.cc.o
  ../include/OpNoviceRun.hh
@@ -2178,3 +2745,6 @@ CMakeFiles/OpNovice.dir/src/OpNoviceSteppingAction.cc.o
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/trkdefs.hh
  /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/trkgdefs.hh
  /home/wsl2/myGeant4/myOpNovice/src/OpNoviceSteppingAction.cc
+CMakeFiles/OpNovice.dir/src/utilities.cc.o
+ ../include/utilities.hh
+ /home/wsl2/myGeant4/myOpNovice/src/utilities.cc

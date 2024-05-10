@@ -37,6 +37,7 @@
 #include "globals.hh"
 #include "G4ParticleGun.hh"
 #include "G4VUserPrimaryGeneratorAction.hh"
+#include "OpNoviceDetectorConstruction.hh"
 
 class G4Event;
 class OpNovicePrimaryGeneratorMessenger;
@@ -46,7 +47,7 @@ class OpNovicePrimaryGeneratorMessenger;
 class OpNovicePrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {
  public:
-  OpNovicePrimaryGeneratorAction();
+  OpNovicePrimaryGeneratorAction(OpNoviceDetectorConstruction* detectorConstruction);
   ~OpNovicePrimaryGeneratorAction();
 
   void GeneratePrimaries(G4Event*) override;
@@ -56,9 +57,14 @@ class OpNovicePrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 
   G4ParticleGun* GetParticleGun() { return fParticleGun; }
 
+  G4ThreeVector source_position; // 放射源的位置
+
  private:
   G4ParticleGun* fParticleGun;
   OpNovicePrimaryGeneratorMessenger* fGunMessenger;
+  
+  OpNoviceDetectorConstruction* fDetectorConstruction;
+
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
