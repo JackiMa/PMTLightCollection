@@ -46,7 +46,7 @@
 #include "G4RunManager.hh"
 
 #include "utilities.hh"
-
+#include "MyPhysicalVolume.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 OpNovicePrimaryGeneratorAction::OpNovicePrimaryGeneratorAction(OpNoviceDetectorConstruction* detectorConstruction)
@@ -61,11 +61,11 @@ OpNovicePrimaryGeneratorAction::OpNovicePrimaryGeneratorAction(OpNoviceDetectorC
   // default kinematic
   //
 
-  G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindParticle("e-");
+  G4ParticleDefinition* particle = G4ParticleTable::GetParticleTable()->FindParticle("gamma");
   fParticleGun->SetParticleDefinition(particle);
 
   // 设置粒子发射位置
-  source_position = G4ThreeVector(0., 0., 20.*mm);
+  source_position = G4ThreeVector(0., 0., 16.*mm);
   fParticleGun->SetParticlePosition(source_position);
 
   // G4ThreeVector direction(0.4, 0.1, 0.8);
@@ -97,9 +97,10 @@ void OpNovicePrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   }
 
   // 获取闪烁体的位置和形状
-  G4VPhysicalVolume* physicalScintillator = detector->GetMyVolume("Scintillator");
-
-  G4ThreeVector position = physicalScintillator->GetObjectTranslation();
+  MyPhysicalVolume* myphysicalScintillator = detector->GetMyVolume("Scintillator");
+  G4VPhysicalVolume*physicalScintillator = myphysicalScintillator->GetG4Placement();
+  // 这里有bug，本来该获取绝对坐标，但是现在获取的是闪烁体相对于其母体的坐标。
+  G4ThreeVector position = myphysicalScintillator->GetAbsolutePosition();
   G4Box* box = dynamic_cast<G4Box*>(physicalScintillator->GetLogicalVolume()->GetSolid());
 
   // 计算能照射到闪烁体的所有方向，假设闪烁体是长方体，相对XYZ轴没有旋转
@@ -116,15 +117,18 @@ void OpNovicePrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   G4double halfY = box->GetYHalfLength();
   G4double halfZ = box->GetZHalfLength();
   G4double r = std::sqrt(halfX * halfX + halfY * halfY);
+  My_msg= f("\n---------------------\nhalfX: {}, halfY: {}, halfZ: {}, r: {}\n-----------------", halfX, halfY, halfZ, r);
+  myPrint(lv, My_msg);
 
   G4double source_Z = source_position.z();
   G4double h = source_Z - position.z() - halfZ; 
-  G4double thetaMin = CLHEP::pi - std::atan(r / h);
-  G4double thetaMax = CLHEP::pi;
-
+  G4double cosThetaMax = - h / std::sqrt(h * h + r * r);
+  My_msg= f("\n---------------------\nsourceZ: {}, positionZ: {}, h: {}, cosThetaMax: {}\n-----------------",source_Z, position.z(), h, cosThetaMax);
+  myPrint(lv, My_msg);
 
   // 在这些方向上随机抽样，生成粒子
-  G4double theta = G4UniformRand() * (thetaMax - thetaMin) + thetaMin;
+  G4double cosTheta = cosThetaMax - (cosThetaMax + 1) * G4UniformRand(); // 在[-1, cosThetaMax]范围内均匀分布
+  G4double theta =  std::acos(cosTheta);
   G4double phi = G4UniformRand() * 2*CLHEP::pi;
   G4ThreeVector direction(std::sin(theta) * std::cos(phi), std::sin(theta) * std::sin(phi), std::cos(theta));
   fParticleGun->SetParticleMomentumDirection(direction);
@@ -168,3 +172,4 @@ void OpNovicePrimaryGeneratorAction::SetOptPhotonPolar(G4double angle)
   fParticleGun->SetParticlePolarization(polar);
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+

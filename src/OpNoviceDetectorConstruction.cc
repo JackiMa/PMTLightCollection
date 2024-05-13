@@ -14,19 +14,20 @@
 #include "G4LogicalVolume.hh"
 #include "MyMaterials.hh"
 #include "G4OpticalSurface.hh"
-#include "G4PVPlacement.hh"
+#include "MyPhysicalVolume.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4ThreeVector.hh"
 #include "G4VisAttributes.hh"
 
 #include "utilities.hh"
+#include "MyPhysicalVolume.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 OpNoviceDetectorConstruction::OpNoviceDetectorConstruction()
   : G4VUserDetectorConstruction()
 {
   fDumpGdmlFileName = "Teflon+NoAirGap+Grease.gdml";
-  fVerbose          = true;
+  fVerbose          = false;
   fDumpGdml         = false;
   // create a messenger for this class
   fDetectorMessenger = new OpNoviceDetectorMessenger(this);
@@ -36,15 +37,14 @@ OpNoviceDetectorConstruction::OpNoviceDetectorConstruction()
   // scintillatorX = 1*mm;
   // scintillatorY = 1*mm;
   // scintillatorZ = 1*mm;
-  G4double scintillatorXYZ = 1*mm;
+  G4double scintillatorXYZ = 0.5*mm;
   scintillatorX = scintillatorXYZ;
   scintillatorY = scintillatorXYZ;
   scintillatorZ = scintillatorXYZ;
 
 
-
-  // reflectorType = TEFLON;
-  reflectorType = REFLECTOR;
+  reflectorType = TEFLON;
+  // reflectorType = REFLECTOR;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -85,9 +85,9 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
     G4double worldSize = 4 * cm;
     G4Box* solidWorld = new G4Box("World", 0.5*worldSizeXY, 0.5*worldSizeXY, 0.5*worldSize);
     G4LogicalVolume* logicWorld = new G4LogicalVolume(solidWorld, air, "World");
-    G4VPhysicalVolume* physWorld = new G4PVPlacement(0, G4ThreeVector(), logicWorld, "World", 0, false, 0);
-
-
+    MyPhysicalVolume* physWorld = new MyPhysicalVolume(0, G4ThreeVector(), logicWorld, "World", 0, false, 0);
+    G4VPhysicalVolume* G4physWorld = physWorld->GetG4Placement();
+    
     // PMT
     // PMT端窗
     G4double pmtRadius = 3.8 * cm;
@@ -95,18 +95,18 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
     G4double thickness_photocathode = 0.1*mm; // 光阴极厚度 100 um
     G4Tubs* solidPMT = new G4Tubs("PMTwindow", 0, pmtRadius, 0.5*pmtHeight, 0, 360*deg);
     G4LogicalVolume* logicPMT = new G4LogicalVolume(solidPMT, Glass, "PMTwindow");
-    G4VPhysicalVolume* physPMT = new G4PVPlacement(0, G4ThreeVector(0, 0, -0.5*worldSize + 0.5*pmtHeight), logicPMT, "PMTwindow", logicWorld, false, 0);
+    MyPhysicalVolume* physPMT = new MyPhysicalVolume(0, G4ThreeVector(0, 0, -0.5*worldSize + 0.5*pmtHeight), logicPMT, "PMTwindow", G4physWorld, false, 0);
     // 光阴极
     G4Tubs* solidPhotocathode = new G4Tubs("Photocathode", 0, pmtRadius, thickness_photocathode, 0, 360*deg);
     G4LogicalVolume* logicPhotocathode = new G4LogicalVolume(solidPhotocathode, air, "Photocathode");
-    G4VPhysicalVolume* physPhotocathode = new G4PVPlacement(0, G4ThreeVector(0, 0, -0.3*pmtHeight+0.5*thickness_photocathode), logicPhotocathode, "Photocathode", logicPMT, false, 0);
+    MyPhysicalVolume* physPhotocathode = new MyPhysicalVolume(0, G4ThreeVector(0, 0, -0.3*pmtHeight+0.5*thickness_photocathode), logicPhotocathode, "Photocathode", physPMT->GetG4Placement(), false, 0);
     // 入射窗与光阴极的界面(反射率30%)
-    new G4LogicalBorderSurface("PhotocathodeInterface", physPMT, physPhotocathode, surf_GlassToPhotocathode);
+    new G4LogicalBorderSurface("PhotocathodeInterface", physPMT->GetG4Placement(), physPhotocathode->GetG4Placement(), surf_GlassToPhotocathode);
 
     // PMT光阴极下面的灵敏体积，真空，占据端窗20%-光阴极的厚度
     G4Tubs* solidSV = new G4Tubs("SensitiveVolume", 0, pmtRadius, 0.2*0.5*pmtHeight, 0, 360*deg);
     G4LogicalVolume* logicSV = new G4LogicalVolume(solidSV, vaccum, "SensitiveVolume");
-    new G4PVPlacement(0, G4ThreeVector(0, 0, -0.8*0.5*pmtHeight), logicSV, "SensitiveVolume", logicPMT, false, 0);
+    new MyPhysicalVolume(0, G4ThreeVector(0, 0, -0.8*0.5*pmtHeight), logicSV, "SensitiveVolume", physPMT->GetG4Placement(), false, 0);
 
     
 
@@ -125,7 +125,7 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
     
 
     G4LogicalVolume* logicScintillator = new G4LogicalVolume(solidScintillator, GAGG_Ce_Mg, "Scintillator");
-    G4LogicalVolume* topContainer = logicWorld; // 创建一个空的逻辑体作为顶层容器，便于处理多种条件下闪烁体的位置
+    MyPhysicalVolume* topContainer = physWorld; // 创建一个空的物理体作为顶层容器，便于处理多种条件下闪烁体的位置
     G4ThreeVector posScintillator;
     // 这里暂时不放置闪烁体的位置，因为其取决于是否用Teflon，有没有空气层等等
     // 设置闪烁体的颜色
@@ -144,7 +144,7 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
           G4Box* solidGrease = new G4Box("OpticalGrease", 0.5*scintillatorX+skin, 0.5*scintillatorY+skin, greaseThickness);
           G4LogicalVolume* logicGrease = new G4LogicalVolume(solidGrease, OpticalGrease, "Grease");
           G4ThreeVector posGrease = G4ThreeVector(0, 0, -worldSize/2 + pmtHeight + greaseThickness/2);
-          new G4PVPlacement(0, posGrease, logicGrease, "Grease", logicWorld, false, 0);
+          new MyPhysicalVolume(0, posGrease, logicGrease, "Grease", G4physWorld, false, 0);
 
           // 设置 OpticalGrease 的颜色和透明度
           G4VisAttributes* GreaseVisAtt = new G4VisAttributes(G4Colour(0.2, 0.3, 1.0, 0.8));  // 纯白色，透明度0.3
@@ -164,8 +164,8 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
           G4double TeflonThickness = 0.5*mm;
           // Optionally place Air gap
           if (isAirGap) { 
-            airGapThicknessX = 60*mm;
-            airGapThicknessY = 60*mm;
+            airGapThicknessX = 0.1*mm;
+            airGapThicknessY = 0.1*mm;
             airGapThicknessZ = 0.1*mm;
             }
           // Place Teflon
@@ -175,8 +175,8 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
           G4Box* solidTeflon = new G4Box("Teflon",0.5*TeflonX, 0.5*TeflonY, 0.5*TeflonZ);
           G4LogicalVolume* logicTeflon = new G4LogicalVolume(solidTeflon, PVC, "Teflon");
           G4ThreeVector posTeflon = G4ThreeVector(0, 0, -worldSize/2 + pmtHeight + greaseThickness + 0.5*TeflonZ);
-          G4VPhysicalVolume* physReflector = new G4PVPlacement(0, posTeflon, logicTeflon, "Teflon", logicWorld, false, 0);
-          topContainer = logicTeflon;   // 晶体放在Teflon中
+          MyPhysicalVolume* physTeflon = new MyPhysicalVolume(0, posTeflon, logicTeflon, "Teflon", G4physWorld, false, 0);
+          topContainer = physTeflon;   // 晶体放在Teflon中
 
           G4double AirX = scintillatorX + airGapThicknessX;
           G4double AirY = scintillatorY + airGapThicknessY;
@@ -185,8 +185,8 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
             G4Box* solidAirGap = new G4Box("AirGap", 0.5*AirX, 0.5*AirY, 0.5*AirZ);
             G4LogicalVolume* logicAirGap = new G4LogicalVolume(solidAirGap, air, "AirGap");
             G4ThreeVector posAirGap = G4ThreeVector(0, 0, -0.5*TeflonZ+0.5*AirZ); 
-            G4VPhysicalVolume* physAirGap = new G4PVPlacement(0, posAirGap, logicAirGap, "AirGap", logicTeflon, false, 0);
-            topContainer = logicAirGap; // 如果定义了AirGap，晶体放在AirGap中
+            MyPhysicalVolume* physAirGap = new MyPhysicalVolume(0, posAirGap, logicAirGap, "AirGap", physTeflon->GetG4Placement(), false, 0);
+            topContainer = physAirGap; // 如果定义了AirGap，晶体放在AirGap中
             posScintillator = G4ThreeVector(0, 0, -0.5*AirZ+0.5*scintillatorZ); // 使用Teflon时晶体相对的位置
 
             // G4LogicalBorderSurface* logic_surf_Teflon2AirGap = new G4LogicalBorderSurface(
@@ -198,7 +198,7 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
 
           new G4LogicalSkinSurface("TeflonSurface", logicTeflon, surf_Teflon);
 
-          if(topContainer == logicTeflon){
+          if(topContainer == physTeflon){
             posScintillator = G4ThreeVector(0, 0, -0.5*TeflonZ+0.5*scintillatorZ); // 使用Teflon时晶体相对的位置
           }
           
@@ -222,9 +222,9 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
 
           // 将 Reflector 放置在适当的位置
           G4ThreeVector posReflector = G4ThreeVector(0, 0, -0.5*worldSize+pmtHeight);  // 根据需要调整
-          G4VPhysicalVolume* physReflector = new G4PVPlacement(0, posReflector, logicReflector, "Reflector", logicWorld, false, 0);
+          MyPhysicalVolume* physReflector = new MyPhysicalVolume(0, posReflector, logicReflector, "Reflector", G4physWorld, false, 0);
           // topContainer = logicReflector;
-          topContainer = logicWorld;
+          topContainer = physWorld;
 
           new G4LogicalSkinSurface("ReflectorSurface", logicReflector, surf_BaSO4);
 
@@ -243,7 +243,7 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
 
           // // 将 AirInReflector 放置在适当的位置
           // G4ThreeVector posAirInReflector = G4ThreeVector(0, 0, 0);  // 根据需要调整
-          // G4VPhysicalVolume* physAirInReflector = new G4PVPlacement(0, posAirInReflector, logicAirInReflector, "AirInReflector", logicReflector, false, 0);
+          // MyPhysicalVolume* physAirInReflector = new MyPhysicalVolume(0, posAirInReflector, logicAirInReflector, "AirInReflector", logicReflector, false, 0);
           // topContainer = logicAirInReflector;
 
           // posScintillator = G4ThreeVector(0, 0, greaseThickness + 0.5*scintillatorZ); 
@@ -257,11 +257,12 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
   }
 
   // 闪烁体
-  G4VPhysicalVolume* physScintillator = new G4PVPlacement(0, posScintillator, logicScintillator, "Scintillator", topContainer, false, 0);
+  MyPhysicalVolume* physScintillator = new MyPhysicalVolume(0, posScintillator, logicScintillator, "Scintillator", topContainer->GetG4Placement(), false, 0);
   fVolumeMap["Scintillator"] = physScintillator;
 
+
   
-    myPrint(lv, f("fVolumeMap length is {}\n",  fVolumeMap.size()));
+  myPrint(lv, f("fVolumeMap length is {}\n",  fVolumeMap.size()));
   for (const auto& pair : fVolumeMap) {
       std::cout << "Volume name: " << pair.first << ", Volume address: " << pair.second << std::endl;
   }
@@ -274,14 +275,15 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
           G4cout << fDumpGdmlFileName << " 已存在，不再写入。" << G4endl;
       } else {
           G4GDMLParser* parser = new G4GDMLParser();
-          parser->Write(fDumpGdmlFileName, physWorld);
+          parser->Write(fDumpGdmlFileName, G4physWorld);
       }
   }
 
-  return physWorld;
+  
+  return G4physWorld;
 }
 
-G4VPhysicalVolume* OpNoviceDetectorConstruction::GetMyVolume(G4String volumeName) const
+MyPhysicalVolume* OpNoviceDetectorConstruction::GetMyVolume(G4String volumeName) const
 {
   auto it = fVolumeMap.find(volumeName);
   if (it != fVolumeMap.end())
@@ -327,7 +329,6 @@ void OpNoviceDetectorConstruction::PrintError(G4String ed)
   G4Exception("OpNoviceDetectorConstruction:MaterialProperty test", "op001",
               FatalException, ed);
 }
-
 
 
 

@@ -35,6 +35,7 @@
 #include "G4Event.hh"
 #include "G4RunManager.hh"
 
+#include "G4Threading.hh"
 #include "G4AnalysisManager.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -59,12 +60,15 @@ void OpNoviceEventAction::BeginOfEventAction(const G4Event *)
 void OpNoviceEventAction::EndOfEventAction(const G4Event *event)
 {
     // Print per event (modulo n)
-    auto eventID = event->GetEventID();
-    auto totalEvents = G4RunManager::GetRunManager()->GetCurrentRun()->GetNumberOfEventToBeProcessed();
-    auto printModulo = totalEvents / 100; // 每1%的事件数
-    if ((printModulo > 0) && (eventID % printModulo == 0))
-    {
-        G4cout << "---> End of event: " << eventID << ", " << (eventID / printModulo) << "% completed" << std::endl;
+    // 判断是否是主进程，在主进程中打印进度
+    if (G4Threading::IsMasterThread()) {
+      auto eventID = event->GetEventID();
+      auto totalEvents = G4RunManager::GetRunManager()->GetCurrentRun()->GetNumberOfEventToBeProcessed();
+      auto printModulo = totalEvents / 100; // 每1%的事件数
+      if ((printModulo > 0) && (eventID % printModulo == 0))
+      {
+          G4cout << "---> End of event: " << eventID << ", " << (eventID / printModulo) << "% completed" << std::endl;
+      }
     }
 
 

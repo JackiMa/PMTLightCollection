@@ -43,7 +43,7 @@ enum LogLevel {
 
 void myPrint(LogLevel level, const std::string& message);
 
-extern std::string msg;
+extern std::string My_msg;
 extern LogLevel lv;
 
 // int main() {
@@ -52,7 +52,7 @@ extern LogLevel lv;
 //     std::string name = "Alice";
 
 //     std::string message = f("Name: ++{}, Age: {}, Height: {}", name, age, height);
-//     myPrint(DEBUG, message);
+//     myPrint(DEBUG, mg);
 
 //     return 0;
 // }

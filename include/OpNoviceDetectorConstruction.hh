@@ -35,7 +35,7 @@
 #include "G4VUserDetectorConstruction.hh"
 #include "G4Material.hh"
 #include "G4OpticalSurface.hh"
-
+#include "MyPhysicalVolume.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 class OpNoviceDetectorMessenger;
@@ -54,13 +54,15 @@ class OpNoviceDetectorConstruction : public G4VUserDetectorConstruction
   void SetDumpGdmlFile(G4String);
   G4String GetDumpGdmlFile() const;
 
-  G4VPhysicalVolume* GetMyVolume(G4String volumeName) const;
+  MyPhysicalVolume* GetMyVolume(G4String volumeName) const;
+
+
 
  private:
   void PrintError(G4String);
   G4Material* matter_construct_water();
 
-  std::map<G4String, G4VPhysicalVolume*> fVolumeMap; // 维护需要别处引用的Solid
+  std::map<G4String, MyPhysicalVolume*> fVolumeMap; // 维护需要别处引用的Solid
 
   OpNoviceDetectorMessenger* fDetectorMessenger;
   G4String fDumpGdmlFileName;
