@@ -14,7 +14,7 @@
 #include "G4LogicalVolume.hh"
 #include "MyMaterials.hh"
 #include "G4OpticalSurface.hh"
-#include "MyPhysicalVolume.hh"
+#include "G4VPhysicalVolume.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4ThreeVector.hh"
 #include "G4VisAttributes.hh"
