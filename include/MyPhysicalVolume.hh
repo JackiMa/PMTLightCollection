@@ -13,20 +13,24 @@ public:
     // 构造函数
     MyPhysicalVolume(G4RotationMatrix* pRot, const G4ThreeVector& tlate, 
                      G4LogicalVolume* pLogical, const G4String& pName,
-                     G4VPhysicalVolume* pMotherVolume, G4bool pMany, 
+                     MyPhysicalVolume* pMotherVolume, G4bool pMany, 
                      G4int pCopyNo, G4bool pSurfChk = false)
     {
-        placement = new G4PVPlacement(pRot, tlate, pName, pLogical, 
-                                      pMotherVolume, pMany, pCopyNo, pSurfChk);
+        G4VPhysicalVolume* G4Motherphysics;
         if (pMotherVolume) {
             // 计算绝对位置
+            G4Motherphysics = pMotherVolume->GetG4Placement();
             MyPhysicalVolume* motherAbs = dynamic_cast<MyPhysicalVolume*>(pMotherVolume);
             if (motherAbs) {
                 absolutePosition = motherAbs->GetAbsolutePosition() + tlate;
             }
         } else {
+            G4VPhysicalVolume* G4Motherphysics = 0;
             absolutePosition = tlate;  // 如果没有母体，则绝对位置为相对位置
         }
+
+        placement = new G4PVPlacement(pRot, tlate, pName, pLogical, 
+                                      G4Motherphysics, pMany, pCopyNo, pSurfChk);
     }
 
     ~MyPhysicalVolume() {
