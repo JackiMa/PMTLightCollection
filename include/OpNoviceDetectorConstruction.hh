@@ -75,7 +75,7 @@ class OpNoviceDetectorConstruction : public G4VUserDetectorConstruction
     NONE = -1,
     TEFLON = 1,
     REFLECTOR = 2,
-    ESR = 3
+    CYLINDER = 3
   };
   ReflectorType reflectorType;
 

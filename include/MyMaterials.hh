@@ -82,13 +82,13 @@ public:
 
   static G4MaterialPropertiesTable* ESR(double esrTransmittance);      // ESR reflector surface
   static G4MaterialPropertiesTable* Teflon();      // Teflon reflector surface
-  static G4MaterialPropertiesTable* BaSO4();      // BaSO4 reflector surface
+  static G4MaterialPropertiesTable* TiO2();      // TiO2 reflector surface
   static G4MaterialPropertiesTable* ABS_SURF(G4double Reflectivity, G4double specularLobe, G4double specularSpike, G4double backScatter ); // Absorber internal surface
   static G4MaterialPropertiesTable* crystal_depo_SURF(); // crystal lateral surface
   static G4MaterialPropertiesTable* clear_fiber_optical();
 
   static G4OpticalSurface* surf_Teflon();
-  static G4OpticalSurface* surf_BaSO4();
+  static G4OpticalSurface* surf_TiO2();
   static G4OpticalSurface* surf_GapToClearCrystal();
   static G4OpticalSurface* surf_GlassToPhotocathode();
   
