@@ -1,0 +1,6 @@
+# config.mac
+/detector/reflectorShape HEMISPHERE
+/detector/reflectorMaterial TiO2
+/detector/scintillatorSize 1 1 1 cm
+/detector/reflectorSize 4.0 4.0 4.0 cm
+/detector/useGrease true

@@ -4398,10 +4398,18 @@ G4Material* MyMaterials::PLEX(double scaleFactor)
   return mat;
 }
 
-G4MaterialPropertiesTable* MyMaterials::ESR(double esrTransmittance)
+G4MaterialPropertiesTable* MyMaterials::ESR(double user_esrTransmittance)
 {
   G4MaterialPropertiesTable *ESR_surf = new G4MaterialPropertiesTable();
-
+  double esrTransmittance;
+  if (user_esrTransmittance < 0)
+  {
+    esrTransmittance = 0.02;
+  }
+  else
+  {
+    esrTransmittance = user_esrTransmittance;
+  }
   //ESR
   // 实部折射指数（REALRINDEX）和虚部折射指数（IMAGINARYRINDEX）：定义了光在材料中传播时折射指数的变化，这影响光在材料中的吸收和反射。
   // 透射率（TRANSMITTANCE）：根据esrTransmittance的值，可以是固定的或根据能量动态定义的透射率，用于模拟光通过ESR材料的部分透射。
@@ -4464,11 +4472,11 @@ G4MaterialPropertiesTable *MyMaterials::Teflon()
 }
 
 //--------------------------//
-// BaSO4                   //
+// TiO2                     //
 //--------------------------//
-G4MaterialPropertiesTable *MyMaterials::BaSO4()
+G4MaterialPropertiesTable *MyMaterials::TiO2()
 {
-  G4MaterialPropertiesTable *BaSO4_surf = new G4MaterialPropertiesTable();
+  G4MaterialPropertiesTable *TiO2_surf = new G4MaterialPropertiesTable();
 
   // surf roughness
   const G4int Np = 2;
@@ -4478,12 +4486,12 @@ G4MaterialPropertiesTable *MyMaterials::BaSO4()
   G4double SpecularspikeVector[Np] = {0, 0};
   G4double BackscatterVector[Np] = {0,0};
   G4double reflectivity[Np] = {0.98, 0.98};
-  BaSO4_surf->AddProperty("SPECULARLOBECONSTANT",Energy,SpecularLobeVector,Np);
-  BaSO4_surf->AddProperty("SPECULARSPIKECONSTANT",Energy,SpecularspikeVector,Np);
-  BaSO4_surf->AddProperty("BACKSCATTERCONSTANT",Energy,BackscatterVector,Np);
-  BaSO4_surf->AddProperty ("REFLECTIVITY",Energy,reflectivity,Np);
+  TiO2_surf->AddProperty("SPECULARLOBECONSTANT",Energy,SpecularLobeVector,Np);
+  TiO2_surf->AddProperty("SPECULARSPIKECONSTANT",Energy,SpecularspikeVector,Np);
+  TiO2_surf->AddProperty("BACKSCATTERCONSTANT",Energy,BackscatterVector,Np);
+  TiO2_surf->AddProperty ("REFLECTIVITY",Energy,reflectivity,Np);
   
-  return BaSO4_surf;
+  return TiO2_surf;
 }
 //--------------------------//
 
@@ -4561,14 +4569,14 @@ G4MaterialPropertiesTable* MyMaterials::clear_fiber_optical()
 
 
   // ------------- Surfaces --------------
-  // Teflon，BaSO4
+  // Teflon，TiO2
   // 晶体到空气层，晶体到Teflon，晶体到PMT入射窗，晶体到硅脂，硅脂到入射窗
   // 
 G4OpticalSurface* MyMaterials::surf_Teflon()
 {
   // Teflon surface
   G4OpticalSurface* surf_teflon = new G4OpticalSurface("surf_teflon");
-  surf_teflon->SetType(dielectric_metal);  // Teflon视为非金属
+  surf_teflon->SetType(dielectric_dielectric);  // Teflon视为非金属
   surf_teflon->SetFinish(groundfrontpainted);  // 漫反射表面处理
   surf_teflon->SetModel(unified);  // 使用统一模型
   surf_teflon->SetMaterialPropertiesTable(MyMaterials::Teflon());
@@ -4576,17 +4584,29 @@ G4OpticalSurface* MyMaterials::surf_Teflon()
 
   return surf_teflon;
 }
-G4OpticalSurface* MyMaterials::surf_BaSO4()
+G4OpticalSurface* MyMaterials::surf_TiO2()
 {
-  // BaSO4 coating surface
-  G4OpticalSurface* surf_BaSO4 = new G4OpticalSurface("surf_BaSO4");
-  surf_BaSO4->SetType(dielectric_metal);  // Teflon视为非金属
-  surf_BaSO4->SetFinish(groundfrontpainted);  // 漫反射表面处理
-  surf_BaSO4->SetModel(unified);  // 使用统一模型
-  surf_BaSO4->SetMaterialPropertiesTable(MyMaterials::BaSO4());
-  // surf_BaSO4->SetSigmaAlpha(); // 表面粗糙度的贡献
+  // TiO2 coating surface
+  G4OpticalSurface* surf_TiO2 = new G4OpticalSurface("surf_TiO2");
+  surf_TiO2->SetType(dielectric_dielectric);  // Teflon视为非金属
+  surf_TiO2->SetFinish(groundfrontpainted);  // 漫反射表面处理
+  surf_TiO2->SetModel(unified);  // 使用统一模型
+  surf_TiO2->SetMaterialPropertiesTable(MyMaterials::TiO2());
+  // surf_TiO2->SetSigmaAlpha(); // 表面粗糙度的贡献
 
-  return surf_BaSO4;
+  return surf_TiO2;
+}
+G4OpticalSurface* MyMaterials::surf_ESR()
+{
+  // ESR coating surface
+  G4OpticalSurface* surf_ESR = new G4OpticalSurface("surf_ESR");
+  surf_ESR->SetType(dielectric_metal);  // Teflon视为非金属
+  surf_ESR->SetFinish(polished);  // 漫反射表面处理
+  surf_ESR->SetModel(unified);  // 使用统一模型
+  surf_ESR->SetMaterialPropertiesTable(MyMaterials::ESR(-1));
+  // surf_ESR->SetSigmaAlpha(); // 表面粗糙度的贡献
+
+  return surf_ESR;
 }
 G4OpticalSurface* MyMaterials::surf_GapToClearCrystal()
 {
@@ -4609,9 +4629,9 @@ G4OpticalSurface* MyMaterials::surf_GlassToPhotocathode()
   surf_GlassToPhotocathode->SetModel(unified);
 
   const G4int num = 2;
-  G4double reflectivity[num] = {0.3, 0.3}; // 30% 的反射率
+  G4double reflectivity[num] = {0.095, 0.095}; // 0.09% 的反射率
   G4double photonEnergy[num] = {1.2*eV, 5.7*eV};  // 光子能量范围
-  G4double TransmittanceVector[num] = {0.7,0.7};
+  G4double TransmittanceVector[num] = {0.905,0.905};
 
   G4MaterialPropertiesTable* Photocat_mpt = new G4MaterialPropertiesTable();
   Photocat_mpt->AddProperty("REFLECTIVITY", photonEnergy, reflectivity, num);

@@ -18,6 +18,14 @@ public:
   MyMaterials();
   ~MyMaterials();
 
+  /* Geant4 自带的材料：
+  https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Appendix/materialNames.html#nist-compounds
+  
+  CsI:  G4_CESIUM_IODIDE
+  NaI： G4_SODIUM_IODIDE
+  
+  */
+
   static G4Material* Vacuum();
   static G4Material* Air();
   static G4Material* AirKiller(); // special material with same prop of air but absorbing light
@@ -46,7 +54,7 @@ public:
   static G4Material* DSB_Ce();
   static G4Material* SiO2_Ce();
   static G4Material* GAGG_Ce();
-  static G4Material* BGO            (double user_lightyield,double scaleFactor,double user_birks);
+  static G4Material* BGO            (double user_lightyield,double scaleFactor,double user_birks); // fake EM spectrum
   static G4Material* PWO            (double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* YAG_Ce         (double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* GAGG_Ce_Mg     (double user_lightyield,double scaleFactor,double user_birks);
@@ -56,7 +64,7 @@ public:
   static G4Material* GYAGG          (double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* GAGG_very_fast (double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* GAGG_slow      (double user_lightyield,double scaleFactor,double user_birks);
-  static G4Material* Polystyrene    (double user_lightyield,double scaleFactor,double user_birks);
+  static G4Material* Polystyrene    (double user_lightyield,double scaleFactor,double user_birks); // 塑闪
   static G4Material* PLEX           (double scaleFactor);
   static G4Material* FlurPoly       (double scaleFactor);
   static G4Material* PVC();
@@ -82,13 +90,14 @@ public:
 
   static G4MaterialPropertiesTable* ESR(double esrTransmittance);      // ESR reflector surface
   static G4MaterialPropertiesTable* Teflon();      // Teflon reflector surface
-  static G4MaterialPropertiesTable* BaSO4();      // BaSO4 reflector surface
+  static G4MaterialPropertiesTable* TiO2();      // TiO2 reflector surface
   static G4MaterialPropertiesTable* ABS_SURF(G4double Reflectivity, G4double specularLobe, G4double specularSpike, G4double backScatter ); // Absorber internal surface
   static G4MaterialPropertiesTable* crystal_depo_SURF(); // crystal lateral surface
   static G4MaterialPropertiesTable* clear_fiber_optical();
 
   static G4OpticalSurface* surf_Teflon();
-  static G4OpticalSurface* surf_BaSO4();
+  static G4OpticalSurface* surf_TiO2();
+  static G4OpticalSurface* surf_ESR();
   static G4OpticalSurface* surf_GapToClearCrystal();
   static G4OpticalSurface* surf_GlassToPhotocathode();
   

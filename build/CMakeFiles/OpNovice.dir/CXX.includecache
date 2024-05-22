@@ -35,6 +35,8 @@ G4OpticalSurface.hh
 ../include/G4OpticalSurface.hh
 MyPhysicalVolume.hh
 ../include/MyPhysicalVolume.hh
+G4GenericMessenger.hh
+../include/G4GenericMessenger.hh
 
 ../include/OpNoviceDetectorMessenger.hh
 globals.hh
@@ -257,6 +259,24 @@ G4AllocatorPool.hh
 /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AllocatorPool.hh
 
 /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AllocatorPool.hh
+
+/home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyMethod.hh
+functional
+-
+type_traits
+-
+
+/home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyType.hh
+algorithm
+-
+typeinfo
+-
+iostream
+-
+sstream
+-
+G4UIcommand.hh
+/home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UIcommand.hh
 
 /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
 
@@ -721,6 +741,22 @@ G4GRSVolume.icc
 /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.icc
 
 /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.icc
+
+/home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericMessenger.hh
+G4UImessenger.hh
+/home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UImessenger.hh
+G4UIcommand.hh
+/home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4UIcommand.hh
+G4AnyType.hh
+/home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyType.hh
+G4AnyMethod.hh
+/home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyMethod.hh
+G4ApplicationState.hh
+/home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
+map
+-
+vector
+-
 
 /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomConfig.hh
 

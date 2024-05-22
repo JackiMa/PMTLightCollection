@@ -83,6 +83,8 @@ CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AffineTransform.icc
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Allocator.hh
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AllocatorPool.hh
+CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyMethod.hh
+CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyType.hh
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AuxiliaryNavServices.hh
@@ -122,6 +124,7 @@ CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSSolid.icc
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.hh
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.icc
+CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericMessenger.hh
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomSplitter.hh
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GlobalConfig.hh
 CMakeFiles/OpNovice.dir/OpNovice.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GraphicsSystemList.hh
@@ -470,6 +473,8 @@ CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllic
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisManagerState.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisUtilities.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisVerbose.hh
+CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyMethod.hh
+CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyType.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BaseAnalysisManager.hh
@@ -487,6 +492,7 @@ CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllic
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ExceptionSeverity.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exp.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Fcn.hh
+CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericMessenger.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomSplitter.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GlobalConfig.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4H1ToolsManager.hh
@@ -692,6 +698,8 @@ CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllic
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AffineTransform.icc
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Allocator.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AllocatorPool.hh
+CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyMethod.hh
+CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyType.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AuxiliaryNavServices.hh
@@ -744,6 +752,7 @@ CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllic
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSSolid.icc
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.icc
+CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericMessenger.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomConfig.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomSplitter.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomTypes.hh
@@ -939,6 +948,8 @@ CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllicati
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/RotationZ.icc
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/ThreeVector.h
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/ThreeVector.icc
+CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyMethod.hh
+CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyType.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DataVector.hh
@@ -950,6 +961,7 @@ CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllicati
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exception.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ExceptionSeverity.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exp.hh
+CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericMessenger.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomSplitter.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GlobalConfig.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamElm.hh
@@ -1773,6 +1785,8 @@ CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apll
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AffineTransform.icc
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Allocator.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AllocatorPool.hh
+CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyMethod.hh
+CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyType.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AuxiliaryNavServices.hh
@@ -1806,6 +1820,7 @@ CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apll
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSSolid.icc
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GRSVolume.icc
+CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericMessenger.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomConfig.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomSplitter.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomTypes.hh
@@ -2012,6 +2027,8 @@ CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/A
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/CLHEP/Vector/ThreeVector.icc
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Allocator.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AllocatorPool.hh
+CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyMethod.hh
+CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyType.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4DataVector.hh
@@ -2023,6 +2040,7 @@ CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/A
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exception.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ExceptionSeverity.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4Exp.hh
+CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericMessenger.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomSplitter.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GlobalConfig.hh
 CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4IonisParamElm.hh
@@ -2153,6 +2171,8 @@ CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisManagerState.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisUtilities.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnalysisVerbose.hh
+CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyMethod.hh
+CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AnyType.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4ApplicationState.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4AutoLock.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4BaseAnalysisManager.hh
@@ -2173,6 +2193,7 @@ CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericAnalysisManager.icc
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericFileManager.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericFileManager.icc
+CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GenericMessenger.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GeomSplitter.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4GlobalConfig.hh
 CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o: /home/wsl2/Apllication/Geant4/geant4-v11.0.3/include/Geant4/G4H1ToolsManager.hh

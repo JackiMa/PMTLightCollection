@@ -36,6 +36,7 @@
 #include "G4Material.hh"
 #include "G4OpticalSurface.hh"
 #include "MyPhysicalVolume.hh"
+#include "G4GenericMessenger.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 class OpNoviceDetectorMessenger;
@@ -56,8 +57,6 @@ class OpNoviceDetectorConstruction : public G4VUserDetectorConstruction
 
   MyPhysicalVolume* GetMyVolume(G4String volumeName) const;
 
-
-
  private:
   void PrintError(G4String);
   G4Material* matter_construct_water();
@@ -70,21 +69,42 @@ class OpNoviceDetectorConstruction : public G4VUserDetectorConstruction
   G4bool fVerbose;
   G4bool fDumpGdml;
 
-  // 采用什么形式来做光收集
-  enum ReflectorType {
-    NONE = -1,
-    TEFLON = 1,
-    REFLECTOR = 2,
-    ESR = 3
-  };
-  ReflectorType reflectorType;
+// 反光罩的形式，立方体、圆柱体、半球体
+std::map<std::string, int> reflectorShapeMap = {
+    {"NONE", -1},
+    {"CUBE", 1},
+    {"CYLINDER", 2},
+    {"HEMISPHERE", 3}
+};
+std::string reflectorShape;
 
-  bool isGrease;
+// 反光罩的材料
+std::map<std::string, int> reflectorMaterialMap = {
+    {"NO_MATERIAL", -1},
+    {"TEFLON", 1},
+    {"TiO2", 2},
+    {"ESR", 3}
+};
+std::string reflectorMaterial;
+
+
+  G4GenericMessenger* messenger; // 用于与mac文件进行交互
+
+  bool useGrease;
   bool isAirGap;
   G4double scintillatorX;
   G4double scintillatorY;
   G4double scintillatorZ;
+  G4ThreeVector scintillatorSize;
+  G4ThreeVector reflectorSize;
 
+  public:
+  // 适用mac文件进行控制
+  void SetReflectorShape(G4String reflectorShape);
+  void SetReflectorMaterial(G4String reflectorMaterial);
+  void SetScintillatorSize(G4ThreeVector size);
+  void SetReflectorSize(G4ThreeVector size);
+  void UseGrease(G4bool use);
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
