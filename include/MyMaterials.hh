@@ -60,7 +60,7 @@ public:
   static G4Material* PLEX           (double scaleFactor);
   static G4Material* FlurPoly       (double scaleFactor);
   static G4Material* PVC();
-  static G4Material* CuAir(); //PMT tube
+  static G4Material* CuAir(); //crystal tube
   static G4Material* Cu(); // Wires
   static G4Material* LAPPD_Average(); // average LAPPD material to fill space between front and back sections
   static G4Material* StainlessSteel(); 

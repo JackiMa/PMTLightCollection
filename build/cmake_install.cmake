@@ -1,4 +1,4 @@
-# Install script for directory: /home/wsl2/myGeant4/myOpNovice
+# Install script for directory: /home/wsl2/myGeant4/LightCollect
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -38,33 +38,33 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/OpNovice" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/OpNovice")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/LightCollection" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/LightCollection")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/OpNovice"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/LightCollection"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/wsl2/myGeant4/myOpNovice/build/OpNovice")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/OpNovice" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/OpNovice")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/wsl2/myGeant4/LightCollect/build/LightCollection")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/LightCollection" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/LightCollection")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/OpNovice"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/LightCollection"
          OLD_RPATH "/home/wsl2/Apllication/Geant4/geant4-v11.0.3/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/OpNovice")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/LightCollection")
     endif()
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE FILES
-    "/home/wsl2/myGeant4/myOpNovice/gdml/NoviceExample.gdml"
-    "/home/wsl2/myGeant4/myOpNovice/gdml/simpleGDMLTest.gdml"
-    "/home/wsl2/myGeant4/myOpNovice/gui.mac"
-    "/home/wsl2/myGeant4/myOpNovice/optPhoton.mac"
-    "/home/wsl2/myGeant4/myOpNovice/vis.mac"
-    "/home/wsl2/myGeant4/myOpNovice/OpNovice.in"
+    "/home/wsl2/myGeant4/LightCollect/gdml/NoviceExample.gdml"
+    "/home/wsl2/myGeant4/LightCollect/gdml/simpleGDMLTest.gdml"
+    "/home/wsl2/myGeant4/LightCollect/gui.mac"
+    "/home/wsl2/myGeant4/LightCollect/optPhoton.mac"
+    "/home/wsl2/myGeant4/LightCollect/vis.mac"
+    "/home/wsl2/myGeant4/LightCollect/LightCollection.in"
     )
 endif()
 
@@ -76,5 +76,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/wsl2/myGeant4/myOpNovice/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/wsl2/myGeant4/LightCollect/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

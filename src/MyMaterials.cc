@@ -411,7 +411,7 @@ G4Material* MyMaterials::Shashlik_Polystyrene() // NOT USED, polystyrene in SHAS
   mptPolystyrene->AddProperty("ABSLENGTH",photonEnergy,absPS,nEntries);
   mptPolystyrene->
                AddProperty("FASTCOMPONENT",photonEnergy, scintilFast,nEntries);
-  mptPolystyrene->AddConstProperty("SCINTILLATIONYIELD",10000/MeV); // reduced 1/10 to compensate PMT efficiency
+  mptPolystyrene->AddConstProperty("SCINTILLATIONYIELD",10000/MeV); // reduced 1/10 to compensate crystal efficiency
   mptPolystyrene->AddConstProperty("RESOLUTIONSCALE",1.0);
   mptPolystyrene->AddConstProperty("FASTTIMECONSTANT", 2.*ns); // was 10 ns
  
@@ -4454,11 +4454,13 @@ G4MaterialPropertiesTable *MyMaterials::Teflon()
   G4double SpecularLobeVector[Np] = {0, 0};
   G4double SpecularspikeVector[Np] = {0, 0};
   G4double BackscatterVector[Np] = {0,0};
-  G4double TransmittanceVector[Np] = {0.02,0.02};
+  G4double reflectivity[Np] = {0.98, 0.98}; // 98% reflectivity
+  G4double TransmittanceVector[Np] = {0.02,0.02}; // 2% transmittance
   Teflon_surf->AddProperty("SPECULARLOBECONSTANT",Energy,SpecularLobeVector,Np);
   Teflon_surf->AddProperty("SPECULARSPIKECONSTANT",Energy,SpecularspikeVector,Np);
   Teflon_surf->AddProperty("BACKSCATTERCONSTANT",Energy,BackscatterVector,Np);
   Teflon_surf->AddProperty ("TRANSMITTANCE",Energy,TransmittanceVector,Np);
+  Teflon_surf->AddProperty ("REFLECTIVITY",Energy,reflectivity,Np);
   
   return Teflon_surf;
 }
@@ -4562,7 +4564,7 @@ G4MaterialPropertiesTable* MyMaterials::clear_fiber_optical()
 
   // ------------- Surfaces --------------
   // Teflon，TiO2
-  // 晶体到空气层，晶体到Teflon，晶体到PMT入射窗，晶体到硅脂，硅脂到入射窗
+  // 晶体到空气层，晶体到Teflon，晶体到crystal入射窗，晶体到硅脂，硅脂到入射窗
   // 
 G4OpticalSurface* MyMaterials::surf_Teflon()
 {
@@ -4602,7 +4604,7 @@ G4OpticalSurface* MyMaterials::surf_GapToClearCrystal()
 
 G4OpticalSurface* MyMaterials::surf_GlassToPhotocathode()
 {
-  // PMT入射窗到光阴极表面的反射率
+  // crystal入射窗到光阴极表面的反射率
   G4OpticalSurface* surf_GlassToPhotocathode = new G4OpticalSurface("surf_GapToClearCrystal");
   surf_GlassToPhotocathode->SetType(dielectric_metal);
   surf_GlassToPhotocathode->SetFinish(polished);

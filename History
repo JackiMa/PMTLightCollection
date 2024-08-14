@@ -4,7 +4,7 @@
      Geant4 - an Object-Oriented Toolkit for Simulation in HEP
      =========================================================
 
-                    Example OpNovice History file
+                    Example LightCollection History file
                     -----------------------------
 This file should be used by the G4 example coordinator to briefly
 summarize all major modifications introduced in the code and keep
@@ -14,38 +14,38 @@ track of all tags.
      * Reverse chronological order (last date on top), please *
      ----------------------------------------------------------
 
-January 17, 2022 D. Sawkey (OpNovice-V10-07-07)
+January 17, 2022 D. Sawkey (LightCollection-V10-07-07)
 - Fix incorrect call to G4MaterialPropertiesTable::AddProperty. Add comments explaining
   use. Addresses issue 115.
 
-October 15, 2021 D. Sawkey (OpNovice-V10-07-06)
-- remove OpNoviceGDMLDetectorMessenger: use OpNoviceDetectorMessenger instead
+October 15, 2021 D. Sawkey (LightCollection-V10-07-06)
+- remove LightCollectionGDMLDetectorMessenger: use LightCollectionDetectorMessenger instead
 - rename class variables to start with f
 - test user-defined material properties with exceptions instead of assert
 
-October 7, 2021 D. Sawkey (OpNovice-V10-07-05)
-- OpNoviceDetectorConstruction - add tests of user-defined material
+October 7, 2021 D. Sawkey (LightCollection-V10-07-05)
+- LightCollectionDetectorConstruction - add tests of user-defined material
     properties; add one material property using C-style arrays (as a test)
 
-July 19, 2021 V. Ivanchenko (OpNovice-V10-07-04)
-- OpNoviceDetectorConstruction - use modified interface to
+July 19, 2021 V. Ivanchenko (LightCollection-V10-07-04)
+- LightCollectionDetectorConstruction - use modified interface to
     G4MaterialPropertiesTable with spline flag
 
-June 9, 2021 H. Wenzel (OpNovice-V10-07-03)
+June 9, 2021 H. Wenzel (LightCollection-V10-07-03)
 - add option to define detector via a gdml file
 - add outer world volume to avoid surfaces including world volume.
 
-May 21, 2021 D. Sawkey (OpNovice-V10-07-02)
+May 21, 2021 D. Sawkey (LightCollection-V10-07-02)
 - fix incorrect material property name
 
-March 30, 2021 D. Sawkey (OpNovice-V10-07-01)
+March 30, 2021 D. Sawkey (LightCollection-V10-07-01)
 - Excercise creating material property table element by element
   (testing fix of bug 2313).
 
-February 24, 2021 D. Sawkey (OpNovice-V10-07-00)
+February 24, 2021 D. Sawkey (LightCollection-V10-07-00)
 - Replace deprecated optical commands and parameters with new ones.
 
-November 1, 2020 D. Sawkey (OpNovice-V10-06-01)
+November 1, 2020 D. Sawkey (LightCollection-V10-06-01)
 - Print out process statistics at end of run. Added EventAction and Run
   classes for this.
 - Update macros, especially to run more particles. Update gui.mac
@@ -54,132 +54,132 @@ November 1, 2020 D. Sawkey (OpNovice-V10-06-01)
 - Use default random number generator
 - Apply clang-format style
 
-August 4, 2020 D. Sawkey (OpNovice-V10-06-00)
+August 4, 2020 D. Sawkey (LightCollection-V10-06-00)
 - Add material properties using new interface with std::vectors
 
-October 29, 2019 D. Sawkey (OpNovice-V10-05-00)
+October 29, 2019 D. Sawkey (LightCollection-V10-05-00)
 - Use G4OpticalPhysics and G4SteppingVerbose
 - remove unused surface parameters
 
-July 31, 2018 I. Hrivnacova (OpNovice-V10-04-02)
+July 31, 2018 I. Hrivnacova (LightCollection-V10-04-02)
 - Macro review: 
-  - Added test for /OpNovice/phys/cerenkovMaxPhotons command at the end 
-    of OpNovice.in macro
+  - Added test for /LightCollection/phys/cerenkovMaxPhotons command at the end 
+    of LightCollection.in macro
   - Updated README files
 
-May 17, 2018 J. Allison (OpNovice-V10-04-01)
+May 17, 2018 J. Allison (LightCollection-V10-04-01)
 - Remove G4UI_USE and G4VIS_USE.
 - Move instantiation of G4UIExecutive to start of main.
 
-May 08, 2018 B. Morgan (OpNovice-V10-04-00)
+May 08, 2018 B. Morgan (LightCollection-V10-04-00)
 - Include G4Types before use of G4MULTITHREADED. For forward
   compatibility with move to #defines over -D for G4 preprocessor
   symbols.
 
-August 18, 2017 J.Allison (OpNovice-V10-03-02)
+August 18, 2017 J.Allison (LightCollection-V10-03-02)
 - Fix gui.mac, which executed vis.mac (it should not!).
 
-Mar 22, 2017 P.Gumplinger (OpNovice-V10-03-00/OpNovice-V10-03-01)
+Mar 22, 2017 P.Gumplinger (LightCollection-V10-03-00/LightCollection-V10-03-01)
 - exercise the new DAVIS LUT surface model
 
-Nov 02, 2016 L.Garnier (OpNovice-V10-02-01)
+Nov 02, 2016 L.Garnier (LightCollection-V10-02-01)
 - Remove icons.mac. Automatically include since interfaces-V10-02-07
 
-Nov 02, 2016 I. Hrivnacova (OpNovice-V10-02-00)
+Nov 02, 2016 I. Hrivnacova (LightCollection-V10-02-00)
 - Added file descriptions for Doxygen documentation
 
-Oct 14, 2016 G.Folger (OpNovice-V10-00-00) - not tagged
+Oct 14, 2016 G.Folger (LightCollection-V10-00-00) - not tagged
 - remove direct use of theParticleIterator, use GetParticleTableIterator().
     fix required by clang39 on Linux and MAC
 
-Jun 15, 2015 - P. Gumplinger (OpNovice-V10-01-04)
-- introduce G4ThreadLocal in OpNovicePhysicsList class
+Jun 15, 2015 - P. Gumplinger (LightCollection-V10-01-04)
+- introduce G4ThreadLocal in LightCollectionPhysicsList class
 
-Jun 09, 2015 - P. Gumplinger (OpNovice-V10-01-03)
+Jun 09, 2015 - P. Gumplinger (LightCollection-V10-01-03)
 - revert back to kernel initialization in main
 
-Jun 05, 2015 - P. Gumplinger (OpNovice-V10-01-02)
+Jun 05, 2015 - P. Gumplinger (LightCollection-V10-01-02)
 - reduce output size and move kernel initialization to input macro
 
-May 22, 2015 - P. Gumplinger (OpNovice-V10-01-01)
+May 22, 2015 - P. Gumplinger (LightCollection-V10-01-01)
 - apply coding guideline 3.3
 
-May 16, 2015 J. Allison (OpNovice-V10-01-00)
+May 16, 2015 J. Allison (LightCollection-V10-01-00)
 - Replaced !G4Threading::IsWorkerThread() by G4Threading::IsMasterThread().
 
-October 27, 2014 A. Dotti (OpNovice-V10-00-06)
+October 27, 2014 A. Dotti (LightCollection-V10-00-06)
 - Migration to new UI system. Requires:
   xrays-V10-00-06, op-V10-00-09, phys-ctro-em-V10-00-17
 
-July 11, 2014 P. Gumplinger (OpNovice-V10-00-05)
+July 11, 2014 P. Gumplinger (LightCollection-V10-00-05)
 - Use implicit dimensioning for all arrays in
-  OpNoviceDetectorConstruction.cc and assert that they are the
+  LightCollectionDetectorConstruction.cc and assert that they are the
   same (thanks to M. Kelsey for suggesting this)
 
-December 23, 2013 M. Asai (OpNovice-V10-00-04)
+December 23, 2013 M. Asai (LightCollection-V10-00-04)
 - Limit invokation of static method only from master/sequential.
 
-December 22, 2013 M. Asai (OpNovice-V10-00-03)
+December 22, 2013 M. Asai (LightCollection-V10-00-03)
 - Avoid static G4Scintillation method invoked through a pointer.
 
-December 18, 2013 M. Asai/P. Gumplinger (OpNovice-V10-00-02)
+December 18, 2013 M. Asai/P. Gumplinger (LightCollection-V10-00-02)
 - allows changes to G4Cerenkov and G4Scintillation in Idle state
 
-December 16, 2013 M. Asai (OpNovice-V10-00-01)
-- Fix race condision issue in OpNovicePhysicsList.
+December 16, 2013 M. Asai (LightCollection-V10-00-01)
+- Fix race condision issue in LightCollectionPhysicsList.
 
-December 04, 2013 P. Gumplinger (OpNovice-V10-00-00)
+December 04, 2013 P. Gumplinger (LightCollection-V10-00-00)
 - Fixes in gui.mac:
   Commented out command specific to B2 example
   Let execute vis.mac first to make the command in added menus available;
   Corrected wireframe parameter
 
-November 28, 2013 P. Gumplinger (OpNovice-V09-06-11)
+November 28, 2013 P. Gumplinger (LightCollection-V09-06-11)
 - add gui.mac, icons.mac and run.png
 
-November 2, 2013 P. Gumplinger (OpNovice-V09-06-10)
+November 2, 2013 P. Gumplinger (LightCollection-V09-06-10)
 - place G4Random::setTheSeed(myseed) so that it is executed for both
   sequential and MT mode
 
-October 31, 2013 P. Gumplinger (OpNovice-V09-06-09)
+October 31, 2013 P. Gumplinger (LightCollection-V09-06-09)
 - to work with ctests-V09-06-19
 
-October 29, 2013 P. Gumplinger (OpNovice-V09-06-08)
+October 29, 2013 P. Gumplinger (LightCollection-V09-06-08)
 - remove all reference to LXeWorkerInitialization and remove SetNumberOfThreads
 
-October 25, 2013 P. Gumplinger (OpNovice-V09-06-07)
-- Instantiate SteppingVerbose in a new method in OpNoviceActionInitialization
+October 25, 2013 P. Gumplinger (LightCollection-V09-06-07)
+- Instantiate SteppingVerbose in a new method in LightCollectionActionInitialization
   and removed LXeWorkerInitialization (not needed anymore)
-- Add OpNoviceSteppingAction to count secondary optical photons to compare
-  with OpNoviceStackingAction
+- Add LightCollectionSteppingAction to count secondary optical photons to compare
+  with LightCollectionStackingAction
 
-11 June 2013, V.Ivanchenko (OpNovice-V09-06-06)
-- OpNovicePhysicsList - construct all particles to avoid exception
+11 June 2013, V.Ivanchenko (LightCollection-V09-06-06)
+- LightCollectionPhysicsList - construct all particles to avoid exception
     in execution of ConstructParticle() method; removed unnecessary
     methods to construct individual particle types
 
-02 June 2013, P.Gumplinger (OpNovice-V09-06-05)
+02 June 2013, P.Gumplinger (LightCollection-V09-06-05)
 - make MultiThread (MT) capable
 
-27 May 2013, I.Hrivnacova (OpNovice-V09-06-04)
+27 May 2013, I.Hrivnacova (LightCollection-V09-06-04)
 - Updated .README file 
 
-27 May 2013, I.Hrivnacova (OpNovice-V09-06-03)
+27 May 2013, I.Hrivnacova (LightCollection-V09-06-03)
 - Apply Examples Coding Guidelines 
   (data members/base class initialization)
 
-13 May 2013 P. Gumplinger (OpNovice-V09-06-02)
+13 May 2013 P. Gumplinger (LightCollection-V09-06-02)
 - Add .README file
 
-06 May 2013 P. Gumplinger (OpNovice-V09-06-01)
+06 May 2013 P. Gumplinger (LightCollection-V09-06-01)
 - Apply all Examples Coding Guidelines
 
-18 Dec 2012 I. Hrivnacova (OpNovice-V09-06-00)
+18 Dec 2012 I. Hrivnacova (LightCollection-V09-06-00)
 - Fixed CMake build: removed add_custom_target(..)
 
 17 Dec 2012 P. Gumplinger 
 - move the example to /extended/optical/novice (from /novice/N06) and
-  rename N06 to OpNovice
+  rename N06 to LightCollection
 
 20 June 2012 P. Gumplinger (exampleN06-V09-05-01)
 - remove SetModel from ExN06PhysicsList.cc to cowork with op-V09-05-04

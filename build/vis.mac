@@ -1,5 +1,5 @@
 #
-# Macro file for the initialization phase of "OpNovice.cc"
+# Macro file for the initialization phase of "LightCollection.cc"
 #
 # Sets some default verbose
 # and initializes the graphic.
@@ -78,8 +78,12 @@
 # For file-based drivers, use this to create an empty detector view:
 #/vis/viewer/flush
 
-# set the viewpoint to the x-axis and rotate the view by 90 degrees
-/vis/viewer/set/viewpointVector 1 0 0
+# set the viewpoint to the negative y-axis and rotate the view to be vertical to the XOZ plane
+/vis/viewer/set/viewpointVector 0 -1 0
 /vis/viewer/set/upVector 0 0 1
-/vis/viewer/panTo 0 90 deg
+/vis/viewer/panTo 0 0
 /vis/viewer/zoom 1.2
+
+# other control commands:
+# set the PrimaryGeneratorAction to use the particle gun
+/LightCollection/generator/useParticleGun true

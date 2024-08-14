@@ -17,6 +17,7 @@
 /gui/addMenu gun Gun
 /gui/addButton gun "550 nm"   "/gun/energy 2.254 eV"
 /gui/addButton gun "1 keV"   "/gun/energy 1 keV"
+/gui/addButton gun "10 keV"   "/gun/energy 10 keV"
 /gui/addButton gun "30 keV"   "/gun/energy 30 keV"
 /gui/addButton gun "100 keV"   "/gun/energy 100 keV"
 /gui/addButton gun "500 keV"   "/gun/energy 500 keV"

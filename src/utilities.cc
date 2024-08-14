@@ -2,7 +2,7 @@
 #include "utilities.hh"
 
 std::string My_msg;
-LogLevel lv = INFO;
+LogLevel lv = DEBUG;
 
 void myPrint(LogLevel level, const std::string& message) {
     if (level == DEBUG) {

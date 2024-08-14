@@ -22,7 +22,7 @@ std::string f(const std::string& format, Args... args) {
     std::size_t lastPos = 0;
     std::size_t pos = 0;
 
-    int argIndex = 0;
+    std::vector<std::string>::size_type argIndex = 0; // 修改类型
     while ((pos = format.find("{}", lastPos)) != std::string::npos) {
         result.append(format, lastPos, pos - lastPos); // 添加前一个{}之前的文本
         if (argIndex < arguments.size()) {

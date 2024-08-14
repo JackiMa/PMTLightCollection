@@ -44,16 +44,16 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/wsl2/myGeant4/myOpNovice
+CMAKE_SOURCE_DIR = /home/wsl2/myGeant4/LightCollect
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/wsl2/myGeant4/myOpNovice/build
+CMAKE_BINARY_DIR = /home/wsl2/myGeant4/LightCollect/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/OpNovice.dir/all
+all: CMakeFiles/LightCollection.dir/all
 
 .PHONY : all
 
@@ -63,36 +63,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/OpNovice.dir/clean
+clean: CMakeFiles/LightCollection.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/OpNovice.dir
+# Target rules for target CMakeFiles/LightCollection.dir
 
 # All Build rule for target.
-CMakeFiles/OpNovice.dir/all:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/depend
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wsl2/myGeant4/myOpNovice/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target OpNovice"
-.PHONY : CMakeFiles/OpNovice.dir/all
+CMakeFiles/LightCollection.dir/all:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/depend
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wsl2/myGeant4/LightCollect/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target LightCollection"
+.PHONY : CMakeFiles/LightCollection.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/OpNovice.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wsl2/myGeant4/myOpNovice/build/CMakeFiles 15
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/OpNovice.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wsl2/myGeant4/myOpNovice/build/CMakeFiles 0
-.PHONY : CMakeFiles/OpNovice.dir/rule
+CMakeFiles/LightCollection.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wsl2/myGeant4/LightCollect/build/CMakeFiles 16
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/LightCollection.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wsl2/myGeant4/LightCollect/build/CMakeFiles 0
+.PHONY : CMakeFiles/LightCollection.dir/rule
 
 # Convenience name for target.
-OpNovice: CMakeFiles/OpNovice.dir/rule
+LightCollection: CMakeFiles/LightCollection.dir/rule
 
-.PHONY : OpNovice
+.PHONY : LightCollection
 
 # clean rule for target.
-CMakeFiles/OpNovice.dir/clean:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/clean
-.PHONY : CMakeFiles/OpNovice.dir/clean
+CMakeFiles/LightCollection.dir/clean:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/clean
+.PHONY : CMakeFiles/LightCollection.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

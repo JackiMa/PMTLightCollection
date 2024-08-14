@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/wsl2/myGeant4/myOpNovice
+CMAKE_SOURCE_DIR = /home/wsl2/myGeant4/LightCollect
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/wsl2/myGeant4/myOpNovice/build
+CMAKE_BINARY_DIR = /home/wsl2/myGeant4/LightCollect/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wsl2/myGeant4/myOpNovice/build/CMakeFiles /home/wsl2/myGeant4/myOpNovice/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wsl2/myGeant4/LightCollect/build/CMakeFiles /home/wsl2/myGeant4/LightCollect/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wsl2/myGeant4/myOpNovice/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wsl2/myGeant4/LightCollect/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -157,44 +157,368 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named OpNovice
+# Target rules for targets named LightCollection
 
 # Build rule for target.
-OpNovice: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 OpNovice
-.PHONY : OpNovice
+LightCollection: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 LightCollection
+.PHONY : LightCollection
 
 # fast build rule for target.
-OpNovice/fast:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/build
-.PHONY : OpNovice/fast
+LightCollection/fast:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/build
+.PHONY : LightCollection/fast
 
-OpNovice.o: OpNovice.cc.o
+LightCollection.o: LightCollection.cc.o
 
-.PHONY : OpNovice.o
+.PHONY : LightCollection.o
 
 # target to build an object file
-OpNovice.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/OpNovice.cc.o
-.PHONY : OpNovice.cc.o
+LightCollection.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/LightCollection.cc.o
+.PHONY : LightCollection.cc.o
 
-OpNovice.i: OpNovice.cc.i
+LightCollection.i: LightCollection.cc.i
 
-.PHONY : OpNovice.i
+.PHONY : LightCollection.i
 
 # target to preprocess a source file
-OpNovice.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/OpNovice.cc.i
-.PHONY : OpNovice.cc.i
+LightCollection.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/LightCollection.cc.i
+.PHONY : LightCollection.cc.i
 
-OpNovice.s: OpNovice.cc.s
+LightCollection.s: LightCollection.cc.s
 
-.PHONY : OpNovice.s
+.PHONY : LightCollection.s
 
 # target to generate assembly for a file
-OpNovice.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/OpNovice.cc.s
-.PHONY : OpNovice.cc.s
+LightCollection.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/LightCollection.cc.s
+.PHONY : LightCollection.cc.s
+
+src/LightCollectionActionInitialization.o: src/LightCollectionActionInitialization.cc.o
+
+.PHONY : src/LightCollectionActionInitialization.o
+
+# target to build an object file
+src/LightCollectionActionInitialization.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionActionInitialization.cc.o
+.PHONY : src/LightCollectionActionInitialization.cc.o
+
+src/LightCollectionActionInitialization.i: src/LightCollectionActionInitialization.cc.i
+
+.PHONY : src/LightCollectionActionInitialization.i
+
+# target to preprocess a source file
+src/LightCollectionActionInitialization.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionActionInitialization.cc.i
+.PHONY : src/LightCollectionActionInitialization.cc.i
+
+src/LightCollectionActionInitialization.s: src/LightCollectionActionInitialization.cc.s
+
+.PHONY : src/LightCollectionActionInitialization.s
+
+# target to generate assembly for a file
+src/LightCollectionActionInitialization.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionActionInitialization.cc.s
+.PHONY : src/LightCollectionActionInitialization.cc.s
+
+src/LightCollectionDetectorConstruction.o: src/LightCollectionDetectorConstruction.cc.o
+
+.PHONY : src/LightCollectionDetectorConstruction.o
+
+# target to build an object file
+src/LightCollectionDetectorConstruction.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionDetectorConstruction.cc.o
+.PHONY : src/LightCollectionDetectorConstruction.cc.o
+
+src/LightCollectionDetectorConstruction.i: src/LightCollectionDetectorConstruction.cc.i
+
+.PHONY : src/LightCollectionDetectorConstruction.i
+
+# target to preprocess a source file
+src/LightCollectionDetectorConstruction.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionDetectorConstruction.cc.i
+.PHONY : src/LightCollectionDetectorConstruction.cc.i
+
+src/LightCollectionDetectorConstruction.s: src/LightCollectionDetectorConstruction.cc.s
+
+.PHONY : src/LightCollectionDetectorConstruction.s
+
+# target to generate assembly for a file
+src/LightCollectionDetectorConstruction.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionDetectorConstruction.cc.s
+.PHONY : src/LightCollectionDetectorConstruction.cc.s
+
+src/LightCollectionDetectorMessenger.o: src/LightCollectionDetectorMessenger.cc.o
+
+.PHONY : src/LightCollectionDetectorMessenger.o
+
+# target to build an object file
+src/LightCollectionDetectorMessenger.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionDetectorMessenger.cc.o
+.PHONY : src/LightCollectionDetectorMessenger.cc.o
+
+src/LightCollectionDetectorMessenger.i: src/LightCollectionDetectorMessenger.cc.i
+
+.PHONY : src/LightCollectionDetectorMessenger.i
+
+# target to preprocess a source file
+src/LightCollectionDetectorMessenger.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionDetectorMessenger.cc.i
+.PHONY : src/LightCollectionDetectorMessenger.cc.i
+
+src/LightCollectionDetectorMessenger.s: src/LightCollectionDetectorMessenger.cc.s
+
+.PHONY : src/LightCollectionDetectorMessenger.s
+
+# target to generate assembly for a file
+src/LightCollectionDetectorMessenger.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionDetectorMessenger.cc.s
+.PHONY : src/LightCollectionDetectorMessenger.cc.s
+
+src/LightCollectionEventAction.o: src/LightCollectionEventAction.cc.o
+
+.PHONY : src/LightCollectionEventAction.o
+
+# target to build an object file
+src/LightCollectionEventAction.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionEventAction.cc.o
+.PHONY : src/LightCollectionEventAction.cc.o
+
+src/LightCollectionEventAction.i: src/LightCollectionEventAction.cc.i
+
+.PHONY : src/LightCollectionEventAction.i
+
+# target to preprocess a source file
+src/LightCollectionEventAction.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionEventAction.cc.i
+.PHONY : src/LightCollectionEventAction.cc.i
+
+src/LightCollectionEventAction.s: src/LightCollectionEventAction.cc.s
+
+.PHONY : src/LightCollectionEventAction.s
+
+# target to generate assembly for a file
+src/LightCollectionEventAction.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionEventAction.cc.s
+.PHONY : src/LightCollectionEventAction.cc.s
+
+src/LightCollectionGDMLDetectorConstruction.o: src/LightCollectionGDMLDetectorConstruction.cc.o
+
+.PHONY : src/LightCollectionGDMLDetectorConstruction.o
+
+# target to build an object file
+src/LightCollectionGDMLDetectorConstruction.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionGDMLDetectorConstruction.cc.o
+.PHONY : src/LightCollectionGDMLDetectorConstruction.cc.o
+
+src/LightCollectionGDMLDetectorConstruction.i: src/LightCollectionGDMLDetectorConstruction.cc.i
+
+.PHONY : src/LightCollectionGDMLDetectorConstruction.i
+
+# target to preprocess a source file
+src/LightCollectionGDMLDetectorConstruction.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionGDMLDetectorConstruction.cc.i
+.PHONY : src/LightCollectionGDMLDetectorConstruction.cc.i
+
+src/LightCollectionGDMLDetectorConstruction.s: src/LightCollectionGDMLDetectorConstruction.cc.s
+
+.PHONY : src/LightCollectionGDMLDetectorConstruction.s
+
+# target to generate assembly for a file
+src/LightCollectionGDMLDetectorConstruction.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionGDMLDetectorConstruction.cc.s
+.PHONY : src/LightCollectionGDMLDetectorConstruction.cc.s
+
+src/LightCollectionLayerSensitiveDetector.o: src/LightCollectionLayerSensitiveDetector.cc.o
+
+.PHONY : src/LightCollectionLayerSensitiveDetector.o
+
+# target to build an object file
+src/LightCollectionLayerSensitiveDetector.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionLayerSensitiveDetector.cc.o
+.PHONY : src/LightCollectionLayerSensitiveDetector.cc.o
+
+src/LightCollectionLayerSensitiveDetector.i: src/LightCollectionLayerSensitiveDetector.cc.i
+
+.PHONY : src/LightCollectionLayerSensitiveDetector.i
+
+# target to preprocess a source file
+src/LightCollectionLayerSensitiveDetector.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionLayerSensitiveDetector.cc.i
+.PHONY : src/LightCollectionLayerSensitiveDetector.cc.i
+
+src/LightCollectionLayerSensitiveDetector.s: src/LightCollectionLayerSensitiveDetector.cc.s
+
+.PHONY : src/LightCollectionLayerSensitiveDetector.s
+
+# target to generate assembly for a file
+src/LightCollectionLayerSensitiveDetector.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionLayerSensitiveDetector.cc.s
+.PHONY : src/LightCollectionLayerSensitiveDetector.cc.s
+
+src/LightCollectionPrimaryGeneratorAction.o: src/LightCollectionPrimaryGeneratorAction.cc.o
+
+.PHONY : src/LightCollectionPrimaryGeneratorAction.o
+
+# target to build an object file
+src/LightCollectionPrimaryGeneratorAction.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionPrimaryGeneratorAction.cc.o
+.PHONY : src/LightCollectionPrimaryGeneratorAction.cc.o
+
+src/LightCollectionPrimaryGeneratorAction.i: src/LightCollectionPrimaryGeneratorAction.cc.i
+
+.PHONY : src/LightCollectionPrimaryGeneratorAction.i
+
+# target to preprocess a source file
+src/LightCollectionPrimaryGeneratorAction.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionPrimaryGeneratorAction.cc.i
+.PHONY : src/LightCollectionPrimaryGeneratorAction.cc.i
+
+src/LightCollectionPrimaryGeneratorAction.s: src/LightCollectionPrimaryGeneratorAction.cc.s
+
+.PHONY : src/LightCollectionPrimaryGeneratorAction.s
+
+# target to generate assembly for a file
+src/LightCollectionPrimaryGeneratorAction.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionPrimaryGeneratorAction.cc.s
+.PHONY : src/LightCollectionPrimaryGeneratorAction.cc.s
+
+src/LightCollectionPrimaryGeneratorMessenger.o: src/LightCollectionPrimaryGeneratorMessenger.cc.o
+
+.PHONY : src/LightCollectionPrimaryGeneratorMessenger.o
+
+# target to build an object file
+src/LightCollectionPrimaryGeneratorMessenger.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionPrimaryGeneratorMessenger.cc.o
+.PHONY : src/LightCollectionPrimaryGeneratorMessenger.cc.o
+
+src/LightCollectionPrimaryGeneratorMessenger.i: src/LightCollectionPrimaryGeneratorMessenger.cc.i
+
+.PHONY : src/LightCollectionPrimaryGeneratorMessenger.i
+
+# target to preprocess a source file
+src/LightCollectionPrimaryGeneratorMessenger.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionPrimaryGeneratorMessenger.cc.i
+.PHONY : src/LightCollectionPrimaryGeneratorMessenger.cc.i
+
+src/LightCollectionPrimaryGeneratorMessenger.s: src/LightCollectionPrimaryGeneratorMessenger.cc.s
+
+.PHONY : src/LightCollectionPrimaryGeneratorMessenger.s
+
+# target to generate assembly for a file
+src/LightCollectionPrimaryGeneratorMessenger.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionPrimaryGeneratorMessenger.cc.s
+.PHONY : src/LightCollectionPrimaryGeneratorMessenger.cc.s
+
+src/LightCollectionRun.o: src/LightCollectionRun.cc.o
+
+.PHONY : src/LightCollectionRun.o
+
+# target to build an object file
+src/LightCollectionRun.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionRun.cc.o
+.PHONY : src/LightCollectionRun.cc.o
+
+src/LightCollectionRun.i: src/LightCollectionRun.cc.i
+
+.PHONY : src/LightCollectionRun.i
+
+# target to preprocess a source file
+src/LightCollectionRun.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionRun.cc.i
+.PHONY : src/LightCollectionRun.cc.i
+
+src/LightCollectionRun.s: src/LightCollectionRun.cc.s
+
+.PHONY : src/LightCollectionRun.s
+
+# target to generate assembly for a file
+src/LightCollectionRun.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionRun.cc.s
+.PHONY : src/LightCollectionRun.cc.s
+
+src/LightCollectionRunAction.o: src/LightCollectionRunAction.cc.o
+
+.PHONY : src/LightCollectionRunAction.o
+
+# target to build an object file
+src/LightCollectionRunAction.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionRunAction.cc.o
+.PHONY : src/LightCollectionRunAction.cc.o
+
+src/LightCollectionRunAction.i: src/LightCollectionRunAction.cc.i
+
+.PHONY : src/LightCollectionRunAction.i
+
+# target to preprocess a source file
+src/LightCollectionRunAction.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionRunAction.cc.i
+.PHONY : src/LightCollectionRunAction.cc.i
+
+src/LightCollectionRunAction.s: src/LightCollectionRunAction.cc.s
+
+.PHONY : src/LightCollectionRunAction.s
+
+# target to generate assembly for a file
+src/LightCollectionRunAction.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionRunAction.cc.s
+.PHONY : src/LightCollectionRunAction.cc.s
+
+src/LightCollectionStackingAction.o: src/LightCollectionStackingAction.cc.o
+
+.PHONY : src/LightCollectionStackingAction.o
+
+# target to build an object file
+src/LightCollectionStackingAction.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionStackingAction.cc.o
+.PHONY : src/LightCollectionStackingAction.cc.o
+
+src/LightCollectionStackingAction.i: src/LightCollectionStackingAction.cc.i
+
+.PHONY : src/LightCollectionStackingAction.i
+
+# target to preprocess a source file
+src/LightCollectionStackingAction.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionStackingAction.cc.i
+.PHONY : src/LightCollectionStackingAction.cc.i
+
+src/LightCollectionStackingAction.s: src/LightCollectionStackingAction.cc.s
+
+.PHONY : src/LightCollectionStackingAction.s
+
+# target to generate assembly for a file
+src/LightCollectionStackingAction.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionStackingAction.cc.s
+.PHONY : src/LightCollectionStackingAction.cc.s
+
+src/LightCollectionSteppingAction.o: src/LightCollectionSteppingAction.cc.o
+
+.PHONY : src/LightCollectionSteppingAction.o
+
+# target to build an object file
+src/LightCollectionSteppingAction.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionSteppingAction.cc.o
+.PHONY : src/LightCollectionSteppingAction.cc.o
+
+src/LightCollectionSteppingAction.i: src/LightCollectionSteppingAction.cc.i
+
+.PHONY : src/LightCollectionSteppingAction.i
+
+# target to preprocess a source file
+src/LightCollectionSteppingAction.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionSteppingAction.cc.i
+.PHONY : src/LightCollectionSteppingAction.cc.i
+
+src/LightCollectionSteppingAction.s: src/LightCollectionSteppingAction.cc.s
+
+.PHONY : src/LightCollectionSteppingAction.s
+
+# target to generate assembly for a file
+src/LightCollectionSteppingAction.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/LightCollectionSteppingAction.cc.s
+.PHONY : src/LightCollectionSteppingAction.cc.s
 
 src/MyMaterials.o: src/MyMaterials.cc.o
 
@@ -202,7 +526,7 @@ src/MyMaterials.o: src/MyMaterials.cc.o
 
 # target to build an object file
 src/MyMaterials.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/MyMaterials.cc.o
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/MyMaterials.cc.o
 .PHONY : src/MyMaterials.cc.o
 
 src/MyMaterials.i: src/MyMaterials.cc.i
@@ -211,7 +535,7 @@ src/MyMaterials.i: src/MyMaterials.cc.i
 
 # target to preprocess a source file
 src/MyMaterials.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/MyMaterials.cc.i
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/MyMaterials.cc.i
 .PHONY : src/MyMaterials.cc.i
 
 src/MyMaterials.s: src/MyMaterials.cc.s
@@ -220,305 +544,8 @@ src/MyMaterials.s: src/MyMaterials.cc.s
 
 # target to generate assembly for a file
 src/MyMaterials.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/MyMaterials.cc.s
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/MyMaterials.cc.s
 .PHONY : src/MyMaterials.cc.s
-
-src/OpNoviceActionInitialization.o: src/OpNoviceActionInitialization.cc.o
-
-.PHONY : src/OpNoviceActionInitialization.o
-
-# target to build an object file
-src/OpNoviceActionInitialization.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.o
-.PHONY : src/OpNoviceActionInitialization.cc.o
-
-src/OpNoviceActionInitialization.i: src/OpNoviceActionInitialization.cc.i
-
-.PHONY : src/OpNoviceActionInitialization.i
-
-# target to preprocess a source file
-src/OpNoviceActionInitialization.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.i
-.PHONY : src/OpNoviceActionInitialization.cc.i
-
-src/OpNoviceActionInitialization.s: src/OpNoviceActionInitialization.cc.s
-
-.PHONY : src/OpNoviceActionInitialization.s
-
-# target to generate assembly for a file
-src/OpNoviceActionInitialization.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceActionInitialization.cc.s
-.PHONY : src/OpNoviceActionInitialization.cc.s
-
-src/OpNoviceDetectorConstruction.o: src/OpNoviceDetectorConstruction.cc.o
-
-.PHONY : src/OpNoviceDetectorConstruction.o
-
-# target to build an object file
-src/OpNoviceDetectorConstruction.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.o
-.PHONY : src/OpNoviceDetectorConstruction.cc.o
-
-src/OpNoviceDetectorConstruction.i: src/OpNoviceDetectorConstruction.cc.i
-
-.PHONY : src/OpNoviceDetectorConstruction.i
-
-# target to preprocess a source file
-src/OpNoviceDetectorConstruction.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.i
-.PHONY : src/OpNoviceDetectorConstruction.cc.i
-
-src/OpNoviceDetectorConstruction.s: src/OpNoviceDetectorConstruction.cc.s
-
-.PHONY : src/OpNoviceDetectorConstruction.s
-
-# target to generate assembly for a file
-src/OpNoviceDetectorConstruction.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceDetectorConstruction.cc.s
-.PHONY : src/OpNoviceDetectorConstruction.cc.s
-
-src/OpNoviceDetectorMessenger.o: src/OpNoviceDetectorMessenger.cc.o
-
-.PHONY : src/OpNoviceDetectorMessenger.o
-
-# target to build an object file
-src/OpNoviceDetectorMessenger.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.o
-.PHONY : src/OpNoviceDetectorMessenger.cc.o
-
-src/OpNoviceDetectorMessenger.i: src/OpNoviceDetectorMessenger.cc.i
-
-.PHONY : src/OpNoviceDetectorMessenger.i
-
-# target to preprocess a source file
-src/OpNoviceDetectorMessenger.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.i
-.PHONY : src/OpNoviceDetectorMessenger.cc.i
-
-src/OpNoviceDetectorMessenger.s: src/OpNoviceDetectorMessenger.cc.s
-
-.PHONY : src/OpNoviceDetectorMessenger.s
-
-# target to generate assembly for a file
-src/OpNoviceDetectorMessenger.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceDetectorMessenger.cc.s
-.PHONY : src/OpNoviceDetectorMessenger.cc.s
-
-src/OpNoviceEventAction.o: src/OpNoviceEventAction.cc.o
-
-.PHONY : src/OpNoviceEventAction.o
-
-# target to build an object file
-src/OpNoviceEventAction.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceEventAction.cc.o
-.PHONY : src/OpNoviceEventAction.cc.o
-
-src/OpNoviceEventAction.i: src/OpNoviceEventAction.cc.i
-
-.PHONY : src/OpNoviceEventAction.i
-
-# target to preprocess a source file
-src/OpNoviceEventAction.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceEventAction.cc.i
-.PHONY : src/OpNoviceEventAction.cc.i
-
-src/OpNoviceEventAction.s: src/OpNoviceEventAction.cc.s
-
-.PHONY : src/OpNoviceEventAction.s
-
-# target to generate assembly for a file
-src/OpNoviceEventAction.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceEventAction.cc.s
-.PHONY : src/OpNoviceEventAction.cc.s
-
-src/OpNoviceGDMLDetectorConstruction.o: src/OpNoviceGDMLDetectorConstruction.cc.o
-
-.PHONY : src/OpNoviceGDMLDetectorConstruction.o
-
-# target to build an object file
-src/OpNoviceGDMLDetectorConstruction.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceGDMLDetectorConstruction.cc.o
-.PHONY : src/OpNoviceGDMLDetectorConstruction.cc.o
-
-src/OpNoviceGDMLDetectorConstruction.i: src/OpNoviceGDMLDetectorConstruction.cc.i
-
-.PHONY : src/OpNoviceGDMLDetectorConstruction.i
-
-# target to preprocess a source file
-src/OpNoviceGDMLDetectorConstruction.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceGDMLDetectorConstruction.cc.i
-.PHONY : src/OpNoviceGDMLDetectorConstruction.cc.i
-
-src/OpNoviceGDMLDetectorConstruction.s: src/OpNoviceGDMLDetectorConstruction.cc.s
-
-.PHONY : src/OpNoviceGDMLDetectorConstruction.s
-
-# target to generate assembly for a file
-src/OpNoviceGDMLDetectorConstruction.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceGDMLDetectorConstruction.cc.s
-.PHONY : src/OpNoviceGDMLDetectorConstruction.cc.s
-
-src/OpNovicePrimaryGeneratorAction.o: src/OpNovicePrimaryGeneratorAction.cc.o
-
-.PHONY : src/OpNovicePrimaryGeneratorAction.o
-
-# target to build an object file
-src/OpNovicePrimaryGeneratorAction.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.o
-.PHONY : src/OpNovicePrimaryGeneratorAction.cc.o
-
-src/OpNovicePrimaryGeneratorAction.i: src/OpNovicePrimaryGeneratorAction.cc.i
-
-.PHONY : src/OpNovicePrimaryGeneratorAction.i
-
-# target to preprocess a source file
-src/OpNovicePrimaryGeneratorAction.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.i
-.PHONY : src/OpNovicePrimaryGeneratorAction.cc.i
-
-src/OpNovicePrimaryGeneratorAction.s: src/OpNovicePrimaryGeneratorAction.cc.s
-
-.PHONY : src/OpNovicePrimaryGeneratorAction.s
-
-# target to generate assembly for a file
-src/OpNovicePrimaryGeneratorAction.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorAction.cc.s
-.PHONY : src/OpNovicePrimaryGeneratorAction.cc.s
-
-src/OpNovicePrimaryGeneratorMessenger.o: src/OpNovicePrimaryGeneratorMessenger.cc.o
-
-.PHONY : src/OpNovicePrimaryGeneratorMessenger.o
-
-# target to build an object file
-src/OpNovicePrimaryGeneratorMessenger.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.o
-.PHONY : src/OpNovicePrimaryGeneratorMessenger.cc.o
-
-src/OpNovicePrimaryGeneratorMessenger.i: src/OpNovicePrimaryGeneratorMessenger.cc.i
-
-.PHONY : src/OpNovicePrimaryGeneratorMessenger.i
-
-# target to preprocess a source file
-src/OpNovicePrimaryGeneratorMessenger.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.i
-.PHONY : src/OpNovicePrimaryGeneratorMessenger.cc.i
-
-src/OpNovicePrimaryGeneratorMessenger.s: src/OpNovicePrimaryGeneratorMessenger.cc.s
-
-.PHONY : src/OpNovicePrimaryGeneratorMessenger.s
-
-# target to generate assembly for a file
-src/OpNovicePrimaryGeneratorMessenger.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNovicePrimaryGeneratorMessenger.cc.s
-.PHONY : src/OpNovicePrimaryGeneratorMessenger.cc.s
-
-src/OpNoviceRun.o: src/OpNoviceRun.cc.o
-
-.PHONY : src/OpNoviceRun.o
-
-# target to build an object file
-src/OpNoviceRun.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceRun.cc.o
-.PHONY : src/OpNoviceRun.cc.o
-
-src/OpNoviceRun.i: src/OpNoviceRun.cc.i
-
-.PHONY : src/OpNoviceRun.i
-
-# target to preprocess a source file
-src/OpNoviceRun.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceRun.cc.i
-.PHONY : src/OpNoviceRun.cc.i
-
-src/OpNoviceRun.s: src/OpNoviceRun.cc.s
-
-.PHONY : src/OpNoviceRun.s
-
-# target to generate assembly for a file
-src/OpNoviceRun.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceRun.cc.s
-.PHONY : src/OpNoviceRun.cc.s
-
-src/OpNoviceRunAction.o: src/OpNoviceRunAction.cc.o
-
-.PHONY : src/OpNoviceRunAction.o
-
-# target to build an object file
-src/OpNoviceRunAction.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.o
-.PHONY : src/OpNoviceRunAction.cc.o
-
-src/OpNoviceRunAction.i: src/OpNoviceRunAction.cc.i
-
-.PHONY : src/OpNoviceRunAction.i
-
-# target to preprocess a source file
-src/OpNoviceRunAction.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.i
-.PHONY : src/OpNoviceRunAction.cc.i
-
-src/OpNoviceRunAction.s: src/OpNoviceRunAction.cc.s
-
-.PHONY : src/OpNoviceRunAction.s
-
-# target to generate assembly for a file
-src/OpNoviceRunAction.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceRunAction.cc.s
-.PHONY : src/OpNoviceRunAction.cc.s
-
-src/OpNoviceStackingAction.o: src/OpNoviceStackingAction.cc.o
-
-.PHONY : src/OpNoviceStackingAction.o
-
-# target to build an object file
-src/OpNoviceStackingAction.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceStackingAction.cc.o
-.PHONY : src/OpNoviceStackingAction.cc.o
-
-src/OpNoviceStackingAction.i: src/OpNoviceStackingAction.cc.i
-
-.PHONY : src/OpNoviceStackingAction.i
-
-# target to preprocess a source file
-src/OpNoviceStackingAction.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceStackingAction.cc.i
-.PHONY : src/OpNoviceStackingAction.cc.i
-
-src/OpNoviceStackingAction.s: src/OpNoviceStackingAction.cc.s
-
-.PHONY : src/OpNoviceStackingAction.s
-
-# target to generate assembly for a file
-src/OpNoviceStackingAction.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceStackingAction.cc.s
-.PHONY : src/OpNoviceStackingAction.cc.s
-
-src/OpNoviceSteppingAction.o: src/OpNoviceSteppingAction.cc.o
-
-.PHONY : src/OpNoviceSteppingAction.o
-
-# target to build an object file
-src/OpNoviceSteppingAction.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceSteppingAction.cc.o
-.PHONY : src/OpNoviceSteppingAction.cc.o
-
-src/OpNoviceSteppingAction.i: src/OpNoviceSteppingAction.cc.i
-
-.PHONY : src/OpNoviceSteppingAction.i
-
-# target to preprocess a source file
-src/OpNoviceSteppingAction.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceSteppingAction.cc.i
-.PHONY : src/OpNoviceSteppingAction.cc.i
-
-src/OpNoviceSteppingAction.s: src/OpNoviceSteppingAction.cc.s
-
-.PHONY : src/OpNoviceSteppingAction.s
-
-# target to generate assembly for a file
-src/OpNoviceSteppingAction.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/OpNoviceSteppingAction.cc.s
-.PHONY : src/OpNoviceSteppingAction.cc.s
 
 src/utilities.o: src/utilities.cc.o
 
@@ -526,7 +553,7 @@ src/utilities.o: src/utilities.cc.o
 
 # target to build an object file
 src/utilities.cc.o:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/utilities.cc.o
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/utilities.cc.o
 .PHONY : src/utilities.cc.o
 
 src/utilities.i: src/utilities.cc.i
@@ -535,7 +562,7 @@ src/utilities.i: src/utilities.cc.i
 
 # target to preprocess a source file
 src/utilities.cc.i:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/utilities.cc.i
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/utilities.cc.i
 .PHONY : src/utilities.cc.i
 
 src/utilities.s: src/utilities.cc.s
@@ -544,7 +571,7 @@ src/utilities.s: src/utilities.cc.s
 
 # target to generate assembly for a file
 src/utilities.cc.s:
-	$(MAKE) -f CMakeFiles/OpNovice.dir/build.make CMakeFiles/OpNovice.dir/src/utilities.cc.s
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/utilities.cc.s
 .PHONY : src/utilities.cc.s
 
 # Help Target
@@ -559,46 +586,49 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... OpNovice"
-	@echo "... OpNovice.o"
-	@echo "... OpNovice.i"
-	@echo "... OpNovice.s"
+	@echo "... LightCollection"
+	@echo "... LightCollection.o"
+	@echo "... LightCollection.i"
+	@echo "... LightCollection.s"
+	@echo "... src/LightCollectionActionInitialization.o"
+	@echo "... src/LightCollectionActionInitialization.i"
+	@echo "... src/LightCollectionActionInitialization.s"
+	@echo "... src/LightCollectionDetectorConstruction.o"
+	@echo "... src/LightCollectionDetectorConstruction.i"
+	@echo "... src/LightCollectionDetectorConstruction.s"
+	@echo "... src/LightCollectionDetectorMessenger.o"
+	@echo "... src/LightCollectionDetectorMessenger.i"
+	@echo "... src/LightCollectionDetectorMessenger.s"
+	@echo "... src/LightCollectionEventAction.o"
+	@echo "... src/LightCollectionEventAction.i"
+	@echo "... src/LightCollectionEventAction.s"
+	@echo "... src/LightCollectionGDMLDetectorConstruction.o"
+	@echo "... src/LightCollectionGDMLDetectorConstruction.i"
+	@echo "... src/LightCollectionGDMLDetectorConstruction.s"
+	@echo "... src/LightCollectionLayerSensitiveDetector.o"
+	@echo "... src/LightCollectionLayerSensitiveDetector.i"
+	@echo "... src/LightCollectionLayerSensitiveDetector.s"
+	@echo "... src/LightCollectionPrimaryGeneratorAction.o"
+	@echo "... src/LightCollectionPrimaryGeneratorAction.i"
+	@echo "... src/LightCollectionPrimaryGeneratorAction.s"
+	@echo "... src/LightCollectionPrimaryGeneratorMessenger.o"
+	@echo "... src/LightCollectionPrimaryGeneratorMessenger.i"
+	@echo "... src/LightCollectionPrimaryGeneratorMessenger.s"
+	@echo "... src/LightCollectionRun.o"
+	@echo "... src/LightCollectionRun.i"
+	@echo "... src/LightCollectionRun.s"
+	@echo "... src/LightCollectionRunAction.o"
+	@echo "... src/LightCollectionRunAction.i"
+	@echo "... src/LightCollectionRunAction.s"
+	@echo "... src/LightCollectionStackingAction.o"
+	@echo "... src/LightCollectionStackingAction.i"
+	@echo "... src/LightCollectionStackingAction.s"
+	@echo "... src/LightCollectionSteppingAction.o"
+	@echo "... src/LightCollectionSteppingAction.i"
+	@echo "... src/LightCollectionSteppingAction.s"
 	@echo "... src/MyMaterials.o"
 	@echo "... src/MyMaterials.i"
 	@echo "... src/MyMaterials.s"
-	@echo "... src/OpNoviceActionInitialization.o"
-	@echo "... src/OpNoviceActionInitialization.i"
-	@echo "... src/OpNoviceActionInitialization.s"
-	@echo "... src/OpNoviceDetectorConstruction.o"
-	@echo "... src/OpNoviceDetectorConstruction.i"
-	@echo "... src/OpNoviceDetectorConstruction.s"
-	@echo "... src/OpNoviceDetectorMessenger.o"
-	@echo "... src/OpNoviceDetectorMessenger.i"
-	@echo "... src/OpNoviceDetectorMessenger.s"
-	@echo "... src/OpNoviceEventAction.o"
-	@echo "... src/OpNoviceEventAction.i"
-	@echo "... src/OpNoviceEventAction.s"
-	@echo "... src/OpNoviceGDMLDetectorConstruction.o"
-	@echo "... src/OpNoviceGDMLDetectorConstruction.i"
-	@echo "... src/OpNoviceGDMLDetectorConstruction.s"
-	@echo "... src/OpNovicePrimaryGeneratorAction.o"
-	@echo "... src/OpNovicePrimaryGeneratorAction.i"
-	@echo "... src/OpNovicePrimaryGeneratorAction.s"
-	@echo "... src/OpNovicePrimaryGeneratorMessenger.o"
-	@echo "... src/OpNovicePrimaryGeneratorMessenger.i"
-	@echo "... src/OpNovicePrimaryGeneratorMessenger.s"
-	@echo "... src/OpNoviceRun.o"
-	@echo "... src/OpNoviceRun.i"
-	@echo "... src/OpNoviceRun.s"
-	@echo "... src/OpNoviceRunAction.o"
-	@echo "... src/OpNoviceRunAction.i"
-	@echo "... src/OpNoviceRunAction.s"
-	@echo "... src/OpNoviceStackingAction.o"
-	@echo "... src/OpNoviceStackingAction.i"
-	@echo "... src/OpNoviceStackingAction.s"
-	@echo "... src/OpNoviceSteppingAction.o"
-	@echo "... src/OpNoviceSteppingAction.i"
-	@echo "... src/OpNoviceSteppingAction.s"
 	@echo "... src/utilities.o"
 	@echo "... src/utilities.i"
 	@echo "... src/utilities.s"
