@@ -4,7 +4,9 @@
 /process/optical/verbose 0
 /control/cout/ignoreThreadsExcept 0
 #
+
 /run/initialize
+/LightCollection/generator/useParticleGun true
 
 # 设置初级粒子为伽马射线
 /gun/particle gamma
@@ -13,7 +15,7 @@
 # /gun/particle/number 1
 
 # 设置每次gamma的能量
-/gun/energy 40 keV
+/gun/energy 300 keV
 
 # 设置运行次数
-/run/beamOn 1000
+/run/beamOn 10000

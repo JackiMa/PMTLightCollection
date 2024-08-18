@@ -1524,6 +1524,15 @@ G4Material* MyMaterials::PVC()
   mat->AddElement(H,3);
   mat->AddElement(Cl,1);
 
+// 随便设置的
+  const G4int nEntries_RI = 2;
+  G4double PhotonEnergy_RI[nEntries_RI] =  { 2*eV, 6*eV};
+  G4double RefractiveIndex[nEntries_RI] =  { 1.35, 1.38 };
+  G4MaterialPropertiesTable* mt = new G4MaterialPropertiesTable();
+  mt->AddProperty ("RINDEX",    PhotonEnergy_RI,  RefractiveIndex, nEntries_RI);
+  
+  mat->SetMaterialPropertiesTable(mt);
+
   return mat;
 }
 
@@ -4087,7 +4096,7 @@ for (int i = 0 ; i < nEntries_ABS; i++)
 
   //emission spectrum
   const G4int NUMENTRIES_1 = 132;
-  G4double FAST_Energy[NUMENTRIES_1]    =
+  [[maybe_unused]] G4double FAST_Energy[NUMENTRIES_1]    =
   {2.6327*eV, 2.6188*eV, 2.60504*eV, 2.59143*eV, 2.57796*eV, 2.56463*eV, 2.55144*eV, 2.53838*eV,
 2.52546*eV, 2.51266*eV, 2.5*eV, 2.48746*eV, 2.47505*eV, 2.46276*eV, 2.45059*eV, 2.43854*eV,
 2.42661*eV, 2.4148*eV, 2.4031*eV, 2.39151*eV, 2.38004*eV, 2.36867*eV, 2.35741*eV, 2.34626*eV,
@@ -4106,8 +4115,7 @@ for (int i = 0 ; i < nEntries_ABS; i++)
 1.6083*eV, 1.6031*eV, 1.59794*eV, 1.59281*eV, 1.58771*eV, 1.58264*eV, 1.57761*eV, 1.57261*eV,
 1.56764*eV, 1.5627*eV, 1.55779*eV, 1.55291*eV};
 
-
-  G4double FAST_COMPONENT[NUMENTRIES_1] =
+  [[maybe_unused]]G4double FAST_COMPONENT[NUMENTRIES_1] =
   {0.0348132, 0.041346, 0.0462213, 0.055994, 0.0670797, 0.0809222, 0.0962054, 0.119476, 0.147153,
 0.182414, 0.217745, 0.256009, 0.299913, 0.34846, 0.391284, 0.436086, 0.487627, 0.538087, 0.591007,
 0.64409, 0.68982, 0.740803, 0.785007, 0.825553, 0.855418, 0.87689, 0.893165, 0.909735, 0.904133,
@@ -4461,7 +4469,7 @@ G4MaterialPropertiesTable *MyMaterials::Teflon()
   Teflon_surf->AddProperty("BACKSCATTERCONSTANT",Energy,BackscatterVector,Np);
   Teflon_surf->AddProperty ("TRANSMITTANCE",Energy,TransmittanceVector,Np);
   Teflon_surf->AddProperty ("REFLECTIVITY",Energy,reflectivity,Np);
-  
+
   return Teflon_surf;
 }
 
@@ -4480,9 +4488,11 @@ G4MaterialPropertiesTable *MyMaterials::TiO2()
   G4double SpecularspikeVector[Np] = {0, 0};
   G4double BackscatterVector[Np] = {0,0};
   G4double reflectivity[Np] = {0.9, 0.9};
+  G4double TransmittanceVector[Np] = {0.02,0.02}; // 2% transmittance
   TiO2_surf->AddProperty("SPECULARLOBECONSTANT",Energy,SpecularLobeVector,Np);
   TiO2_surf->AddProperty("SPECULARSPIKECONSTANT",Energy,SpecularspikeVector,Np);
   TiO2_surf->AddProperty("BACKSCATTERCONSTANT",Energy,BackscatterVector,Np);
+  TiO2_surf->AddProperty ("TRANSMITTANCE",Energy,TransmittanceVector,Np);
   TiO2_surf->AddProperty ("REFLECTIVITY",Energy,reflectivity,Np);
   
   return TiO2_surf;

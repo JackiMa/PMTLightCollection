@@ -33,31 +33,32 @@
 
 #include "LightCollectionPrimaryGeneratorAction.hh"
 #include "LightCollectionPrimaryGeneratorMessenger.hh"
+
 #include "G4Event.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4ParticleGun.hh"
 #include "G4GeneralParticleSource.hh"
 #include "G4ParticleTable.hh"
 #include "G4SystemOfUnits.hh"
-#include "Randomize.hh"
-
 #include "G4Box.hh"
 #include "G4Tubs.hh"
 #include "G4VPhysicalVolume.hh"
 #include "G4LogicalVolume.hh"
 #include "G4RunManager.hh"
+#include "G4AnalysisManager.hh"
+
+#include "Randomize.hh"
 
 #include "utilities.hh"
 #include "MyPhysicalVolume.hh"
-
-bool LightCollectionPrimaryGeneratorAction::isInitialized = false;
+#include "config.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 LightCollectionPrimaryGeneratorAction::LightCollectionPrimaryGeneratorAction(LightCollectionDetectorConstruction* detectorConstruction)
-  : fDetectorConstruction(detectorConstruction)
-  , G4VUserPrimaryGeneratorAction()
+  :G4VUserPrimaryGeneratorAction()
   , fParticleGun(nullptr)
   , useParticleGun(false)
+  , fDetectorConstruction(detectorConstruction)
 {
     fGunMessenger = new LightCollectionPrimaryGeneratorMessenger(this);
 
@@ -101,12 +102,20 @@ void LightCollectionPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
     msg << "Detector construction is not found!";
     G4Exception("LightCollectionPrimaryGeneratorAction::GeneratePrimaries()", "LightCollection_001", FatalException, msg);
   }
-  if (isInitialized == false){
+  // if (isInitialized == false){
+  // InitializeProjectionArea();
+  // }
   InitializeProjectionArea();
-  }
+  
     // 在投影区域内随机抽样一个点
     G4double x = disX(gen);
     G4double y = disY(gen);
+
+    // 将抽样得到的放射源位置XY填入到H2中
+    auto analysisManager = G4AnalysisManager::Instance();
+    analysisManager->FillH2(0, x, y);
+
+
     MyPhysicalVolume* p_shield = detector->GetMyVolume("shield");
     G4Box* shield_box = dynamic_cast<G4Box*>(p_shield->GetLogicalVolume()->GetSolid());
     z_pos = p_shield->GetAbsolutePosition().z() + shield_box->GetZHalfLength()+5*mm;
@@ -171,6 +180,8 @@ void LightCollectionPrimaryGeneratorAction::SetOptPhotonPolar(G4double angle)
 
 
 void LightCollectionPrimaryGeneratorAction::InitializeProjectionArea() {
+
+  if (isInitialized) return;
     isInitialized = true;
     // 获取闪烁体的位置和形状
     MyPhysicalVolume* physicalScintillator = detector->GetMyVolume("sc_crystal");
@@ -229,8 +240,21 @@ void LightCollectionPrimaryGeneratorAction::InitializeProjectionArea() {
                   "LightCollection_001", FatalException, msg);
   }
 
-    disX = std::uniform_real_distribution<>(minX, maxX);
-    disY = std::uniform_real_distribution<>(minY, maxY);
+
+// 计算原来的中心点
+G4double centerX = 0.5 * (minX + maxX);
+G4double centerY = 0.5 * (minY + maxY);
+
+// 计算新的范围
+G4double newMinX = centerX - (centerX - minX) * g_source_scale;
+G4double newMaxX = centerX + (maxX - centerX) * g_source_scale;
+G4double newMinY = centerY - (centerY - minY) * g_source_scale;
+G4double newMaxY = centerY + (maxY - centerY) * g_source_scale;
+
+// 创建新的分布
+disX = std::uniform_real_distribution<>(newMinX, newMaxX);
+disY = std::uniform_real_distribution<>(newMinY, newMaxY);
+
     G4cout << "Projection area initialized: " << minX << " " << maxX << " " << minY << " " << maxY << G4endl;
 }
 

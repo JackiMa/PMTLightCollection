@@ -50,27 +50,6 @@ class LightCollectionRun : public G4Run
 
   void SetPrimary(G4ParticleDefinition* particle, G4double energy);
 
-  void AddCerenkov(G4double n)
-  {
-    fCerenkovCounter += n;
-    fCerenkov2 += n * n;
-  };
-  void AddScintillation(G4double n)
-  {
-    fScintillationCounter += n;
-    fScintillation2 += n * n;
-  };
-  void Addcrystal(G4double n)
-  {
-    fcrystalCounter += n;
-    fcrystal2 += n * n;
-  };
-  void AddSD2(G4double n)
-  {
-    fSD2_Counter += n;
-    fSD2_2 += n * n;
-  };
-
   virtual void Merge(const G4Run*) override;
   virtual void RecordEvent(const G4Event*) override;
   void EndOfRun();
@@ -78,40 +57,6 @@ class LightCollectionRun : public G4Run
  public:
   G4ParticleDefinition* fParticle;
   G4double fEnergy;
-
-  G4double fCerenkovCounter;
-  G4double fCerenkov2;
-  G4double fScintillationCounter;
-  G4double fScintillation2;
-  G4double fcrystalCounter;
-  G4double fcrystal2;
-  G4double fSD2_Counter;
-  G4double fSD2_2;
-
-    void AddProtonDose(G4double dose);
-    void AddElectronDose(G4double dose);
-    void AddGammaDose(G4double dose);
-    void AddShieldedProtonDose(G4double dose);
-    void AddShieldedElectronDose(G4double dose);
-    void AddShieldedGammaDose(G4double dose);
-    void AddCrystalDose(G4double dose);
-
-    G4double GetProtonDose() const;
-    G4double GetElectronDose() const;
-    G4double GetGammaDose() const;
-    G4double GetShieldedProtonDose() const;
-    G4double GetShieldedElectronDose() const;
-    G4double GetShieldedGammaDose() const;
-    G4double GetCrystalDose() const;
-
-  private:
-    G4Accumulable<G4double> fProtonDose;
-    G4Accumulable<G4double> fElectronDose;
-    G4Accumulable<G4double> fGammaDose;
-    G4Accumulable<G4double> fShieldedProtonDose;
-    G4Accumulable<G4double> fShieldedElectronDose;
-    G4Accumulable<G4double> fShieldedGammaDose;
-    G4Accumulable<G4double> fCrystalDose;
 
 };
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

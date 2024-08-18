@@ -42,6 +42,7 @@
 
 
 #include "utilities.hh"
+#include "config.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 LightCollectionStackingAction::LightCollectionStackingAction()
@@ -56,23 +57,19 @@ LightCollectionStackingAction::~LightCollectionStackingAction() {}
 G4ClassificationOfNewTrack LightCollectionStackingAction::ClassifyNewTrack(
     const G4Track *aTrack)
 {
-  if (aTrack->GetDefinition() == G4OpticalPhoton::OpticalPhotonDefinition())
-  { // particle is optical photon
-    if (aTrack->GetParentID() > 0)
-    { // particle is secondary
-      if (aTrack->GetCreatorProcess()->GetProcessName() == "Scintillation")
-      {
-        ++fScintillationPhotonCount;
-        G4double wavelength = (1.239841939 * keV) / aTrack->GetKineticEnergy();
-        fScintillationWavelengths.push_back(wavelength);
-        myPrint(lv, "Scintillation photon detected with wavelength: " + std::to_string(wavelength / nm) + " nm & kineticE = "+std::to_string(aTrack->GetKineticEnergy()/eV)+" eV\n");
-      }
-      else if (aTrack->GetCreatorProcess()->GetProcessName() == "Cerenkov")
-      {
-        return fKill; // kill the particle if it is created by Cerenkov process
+  if(!g_has_cherenkov){
+      if (aTrack->GetDefinition() == G4OpticalPhoton::OpticalPhotonDefinition())
+    { // particle is optical photon
+      if (aTrack->GetParentID() > 0)
+      { // particle is secondary
+        if (aTrack->GetCreatorProcess()->GetProcessName() == "Cerenkov")
+        {
+          return fKill; // kill the particle if it is created by Cerenkov process
+        }
       }
     }
   }
+
   return fUrgent;
 }
 

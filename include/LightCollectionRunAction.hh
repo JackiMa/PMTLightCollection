@@ -40,7 +40,7 @@
 #include <fstream>
 
 
-#include "G4RootAnalysisManager.hh"
+#include "G4AnalysisManager.hh"
 
 class LightCollectionPrimaryGeneratorAction;
 class LightCollectionRun;
@@ -59,27 +59,14 @@ class LightCollectionRunAction : public G4UserRunAction
   void BeginOfRunAction(const G4Run*) override;
   void EndOfRunAction(const G4Run*) override;
 
-  G4RootAnalysisManager* analysisManager;
-
  private:
   LightCollectionRun* fRun;
   LightCollectionPrimaryGeneratorAction* fPrimary;
 
   std::ofstream outputFile;
 
-  bool fileExists(const std::string& fileName);
+  bool fileExists(const G4String& fileName);
   G4String getNewfileName(G4String baseFileName = "LightCollection");
-
-  G4Accumulable<double> fProtonDose;
-  G4Accumulable<double> fElectronDose;
-  G4Accumulable<double> fGammaDose;
-  G4Accumulable<double> fShieldedProtonDose;
-  G4Accumulable<double> fShieldedElectronDose;
-  G4Accumulable<double> fShieldedGammaDose;
-  G4Accumulable<double> fCrystalDose;
-
-
-
 };
 
 

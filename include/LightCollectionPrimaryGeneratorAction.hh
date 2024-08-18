@@ -58,7 +58,7 @@ class LightCollectionPrimaryGeneratorAction : public G4VUserPrimaryGeneratorActi
   void SetOptPhotonPolar(G4double);
 
   void InitializeProjectionArea();
-  static bool isInitialized;
+  bool isInitialized = false;
 
   G4ParticleGun* GetParticleGun() { return fParticleGun; }
   G4GeneralParticleSource* GetGPS() { return fGPS; }

@@ -196,6 +196,33 @@ LightCollection.cc.s:
 	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/LightCollection.cc.s
 .PHONY : LightCollection.cc.s
 
+src/CustomScorer.o: src/CustomScorer.cc.o
+
+.PHONY : src/CustomScorer.o
+
+# target to build an object file
+src/CustomScorer.cc.o:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/CustomScorer.cc.o
+.PHONY : src/CustomScorer.cc.o
+
+src/CustomScorer.i: src/CustomScorer.cc.i
+
+.PHONY : src/CustomScorer.i
+
+# target to preprocess a source file
+src/CustomScorer.cc.i:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/CustomScorer.cc.i
+.PHONY : src/CustomScorer.cc.i
+
+src/CustomScorer.s: src/CustomScorer.cc.s
+
+.PHONY : src/CustomScorer.s
+
+# target to generate assembly for a file
+src/CustomScorer.cc.s:
+	$(MAKE) -f CMakeFiles/LightCollection.dir/build.make CMakeFiles/LightCollection.dir/src/CustomScorer.cc.s
+.PHONY : src/CustomScorer.cc.s
+
 src/LightCollectionActionInitialization.o: src/LightCollectionActionInitialization.cc.o
 
 .PHONY : src/LightCollectionActionInitialization.o
@@ -590,6 +617,9 @@ help:
 	@echo "... LightCollection.o"
 	@echo "... LightCollection.i"
 	@echo "... LightCollection.s"
+	@echo "... src/CustomScorer.o"
+	@echo "... src/CustomScorer.i"
+	@echo "... src/CustomScorer.s"
 	@echo "... src/LightCollectionActionInitialization.o"
 	@echo "... src/LightCollectionActionInitialization.i"
 	@echo "... src/LightCollectionActionInitialization.s"

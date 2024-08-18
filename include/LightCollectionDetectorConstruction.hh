@@ -39,6 +39,7 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 class LightCollectionDetectorMessenger;
+class G4GlobalMagFieldMessenger;
 
 class LightCollectionDetectorConstruction : public G4VUserDetectorConstruction
 {
@@ -47,6 +48,8 @@ class LightCollectionDetectorConstruction : public G4VUserDetectorConstruction
   ~LightCollectionDetectorConstruction();
 
   G4VPhysicalVolume* Construct() override;
+  void ConstructSDandField() override;
+
   void SetDumpGdml(G4bool);
   G4bool IsDumpGdml() const;
   void SetVerbose(G4bool verbose);
@@ -56,7 +59,7 @@ class LightCollectionDetectorConstruction : public G4VUserDetectorConstruction
 
   MyPhysicalVolume* GetMyVolume(G4String volumeName) const;
 
-
+  
 
  private:
   void PrintError(G4String);

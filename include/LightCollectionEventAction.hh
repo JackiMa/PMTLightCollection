@@ -33,8 +33,11 @@
 #ifndef LightCollectionEventAction_h
 #define LightCollectionEventAction_h 1
 
-#include "globals.hh"
 #include "G4UserEventAction.hh"
+#include "G4THitsMap.hh"
+#include "globals.hh"
+
+#include <set>
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -46,28 +49,25 @@ class LightCollectionEventAction : public G4UserEventAction
 
   void BeginOfEventAction(const G4Event*) override;
   void EndOfEventAction(const G4Event*) override;
+  
+  // methods
+  G4THitsMap<G4double>* GetHitsCollection(G4int hcID,
+                                          const G4Event* event) const;
+  G4double GetSum(G4THitsMap<G4double>* hitsMap) const;
+  void PrintEventStatistics(G4double absoEdep) const;
 
-  void Addcrystal() { fcrystalCounts = fcrystalCounts+1; }
-  void AddSD2() { fSD2_Counts = fSD2_Counts+1; }
+  // 用于考虑光子是否穿过数值孔径，记录trackID，避免重复统计
+  std::set<G4int> processedTrackIDs;
 
-  void AddProtonDose(G4double dose);
-  void AddElectronDose(G4double dose);
-  void AddGammaDose(G4double dose);
-  void AddShieldedProtonDose(G4double dose);
-  void AddShieldedElectronDose(G4double dose);
-  void AddShieldedGammaDose(G4double dose);
-  void AddCrystalDose(G4double dose);
+  // data members
+  G4int fAbsoEdepHCID = -1;
+  G4int fTotalEnergyHCID = -1;
+  G4int fHEPhotonHCID = -1;
+  G4int fNeutEdepHCID = -1;
 
- private:
-  G4int fcrystalCounts;
-  G4int fSD2_Counts;
-  G4double fProtonDose;
-  G4double fElectronDose;
-  G4double fGammaDose;
-  G4double fShieldedProtonDose;
-  G4double fShieldedElectronDose;
-  G4double fShieldedGammaDose;
-  G4double fCrystalDose;
+  G4int fEdepInCrystal = -1;
+  G4int fEngPassingSD1 = -1;
+
 };
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 #endif

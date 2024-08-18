@@ -57,6 +57,9 @@
 #include "G4VisExecutive.hh"
 #include "G4Scintillation.hh"
 
+
+#include "config.hh"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 namespace
 {
@@ -156,8 +159,13 @@ int main(int argc, char** argv)
   // Physics list
   G4VModularPhysicsList* physicsList = new FTFP_BERT;
   physicsList->ReplacePhysics(new G4EmStandardPhysics_option4());
+
+if(g_has_opticalPhysics){
   G4OpticalPhysics* opticalPhysics = new G4OpticalPhysics();
   physicsList->RegisterPhysics(opticalPhysics);
+}
+  
+
   runManager->SetUserInitialization(physicsList);
 
   runManager->SetUserInitialization(new LightCollectionActionInitialization());

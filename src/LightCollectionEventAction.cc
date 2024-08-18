@@ -35,46 +35,84 @@
 #include "LightCollectionStackingAction.hh"
 #include "G4Event.hh"
 #include "G4RunManager.hh"
-
+#include "G4SDManager.hh"
+#include "G4HCofThisEvent.hh"
 #include "G4Threading.hh"
 #include "G4AnalysisManager.hh"
 
+#include "CustomScorer.hh"
+#include "config.hh"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 LightCollectionEventAction::LightCollectionEventAction()
-    : G4UserEventAction(),
-      fProtonDose(0.0),
-      fElectronDose(0.0),
-      fGammaDose(0.0),
-      fShieldedProtonDose(0.0),
-      fShieldedElectronDose(0.0),
-      fShieldedGammaDose(0.0),
-      fCrystalDose(0.0)
+    : G4UserEventAction()
 {
-  fcrystalCounts = 0;
-  fSD2_Counts = 0;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 LightCollectionEventAction::~LightCollectionEventAction() {}
 
+
+G4THitsMap<G4double>* LightCollectionEventAction::GetHitsCollection(G4int hcID,
+                                  const G4Event* event) const
+{
+  auto hitsCollection
+    = static_cast<G4THitsMap<G4double>*>(
+        event->GetHCofThisEvent()->GetHC(hcID));
+
+  if ( ! hitsCollection ) {
+    G4ExceptionDescription msg;
+    msg << "Cannot access hitsCollection ID " << hcID;
+    G4Exception("EventAction::GetHitsCollection()",
+      "MyCode0003", FatalException, msg);
+  }
+
+  return hitsCollection;
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+G4double LightCollectionEventAction::GetSum(G4THitsMap<G4double>* hitsMap) const
+{
+  G4double sumValue = 0.;
+  for ( auto it : *hitsMap->GetMap() ) {
+    // hitsMap->GetMap() returns the map of std::map<G4int, G4double*>
+    sumValue += *(it.second);
+  }
+  return sumValue;
+}
+
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void LightCollectionEventAction::BeginOfEventAction(const G4Event *)
 {
-  fcrystalCounts = 0;
-  fSD2_Counts = 0;
 
-  fProtonDose = 0.0;
-  fElectronDose = 0.0;
-  fGammaDose = 0.0;
-  fShieldedProtonDose = 0.0;
-  fShieldedElectronDose = 0.0;
-  fShieldedGammaDose = 0.0;
-  fCrystalDose = 0.0;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void LightCollectionEventAction::EndOfEventAction(const G4Event *event)
 {
+  auto analysisManager = G4AnalysisManager::Instance();
+
+  // 统计放射源的能谱
+  G4PrimaryVertex* primaryVertex = event->GetPrimaryVertex();
+  if (primaryVertex) {
+      G4PrimaryParticle* primaryParticle = primaryVertex->GetPrimary();
+      if (primaryParticle) {
+          G4double energy = primaryParticle->GetKineticEnergy();
+          analysisManager->FillNtupleDColumn(0, 0, energy);
+      }
+  }
+
+  fEngPassingSD1 = G4SDManager::GetSDMpointer()->GetCollectionID("SD1/PassingEng");
+  fEdepInCrystal = G4SDManager::GetSDMpointer()->GetCollectionID("sc_crystal/Edep");
+  auto EngPassingSD1 = GetSum(GetHitsCollection(fEngPassingSD1, event));
+  auto EdepInCrystal = GetSum(GetHitsCollection(fEdepInCrystal, event));
+  analysisManager->FillNtupleDColumn(0, 1, EngPassingSD1);
+  analysisManager->FillNtupleDColumn(0, 2, EdepInCrystal);
+  analysisManager->AddNtupleRow(0);
+
+  processedTrackIDs.clear(); // 清空已处理的 track ID (用于统计哪些光子进入数值孔径)
     // Print per event (modulo n)
     // 判断是否是主进程，在主进程中打印进度
     if (G4Threading::IsMasterThread()) {
@@ -87,72 +125,51 @@ void LightCollectionEventAction::EndOfEventAction(const G4Event *event)
       }
     }
 
+if (fAbsoEdepHCID == -1) {
+    fAbsoEdepHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_0/Edep");
+    fTotalEnergyHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_0/TotalEnergy");
+    fHEPhotonHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_0/HEPhotonEnergy");
+    fNeutEdepHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_0/NeutronEnergy");
+}
 
-  LightCollectionRun *run = static_cast<LightCollectionRun *>(
-      G4RunManager::GetRunManager()->GetNonConstCurrentRun());
-  run->Addcrystal(fcrystalCounts);
-  run->AddSD2(fSD2_Counts);
 
-    run->AddProtonDose(fProtonDose);
-    run->AddElectronDose(fElectronDose);
-    run->AddGammaDose(fGammaDose);
-    run->AddShieldedProtonDose(fShieldedProtonDose);
-    run->AddShieldedElectronDose(fShieldedElectronDose);
-    run->AddShieldedGammaDose(fShieldedGammaDose);
-    run->AddCrystalDose(fCrystalDose);
 
-  G4int sc_PhotonCount_ID, sc_Wavelengths_ID;
-  G4AnalysisManager *analysisManager = G4AnalysisManager::Instance();
-  sc_PhotonCount_ID = 0; // 假设 ntuple ID 0 对应 NPhotonGenerated
-  sc_Wavelengths_ID = analysisManager->GetH1Id("ScintillationWavelength");
-    auto stackingAction = static_cast<const LightCollectionStackingAction*>(
-        G4RunManager::GetRunManager()->GetUserStackingAction());
+    for (int layerID = 0; layerID < g_shield_layers; ++layerID) {
 
-    // 获取闪烁光的光子数和波长
-    G4int scintillationPhotonCount = stackingAction->GetScintillationPhotonCount();
-    const auto& scintillationWavelengths = stackingAction->GetScintillationWavelengths();
+        // 获取当前层的HitsCollection ID
+        int totalEnergyHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_" + std::to_string(layerID) + "/TotalEnergy");
+        int hepPhotonHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_" + std::to_string(layerID) + "/HEPhotonEnergy");
+        int neutEdepHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_" + std::to_string(layerID) + "/NeutronEnergy");
 
-    // 填充闪烁光的光子数
-    // analysisManager->FillNtupleDColumn(sc_PhotonCount_ID, scintillationPhotonCount);
+        // 获取当前层的HitsCollection数据
+        auto totalEdep = GetSum(GetHitsCollection(totalEnergyHCID, event));
+        auto hepEdep = GetSum(GetHitsCollection(hepPhotonHCID, event));
+        auto neutEdep = GetSum(GetHitsCollection(neutEdepHCID, event));
 
-    // 填充闪烁光的波长
-    for (auto wavelength : scintillationWavelengths) {
-        analysisManager->FillH1(sc_Wavelengths_ID, wavelength); // 假设直方图 ID 0 对应 ScintillationWavelength
+        // 填充数据到对应的Ntuple
+        // 第一个Ntuple存放别的信息，从第二个开始用于存放shield_layers的信息
+        analysisManager->FillNtupleDColumn(layerID+1, 0, totalEdep);
+        analysisManager->FillNtupleDColumn(layerID+1, 1, hepEdep);
+        analysisManager->FillNtupleDColumn(layerID+1, 2, neutEdep);
+        analysisManager->AddNtupleRow(layerID+1);
     }
+
+//   LightCollectionRun *run = static_cast<LightCollectionRun *>(
+//       G4RunManager::GetRunManager()->GetNonConstCurrentRun());
+
+//   G4int sc_PhotonCount_ID, sc_Wavelengths_ID;
+//   sc_PhotonCount_ID = 0; // 假设 ntuple ID 0 对应 NPhotonGenerated
+//   sc_Wavelengths_ID = analysisManager->GetH1Id("ScintillationWavelength");
+//     auto stackingAction = static_cast<const LightCollectionStackingAction*>(
+//         G4RunManager::GetRunManager()->GetUserStackingAction());
+
+//     // 获取闪烁光的光子数和波长
+//     G4int scintillationPhotonCount = stackingAction->GetScintillationPhotonCount();
+//     const auto& scintillationWavelengths = stackingAction->GetScintillationWavelengths();
+
+//     // 填充闪烁光的波长
+//     for (auto wavelength : scintillationWavelengths) {
+//         analysisManager->FillH1(sc_Wavelengths_ID, wavelength); // 假设直方图 ID 0 对应 ScintillationWavelength
+//     }
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-void LightCollectionEventAction::AddProtonDose(G4double dose)
-{
-    fProtonDose += dose;
-}
-
-void LightCollectionEventAction::AddElectronDose(G4double dose)
-{
-    fElectronDose += dose;
-}
-
-void LightCollectionEventAction::AddGammaDose(G4double dose)
-{
-    fGammaDose += dose;
-}
-
-void LightCollectionEventAction::AddShieldedProtonDose(G4double dose)
-{
-    fShieldedProtonDose += dose;
-}
-
-void LightCollectionEventAction::AddShieldedElectronDose(G4double dose)
-{
-    fShieldedElectronDose += dose;
-}
-
-void LightCollectionEventAction::AddShieldedGammaDose(G4double dose)
-{
-    fShieldedGammaDose += dose;
-}
-
-void LightCollectionEventAction::AddCrystalDose(G4double dose)
-{
-    fCrystalDose += dose;
-}

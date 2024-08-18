@@ -29,12 +29,16 @@
 
 #include "LightCollectionSteppingAction.hh"
 #include "LightCollectionRun.hh"
+
 #include "G4Event.hh"
 #include "G4OpBoundaryProcess.hh"
 #include "G4OpticalPhoton.hh"
 #include "G4RunManager.hh"
 #include "G4Step.hh"
 #include "G4Track.hh"
+#include "G4AnalysisManager.hh"
+
+#include "config.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -55,41 +59,106 @@ void LightCollectionSteppingAction::UserSteppingAction(const G4Step* step)
     // 检查是否为光子
     if (particleDef != opticalphoton) return;
 
-    // 确保步骤的后续点和可接触对象有效
+    // 获取步骤的前后点
+    G4StepPoint* preStepPoint = step->GetPreStepPoint();
     G4StepPoint* postStepPoint = step->GetPostStepPoint();
-    if (!postStepPoint) return;
+    if (!preStepPoint || !postStepPoint) return;
 
     G4TouchableHandle touchableHandle = postStepPoint->GetTouchableHandle();
     if (!touchableHandle) return;
 
-    G4VPhysicalVolume* volume = touchableHandle->GetVolume();
-    if (!volume) return;
+    // 获取前后点的物理体积
+    G4VPhysicalVolume* preVolume = preStepPoint->GetPhysicalVolume();
+    G4VPhysicalVolume* postVolume = postStepPoint->GetPhysicalVolume();
+    if (!preVolume || !postVolume) return;
 
-    G4LogicalVolume* logicalVolume = volume->GetLogicalVolume();
-    if (!logicalVolume) return;
+    // 获取前后点的逻辑体积
+    G4LogicalVolume* preLogicalVolume = preVolume->GetLogicalVolume();
+    G4LogicalVolume* postLogicalVolume = postVolume->GetLogicalVolume();
+    if (!preLogicalVolume || !postLogicalVolume) return;
 
-    G4String post_volumeName = logicalVolume->GetName();
+    G4String preVolumeName = preLogicalVolume->GetName();
+    G4String postVolumeName = postLogicalVolume->GetName();
+
 
     // 检查光子是否穿过crystal端窗和光阴极到达SensitiveVolume
-    if(post_volumeName == "SD2" )
+    if(postVolumeName == "SD2" )
     {
-      fEventAction->AddSD2();
-
-        G4ThreeVector photonDirection = postStepPoint->GetMomentumDirection();
-        G4ThreeVector normalDirection = touchableHandle->GetSolid()->SurfaceNormal(postStepPoint->GetPosition());
-
-        double dotProduct = photonDirection.dot(normalDirection);
-
-        // 如果点积小于0，表示光子的方向与法线方向成钝角，即光子是进入crystal窗口
-        if (dotProduct < 0)
-        {
-            fEventAction->Addcrystal();
-        }
       // 杀掉本次事例
       step->GetTrack()->SetTrackStatus(fStopAndKill);
     }
 
 
+    // 考虑数值孔径
+    // 
+    if (preVolumeName == "World" && postVolumeName == "lg_fiber" )
+    {
+        
+        G4Track* aTrack = step->GetTrack();
+        G4int trackID = aTrack->GetTrackID();
+
+    if (fEventAction->processedTrackIDs.find(trackID) == fEventAction->processedTrackIDs.end())
+    {
+
+        G4double energy = aTrack->GetTotalEnergy();
+        G4double wavelength = (1239.841939 * CLHEP::nm) / energy;  // 将能量转换为波长
+
+        // 获取折射率
+        G4MaterialPropertyVector* rv_Outside = preStepPoint->GetMaterial()->GetMaterialPropertiesTable()->GetProperty("RINDEX");
+        G4MaterialPropertyVector* rv_fiber_core = g_lg_fiber_material->GetMaterialPropertiesTable()->GetProperty("RINDEX");
+        G4MaterialPropertyVector* rv_fiber_wrapper = g_lg_wrapper_material->GetMaterialPropertiesTable()->GetProperty("RINDEX");
+
+        if (!rv_Outside) return;
+
+        G4double n_Outside = rv_Outside->Value(energy);
+        G4double n_fiber_core = rv_fiber_core->Value(energy);
+        G4double n_fiber_wrapper = rv_fiber_wrapper->Value(energy);
+        
+        G4double NA;
+        if(g_lg_na==-1){
+            NA = std::sqrt(n_fiber_core*n_fiber_core - n_fiber_wrapper*n_fiber_wrapper);
+        }
+        else{
+            NA = g_lg_na;
+        }
+
+        G4ThreeVector photonDirection = aTrack->GetMomentumDirection();
+        G4ThreeVector normal = preStepPoint->GetTouchableHandle()->GetSolid()->SurfaceNormal(preStepPoint->GetPosition());
+
+        // 计算入射角的余弦
+        G4double cosTheta = -photonDirection.dot(normal);
+        G4double theta = std::acos(cosTheta);
+
+        // 根据折射率计算极限角
+        G4double criticalAngle = std::asin(NA / n_Outside);
+
+        G4cout << "Photon ID: " << aTrack->GetTrackID() << G4endl;
+        G4cout << "Photon Energy: " << energy << " eV" << G4endl;
+        G4cout << "Photon Wavelength: " << (1239.841939 * nm) / energy << " nm" << G4endl;
+        G4cout << "n_Outside: " << n_Outside << G4endl;
+        G4cout << "n_fiber_core: " << n_fiber_core << G4endl;
+        G4cout << "n_fiber_wrapper: " << n_fiber_wrapper << G4endl;
+        G4cout << "Numerical Aperture (NA): " << NA << G4endl;
+        G4cout << "Photon Direction: " << photonDirection << G4endl;
+        G4cout << "Surface Normal: " << normal << G4endl;
+        G4cout << "cosTheta: " << cosTheta << G4endl;
+        G4cout << "Incident Angle: " << theta / CLHEP::deg << " degrees" << G4endl;
+        G4cout << "Critical Angle: " << criticalAngle / CLHEP::deg << " degrees" << G4endl;
+
+        if (theta < criticalAngle)
+        {
+            G4cout << "Photon ID: " << trackID << " is accepted" << G4endl;
+
+            auto analysisManager = G4AnalysisManager::Instance();
+            analysisManager->FillH1(2, wavelength);
+
+            // 只有当该光子被记录后，才将其ID加入已处理列表。因为该光子可能在外层多次反射最终进入
+            fEventAction->processedTrackIDs.insert(trackID);
+        }
+
+        
+    }
+    }
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
