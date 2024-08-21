@@ -26,32 +26,23 @@ public:
   static G4Material* Aluminium();
   static G4Material* Iron();
   static G4Material* Lead();
-  static G4Material* Lead_crystal(); // fake lead crystal 
-  static G4Material* Al_crystal(); // fake lead crystal 
-  static G4Material* Cu_crystal(); // fake lead crystal 
   static G4Material* Brass();
   static G4Material* Tungsten();
-  static G4Material* PureTungsten1();
-  static G4Material* PureTungsten2();
   static G4Material* TungstenLight();
-  static G4Material* PureTungsten2_crystal();
   static G4Material* CopperTungstenAlloy(const G4double& WFrac);
   static G4Material* Quartz();
   static G4Material* OpticalGrease();
   static G4Material* LSO();
-  static G4Material* LYSO();
-  static G4Material* LYSO_lowLY();
+  static G4Material* LYSO(double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* LuAG_Ce(); //
   static G4Material* LuAG_Pr();
   static G4Material* DSB_Ce();
   static G4Material* SiO2_Ce();
-  static G4Material* GAGG_Ce();
   static G4Material* BGO            (double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* PWO            (double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* YAG_Ce         (double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* GAGG_Ce_Mg     (double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* GAGG_ILM       (double user_lightyield,double scaleFactor,double user_birks);
-  static G4Material* GAGG_Ce_Mg_old (double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* GFAG           (double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* GYAGG          (double user_lightyield,double scaleFactor,double user_birks);
   static G4Material* GAGG_very_fast (double user_lightyield,double scaleFactor,double user_birks);
