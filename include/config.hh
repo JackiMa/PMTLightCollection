@@ -31,11 +31,11 @@ inline G4Material *g_world_material = MyMaterials::Vacuum();
 inline G4double g_shieldX = 0.99 * g_worldX;
 inline G4double g_shieldY = 0.99 * g_worldY;
 inline G4int g_shield_layers = 5;                                                             // 遮挡层层数n
-inline G4double g_shield_thickness = 0.5 * cm;                                                  // 遮挡总厚度 = n*d
+inline G4double g_shield_thickness = 10*um;                                                  // 遮挡总厚度 = n*d
 inline G4double g_layer_thickness = g_shield_thickness / g_shield_layers;                     // 遮挡厚度 = d
 inline G4ThreeVector g_shield_pos = G4ThreeVector(0, 0, 0.4 * g_worldZ - g_shield_thickness); // 遮挡层位置，相对世界体
 // inline G4Material* g_shield_material = MyMaterials::GarthTypographicAlloy();                             // 遮挡层材料
-inline G4Material *g_shield_material = MyMaterials::PVC(); // 遮挡层材料
+inline G4Material *g_shield_material = MyMaterials::Aluminium(); // 遮挡层材料
 
 // scintillator = crystal + wrapper
 // 闪烁体实际的尺寸是 scintillator - 2*g_sc_wrapper_thickness
@@ -46,11 +46,11 @@ inline G4double g_scintillatorZ = 1 * cm;
 inline G4double g_scintillatorR = 1 * cm;                                                                              // 径向
 inline G4double g_scintillatorX = 1 * cm;                                                                              // 轴向
 inline G4ThreeVector g_scintillator_pos = G4ThreeVector(-0.2 * g_worldX, 0, -0.25 * g_worldZ + 0.5 * g_scintillatorZ); // 闪烁体位置，相对世界体
-inline G4Material *g_sc_crystal_material = MyMaterials::GAGG_Ce_Mg(1000, 1, -1);                                     // 闪烁体材料
+inline G4Material *g_sc_crystal_material = MyMaterials::LYSO(1000, 1, -1);                                     // 闪烁体材料
 inline G4double g_sc_wrapper_thickness = 1 * mm;                                                                       // 闪烁体封装层厚度
 inline G4Material *g_sc_wrapper_material = MyMaterials::PVC();
-inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, 0); // crystal位置，相对闪烁体。可以调节该项，调整晶体在封装中的位置
-// inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, g_sc_wrapper_thickness); // crystal位置，相对闪烁体。可以调节该项，调整晶体在封装中的位置
+// inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, 0); // crystal位置，相对闪烁体。可以调节该项，调整晶体在封装中的位置
+inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, g_sc_wrapper_thickness); // crystal位置，相对闪烁体。可以调节该项，调整晶体在封装中的位置
 
 // lightguide = fiber + wrapper
 // lightguide实际的尺寸是 g_lightguide_r - 2*g_lg_wrapper_thickness

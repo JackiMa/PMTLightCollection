@@ -100,7 +100,7 @@ G4VPhysicalVolume *LightCollectionDetectorConstruction::Construct()
 
   // SD1
   G4double SD1_thickness = 1 * mm;
-  G4ThreeVector SD1_pos = g_shield_pos - G4ThreeVector(0, 0, 0.5 * g_shield_thickness + 0.5 * SD1_thickness);
+  G4ThreeVector SD1_pos = g_shield_pos - G4ThreeVector(0, 0, 2*mm+0.5 * g_shield_thickness + 0.5 * SD1_thickness);
   G4Box *s_SD1 = new G4Box("SD1", 0.5 * g_shieldX, 0.5 * g_shieldY, SD1_thickness);
   G4LogicalVolume *l_SD1 = new G4LogicalVolume(s_SD1, g_world_material, "SD1");
   MyPhysicalVolume *p_SD1 = new MyPhysicalVolume(0, SD1_pos, "SD1", l_SD1, p_world, false, checkOverlaps);
