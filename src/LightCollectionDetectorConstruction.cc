@@ -94,24 +94,6 @@ G4VPhysicalVolume *LightCollectionDetectorConstruction::Construct()
       layer_VisAtt->SetVisibility(true);
       l_layer->SetVisAttributes(layer_VisAtt);
   }
-  // for (int i = 0; i < g_shield_layers; ++i)
-  // {
-  //   G4String layer_name = "shield_layer_" + std::to_string(i);
-  //   G4Box *s_layer = new G4Box(layer_name, 0.5 * g_shieldX, 0.5 * g_shieldY, 0.5 * g_layer_thickness);
-  //   G4LogicalVolume *l_layer = new G4LogicalVolume(s_layer, g_shield_material, layer_name);
-  //   G4ThreeVector layer_pos = G4ThreeVector(0, 0, (g_shield_layers / 2.0 - 0.5 - i) * g_layer_thickness);
-  //   MyPhysicalVolume *p_layer = new MyPhysicalVolume(0, layer_pos, layer_name, l_layer, p_shield, false, checkOverlaps);
-  //   fVolumeMap[layer_name] = p_layer;
-  //   // set shield layers colour
-  //   double ratio = static_cast<double>(i) / (g_shield_layers - 1);
-  //   double red = ratio; // 从0到1
-  //   double green = 0.0;
-  //   double blue = 1.0 - ratio;
-  //   G4VisAttributes *layer_VisAtt = new G4VisAttributes(G4Colour(red, green, blue, 0.8));
-  //   layer_VisAtt->SetForceSolid(true); // 设置为实心，以便可以看到透明度
-  //   layer_VisAtt->SetVisibility(true);
-  //   l_layer->SetVisAttributes(layer_VisAtt);
-  // }
 
   // SD1
   G4double SD1_thickness = 1 * mm;
@@ -149,14 +131,16 @@ G4ThreeVector holes_pos;
   // ==0，沿X读出。==1，沿Z读出
   G4double diff = 0;
   if(g_lg_orientation==0){
-    g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0.5 * g_scintillatorX + 0.5 * g_lightguide_length, 0, 0);
+    g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0.5 *g_scintillatorX - 0.99*g_sc_wrapper_thickness + 0.5 * g_lightguide_length, 0, 0); // 光纤紧贴晶体
+    // g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0.5 * g_scintillatorX + 0.5 * g_lightguide_length, 0, 0); // 光纤在晶体封装外面
   }
   else if (g_lg_orientation==1)
   {
     detector_RM->rotateY(270 * deg);
     detector_RM_inverse->rotateY(270 * deg);
     diff = g_crystal_pos.mag();
-    g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0, 0, -(0.5 * g_scintillatorX + 0.5 * g_lightguide_length));
+    g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0, 0, 0.99*g_sc_wrapper_thickness+diff-(0.5 * g_scintillatorX + 0.5 * g_lightguide_length)); // 光纤紧贴晶体
+    // g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0, 0, -(0.5 * g_scintillatorX + 0.5 * g_lightguide_length)); // 光纤在晶体封装外面
     holes_pos = G4ThreeVector(0.5 * g_scintillatorX - 0.5 * (g_sc_wrapper_thickness+diff), 0, 0); 
   }
 
