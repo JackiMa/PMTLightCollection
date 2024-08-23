@@ -37,7 +37,7 @@ private:
 
 class PassingEnergyScorer : public G4VPrimitiveScorer {
 public:
-    PassingEnergyScorer(const G4String& name, G4int depth = 0);
+    PassingEnergyScorer(const G4String& name, const G4String& scorer, G4int depth = 0);
     virtual ~PassingEnergyScorer();
 
     virtual G4bool ProcessHits(G4Step* aStep, G4TouchableHistory*) override;
@@ -46,6 +46,21 @@ public:
 
 private:
     G4THitsMap<G4double>* fHitsMap;
+    G4String scorerName;
+};
+
+class PassingEnergyScorer2 : public G4VPrimitiveScorer {
+public:
+    PassingEnergyScorer2(const G4String& name,const G4String& scorer, G4int depth = 0);
+    virtual ~PassingEnergyScorer2();
+
+    virtual G4bool ProcessHits(G4Step* aStep, G4TouchableHistory*) override;
+    virtual void Initialize(G4HCofThisEvent* HCE) override;
+    virtual void EndOfEvent(G4HCofThisEvent* HCE) override;
+
+private:
+    G4THitsMap<G4double>* fHitsMap;
+    G4String scorerName;
 };
 
 class ElectronEnergyScorer : public G4VPrimitiveScorer {

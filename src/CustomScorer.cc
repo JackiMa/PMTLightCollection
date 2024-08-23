@@ -38,8 +38,8 @@ void TotalEnergyScorer::EndOfEvent(G4HCofThisEvent*) {
 
 
 // PassingEnergyScorer implementation
-PassingEnergyScorer::PassingEnergyScorer(const G4String& name, G4int depth)
-    : G4VPrimitiveScorer(name, depth), fHitsMap(nullptr) {}
+PassingEnergyScorer::PassingEnergyScorer(const G4String& name,const G4String& scorer, G4int depth)
+    : G4VPrimitiveScorer(name, depth),fHitsMap(nullptr),scorerName(scorer) {}
 
 PassingEnergyScorer::~PassingEnergyScorer() {}
 
@@ -54,8 +54,10 @@ G4bool PassingEnergyScorer::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
     G4VPhysicalVolume* preVolume = aStep->GetPreStepPoint()->GetTouchable()->GetVolume();
     G4VPhysicalVolume* postVolume = aStep->GetPostStepPoint()->GetTouchable()->GetVolume();
 
-    // 检查 preVolume 是否是 SD1，postVolume 是否是 world
-    if (preVolume->GetName() == "SD1" && postVolume->GetName() == "World") {
+    // 获取动量方向
+    G4ThreeVector momentumDirection = aStep->GetPreStepPoint()->GetMomentumDirection();
+    // 检查 preVolume，动量方向是否向下（Z 轴方向 < 0），并且粒子是否离开当前体积
+    if (preVolume->GetName() == scorerName && momentumDirection.z() < 0 && preVolume != postVolume) {
         G4double energy = aStep->GetPreStepPoint()->GetKineticEnergy();
         G4int copyNo = preVolume->GetCopyNo();
         fHitsMap->add(copyNo, energy);     
@@ -64,6 +66,42 @@ G4bool PassingEnergyScorer::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
 }
 
 void PassingEnergyScorer::EndOfEvent(G4HCofThisEvent*) {
+}
+
+
+// PassingEnergyScorer2 implementation
+PassingEnergyScorer2::PassingEnergyScorer2(const G4String& name,const G4String& scorer, G4int depth)
+    : G4VPrimitiveScorer(name, depth),fHitsMap(nullptr),scorerName(scorer) {}
+
+PassingEnergyScorer2::~PassingEnergyScorer2() {}
+
+void PassingEnergyScorer2::Initialize(G4HCofThisEvent* HCE) {
+    fHitsMap = new G4THitsMap<G4double>(GetMultiFunctionalDetector()->GetName(), GetName());
+    G4int hcID = GetCollectionID(0);
+    HCE->AddHitsCollection(hcID, fHitsMap);
+}
+
+G4bool PassingEnergyScorer2::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
+    // 获取 preVolume 和 postVolume
+    G4VPhysicalVolume* preVolume = aStep->GetPreStepPoint()->GetTouchable()->GetVolume();
+    G4VPhysicalVolume* postVolume = aStep->GetPostStepPoint()->GetTouchable()->GetVolume();
+
+    // 获取动量方向
+    G4ThreeVector momentumDirection = aStep->GetPreStepPoint()->GetMomentumDirection();
+
+    // 获取粒子的 ParentID
+    G4int parentID = aStep->GetTrack()->GetParentID();
+
+    // 检查 preVolume，动量方向是否向下（Z 轴方向 < 0），粒子是否离开当前体积，并且粒子是次级粒子
+    if (preVolume->GetName() == scorerName && momentumDirection.z() < 0 && preVolume != postVolume && parentID > 0) {
+        G4double energy = aStep->GetPreStepPoint()->GetKineticEnergy();
+        G4int copyNo = preVolume->GetCopyNo();
+        fHitsMap->add(copyNo, energy);     
+    }
+    return true;
+}
+
+void PassingEnergyScorer2::EndOfEvent(G4HCofThisEvent*) {
 }
 
 
@@ -270,8 +308,8 @@ FiberAcceptanceScorer::~FiberAcceptanceScorer() {}
 
 G4bool FiberAcceptanceScorer::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
     G4Track* aTrack = aStep->GetTrack();
-    G4cout << "PreStepPoint: " << aStep->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetName() << ", " << aStep->GetPreStepPoint()->GetMaterial()->GetName() << G4endl;
-    G4cout << "PostStepPoint: " << aStep->GetPostStepPoint()->GetTouchableHandle()->GetVolume()->GetName() << ", " << aStep->GetPostStepPoint()->GetMaterial()->GetName() << G4endl;
+    // G4cout << "PreStepPoint: " << aStep->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetName() << ", " << aStep->GetPreStepPoint()->GetMaterial()->GetName() << G4endl;
+    // G4cout << "PostStepPoint: " << aStep->GetPostStepPoint()->GetTouchableHandle()->GetVolume()->GetName() << ", " << aStep->GetPostStepPoint()->GetMaterial()->GetName() << G4endl;
             
     if (aTrack->GetDefinition() == G4OpticalPhoton::Definition()) {
         G4int trackID = aTrack->GetTrackID();
@@ -299,9 +337,9 @@ G4bool FiberAcceptanceScorer::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
             G4double criticalAngle = std::asin(n2 / n1);
 
             // 如果光子从低折射率介质进入高折射率介质
-            G4cout << "n1: " << n1 << ", n2: " << n2 << ", cosTheta: " << cosTheta << ", Angle: " << std::acos(cosTheta) / deg << G4endl;
+            // G4cout << "n1: " << n1 << ", n2: " << n2 << ", cosTheta: " << cosTheta << ", Angle: " << std::acos(cosTheta) / deg << G4endl;
             if (n1 < n2 && std::acos(cosTheta) < criticalAngle) {
-            G4cout << "Photon ID: " << trackID << " is accepted" << G4endl;
+            // G4cout << "Photon ID: " << trackID << " is accepted" << G4endl;
 
                 auto analysisManager = G4AnalysisManager::Instance();
                 analysisManager->FillH1(fHistogramId, wavelength);

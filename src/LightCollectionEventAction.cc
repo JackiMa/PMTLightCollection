@@ -138,19 +138,22 @@ if (fAbsoEdepHCID == -1) {
 
         // 获取当前层的HitsCollection ID
         int totalEnergyHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_" + std::to_string(layerID) + "/TotalEnergy");
+        int passingEnergyHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_" + std::to_string(layerID) + "/PassingEnergy");
         int hepPhotonHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_" + std::to_string(layerID) + "/HEPhotonEnergy");
         int neutEdepHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_" + std::to_string(layerID) + "/NeutronEnergy");
 
         // 获取当前层的HitsCollection数据
         auto totalEdep = GetSum(GetHitsCollection(totalEnergyHCID, event));
+        auto passingEng = GetSum(GetHitsCollection(passingEnergyHCID, event));
         auto hepEdep = GetSum(GetHitsCollection(hepPhotonHCID, event));
         auto neutEdep = GetSum(GetHitsCollection(neutEdepHCID, event));
 
         // 填充数据到对应的Ntuple
         // 第一个Ntuple存放别的信息，从第二个开始用于存放shield_layers的信息
         analysisManager->FillNtupleDColumn(layerID+1, 0, totalEdep);
-        analysisManager->FillNtupleDColumn(layerID+1, 1, hepEdep);
-        analysisManager->FillNtupleDColumn(layerID+1, 2, neutEdep);
+        analysisManager->FillNtupleDColumn(layerID+1, 1, passingEng);
+        analysisManager->FillNtupleDColumn(layerID+1, 2, hepEdep);
+        analysisManager->FillNtupleDColumn(layerID+1, 3, neutEdep);
         analysisManager->AddNtupleRow(layerID+1);
     }
 
