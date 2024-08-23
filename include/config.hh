@@ -1,14 +1,26 @@
 #ifndef CONFIG_HH
 #define CONFIG_HH
 
+#include <vector>
+#include <numeric>
+#include <utility>
+
 #include "G4ThreeVector.hh"
 #include "MyMaterials.hh"
 #include "G4SystemOfUnits.hh"
 
+// 定义一个结构体来存储每一层的厚度和材料
+struct ShieldLayer {
+    G4double thickness;
+    G4Material* material;
+};
+
+
+
 // g_ means global_
 
 // switch
-inline G4bool g_has_opticalPhysics = true;  // 是否模拟光学过程
+inline G4bool g_has_opticalPhysics = false;  // 是否模拟光学过程
 inline G4bool g_has_cherenkov = true;       // 是否考虑切伦科夫光
 
 /*
@@ -30,12 +42,17 @@ inline G4Material *g_world_material = MyMaterials::Vacuum();
 // shield = n*layers
 inline G4double g_shieldX = 0.99 * g_worldX;
 inline G4double g_shieldY = 0.99 * g_worldY;
-inline G4int g_shield_layers = 5;                                                             // 遮挡层层数n
-inline G4double g_shield_thickness = 10*um;                                                  // 遮挡总厚度 = n*d
-inline G4double g_layer_thickness = g_shield_thickness / g_shield_layers;                     // 遮挡厚度 = d
+inline std::vector<ShieldLayer> g_custom_shield = {     // 自定义遮挡层
+    {2*um, MyMaterials::Cu()},
+    {2*um, MyMaterials::Cu()},
+    {2*um, MyMaterials::Cu()},
+    {2*um, MyMaterials::Cu()},
+    {2*um, MyMaterials::Cu()},
+    {2*um, MyMaterials::Cu()}
+    }; 
+inline G4int g_shield_layers = g_custom_shield.size();                                                             // 遮挡层层数n
+inline G4double g_shield_thickness = std::accumulate(g_custom_shield.begin(), g_custom_shield.end(), 0.0, [](double sum, const ShieldLayer& layer) {return sum + layer.thickness;});
 inline G4ThreeVector g_shield_pos = G4ThreeVector(0, 0, 0.4 * g_worldZ - g_shield_thickness); // 遮挡层位置，相对世界体
-// inline G4Material* g_shield_material = MyMaterials::GarthTypographicAlloy();                             // 遮挡层材料
-inline G4Material *g_shield_material = MyMaterials::Aluminium(); // 遮挡层材料
 
 // scintillator = crystal + wrapper
 // 闪烁体实际的尺寸是 scintillator - 2*g_sc_wrapper_thickness
@@ -70,5 +87,10 @@ inline G4OpticalSurface *surf_Teflon = MyMaterials::surf_Teflon();
 
 // source
 inline G4double g_source_scale = 1; // 源的尺度是scintillator投影的若干倍
+
+
+
+//  --------- 其他东西 ---------
+// 
 
 #endif // CONFIG_HH

@@ -57,7 +57,6 @@
 #include "G4VisExecutive.hh"
 #include "G4Scintillation.hh"
 
-
 #include "config.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -77,15 +76,15 @@ namespace
     G4cerr << "   note: -t option is available only for multi-threaded mode."
            << G4endl;
   }
-}  // namespace
+} // namespace
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
   // Evaluate arguments
   //
-  if(argc > 9)
+  if (argc > 9)
   {
     PrintUsage();
     return 1;
@@ -98,18 +97,18 @@ int main(int argc, char** argv)
 #endif
 
   G4long myseed = 345354;
-  for(G4int i = 1; i < argc; i = i + 2)
+  for (G4int i = 1; i < argc; i = i + 2)
   {
-    if(G4String(argv[i]) == "-g")
+    if (G4String(argv[i]) == "-g")
       gdmlfile = argv[i + 1];
-    else if(G4String(argv[i]) == "-m")
+    else if (G4String(argv[i]) == "-m")
       macro = argv[i + 1];
-    else if(G4String(argv[i]) == "-u")
+    else if (G4String(argv[i]) == "-u")
       session = argv[i + 1];
-    else if(G4String(argv[i]) == "-r")
+    else if (G4String(argv[i]) == "-r")
       myseed = atoi(argv[i + 1]);
 #ifdef G4MULTITHREADED
-    else if(G4String(argv[i]) == "-t")
+    else if (G4String(argv[i]) == "-t")
     {
       nThreads = G4UIcommand::ConvertToInt(argv[i + 1]);
     }
@@ -122,8 +121,8 @@ int main(int argc, char** argv)
   }
 
   // Instantiate G4UIExecutive if interactive mode
-  G4UIExecutive* ui = nullptr;
-  if(macro.size() == 0)
+  G4UIExecutive *ui = nullptr;
+  if (macro.size() == 0)
   {
     ui = new G4UIExecutive(argc, argv);
   }
@@ -131,7 +130,7 @@ int main(int argc, char** argv)
   // Construct the default run manager
   auto runManager = G4RunManagerFactory::CreateRunManager();
 #ifdef G4MULTITHREADED
-  if(nThreads > 0)
+  if (nThreads > 0)
     runManager->SetNumberOfThreads(nThreads);
 #endif
 
@@ -141,11 +140,11 @@ int main(int argc, char** argv)
   // Set mandatory initialization classes
   //
   // Detector construction
-  if(gdmlfile != "")
+  if (gdmlfile != "")
   {
 #ifdef GEANT4_USE_GDML
     runManager->SetUserInitialization(
-      new LightCollectionGDMLDetectorConstruction(gdmlfile));
+        new LightCollectionGDMLDetectorConstruction(gdmlfile));
 #else
     G4cout << "Error! Input gdml file specified, but Geant4 wasn't" << G4endl
            << "built with gdml support." << G4endl;
@@ -157,37 +156,36 @@ int main(int argc, char** argv)
     runManager->SetUserInitialization(new LightCollectionDetectorConstruction());
   }
   // Physics list
-  G4VModularPhysicsList* physicsList = new FTFP_BERT;
+  G4VModularPhysicsList *physicsList = new FTFP_BERT;
   physicsList->ReplacePhysics(new G4EmStandardPhysics_option4());
 
-if(g_has_opticalPhysics){
-  G4OpticalPhysics* opticalPhysics = new G4OpticalPhysics();
-  physicsList->RegisterPhysics(opticalPhysics);
-}
-  
+  if (g_has_opticalPhysics)
+  {
+    G4OpticalPhysics *opticalPhysics = new G4OpticalPhysics();
+    physicsList->RegisterPhysics(opticalPhysics);
+  }
 
   runManager->SetUserInitialization(physicsList);
 
   runManager->SetUserInitialization(new LightCollectionActionInitialization());
 
-
-  G4VisManager* visManager = new G4VisExecutive("Quiet");
+  G4VisManager *visManager = new G4VisExecutive("Quiet");
   visManager->Initialize();
 
-  G4UImanager* UImanager = G4UImanager::GetUIpointer();
+  G4UImanager *UImanager = G4UImanager::GetUIpointer();
 
-  if(macro.size())
+  if (macro.size())
   {
     G4String command = "/control/execute ";
     UImanager->ApplyCommand(command + macro);
   }
-  else  // Define UI session for interactive mode
+  else // Define UI session for interactive mode
   {
     UImanager->ApplyCommand("/control/execute vis.mac");
-    if(ui->IsGUI())
+    if (ui->IsGUI())
       UImanager->ApplyCommand("/control/execute gui.mac");
     ui->SessionStart();
-    
+
     delete ui;
   }
 

@@ -56,7 +56,7 @@ LightCollectionDetectorConstruction::~LightCollectionDetectorConstruction()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 G4VPhysicalVolume *LightCollectionDetectorConstruction::Construct()
 {
-  G4bool checkOverlaps = false;
+  G4bool checkOverlaps = true;
 
   // ------------- Volumes --------------
   // s_ for soild_
@@ -71,32 +71,47 @@ G4VPhysicalVolume *LightCollectionDetectorConstruction::Construct()
   //
   // shield
   G4Box *s_shield = new G4Box("shield", 0.5 * g_shieldX, 0.5 * g_shieldY, 0.5 * g_shield_thickness);
-  G4LogicalVolume *l_shield = new G4LogicalVolume(s_shield, g_shield_material, "shield");
+  G4LogicalVolume *l_shield = new G4LogicalVolume(s_shield, g_world_material, "shield");
   MyPhysicalVolume *p_shield = new MyPhysicalVolume(0, g_shield_pos, "shield", l_shield, p_world, false, checkOverlaps);
   fVolumeMap["shield"] = p_shield;
-  for (int i = 0; i < g_shield_layers; ++i)
+  for (long unsigned int i = 0; i < g_custom_shield.size(); ++i)
   {
-    G4String layer_name = "shield_layer_" + std::to_string(i);
-    G4Box *s_layer = new G4Box(layer_name, 0.5 * g_shieldX, 0.5 * g_shieldY, 0.5 * g_layer_thickness);
-    G4LogicalVolume *l_layer = new G4LogicalVolume(s_layer, g_shield_material, layer_name);
-    G4ThreeVector layer_pos = G4ThreeVector(0, 0, (g_shield_layers / 2.0 - 0.5 - i) * g_layer_thickness);
-    MyPhysicalVolume *p_layer = new MyPhysicalVolume(0, layer_pos, layer_name, l_layer, p_shield, false, checkOverlaps);
-    fVolumeMap[layer_name] = p_layer;
-    // set shield layers colour
-    double ratio = static_cast<double>(i) / (g_shield_layers - 1);
-    double red = ratio; // 从0到1
-    double green = 0.0;
-    double blue = 1.0 - ratio;
-    G4VisAttributes *layer_VisAtt = new G4VisAttributes(G4Colour(red, green, blue, 0.8));
-    layer_VisAtt->SetForceSolid(true); // 设置为实心，以便可以看到透明度
-    layer_VisAtt->SetVisibility(true);
-    l_layer->SetVisAttributes(layer_VisAtt);
+      const auto& layer = g_custom_shield[i];
+      G4cout << "layer.thickness: " << layer.thickness << " layer.material: " << layer.material->GetName() << G4endl;
+      G4String layer_name = "shield_layer_" + std::to_string(i);
+      G4Box *s_layer = new G4Box(layer_name, 0.5 * g_shieldX, 0.5 * g_shieldY, 0.5 * layer.thickness);
+      G4LogicalVolume *l_layer = new G4LogicalVolume(s_layer, layer.material, layer_name);
+      G4ThreeVector layer_pos = G4ThreeVector(0, 0, (g_shield_thickness / 2.0 - 0.5 * layer.thickness - std::accumulate(g_custom_shield.begin(), g_custom_shield.begin() + i, 0.0, [](double sum, const ShieldLayer& l) { return sum + l.thickness; })));
+      MyPhysicalVolume *p_layer = new MyPhysicalVolume(0, layer_pos, layer_name, l_layer, p_shield, false, checkOverlaps);
+      fVolumeMap[layer_name] = p_layer;
+      // set shield layers colour
+      double ratio = static_cast<double>(i) / (g_custom_shield.size() - 1);
+      double red = ratio; // 从0到1
+      double green = 0.0;
+      double blue = 1.0 - ratio;
+      G4VisAttributes *layer_VisAtt = new G4VisAttributes(G4Colour(red, green, blue, 0.8));
+      layer_VisAtt->SetForceSolid(true); // 设置为实心，以便可以看到透明度
+      layer_VisAtt->SetVisibility(true);
+      l_layer->SetVisAttributes(layer_VisAtt);
   }
-  // 设置 shield 的颜色，似乎会覆盖掉layers的颜色
-  // G4VisAttributes* shield_VisAtt = new G4VisAttributes(G4Colour(1, 1, 1, 0.8));
-  // shield_VisAtt->SetForceSolid(true);  // 设置为实心，以便可以看到透明度
-  // shield_VisAtt->SetVisibility(true);
-  // l_shield->SetVisAttributes(shield_VisAtt);
+  // for (int i = 0; i < g_shield_layers; ++i)
+  // {
+  //   G4String layer_name = "shield_layer_" + std::to_string(i);
+  //   G4Box *s_layer = new G4Box(layer_name, 0.5 * g_shieldX, 0.5 * g_shieldY, 0.5 * g_layer_thickness);
+  //   G4LogicalVolume *l_layer = new G4LogicalVolume(s_layer, g_shield_material, layer_name);
+  //   G4ThreeVector layer_pos = G4ThreeVector(0, 0, (g_shield_layers / 2.0 - 0.5 - i) * g_layer_thickness);
+  //   MyPhysicalVolume *p_layer = new MyPhysicalVolume(0, layer_pos, layer_name, l_layer, p_shield, false, checkOverlaps);
+  //   fVolumeMap[layer_name] = p_layer;
+  //   // set shield layers colour
+  //   double ratio = static_cast<double>(i) / (g_shield_layers - 1);
+  //   double red = ratio; // 从0到1
+  //   double green = 0.0;
+  //   double blue = 1.0 - ratio;
+  //   G4VisAttributes *layer_VisAtt = new G4VisAttributes(G4Colour(red, green, blue, 0.8));
+  //   layer_VisAtt->SetForceSolid(true); // 设置为实心，以便可以看到透明度
+  //   layer_VisAtt->SetVisibility(true);
+  //   l_layer->SetVisAttributes(layer_VisAtt);
+  // }
 
   // SD1
   G4double SD1_thickness = 1 * mm;
