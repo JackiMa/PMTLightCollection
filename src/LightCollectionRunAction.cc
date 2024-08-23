@@ -59,6 +59,7 @@ LightCollectionRunAction::LightCollectionRunAction(LightCollectionPrimaryGenerat
   analysisManager->CreateNtuple("Spectrum", "Spectrum");
   analysisManager->CreateNtupleDColumn("Source Spectrum");
   analysisManager->CreateNtupleDColumn("After-shield Spectrum");
+  analysisManager->CreateNtupleDColumn("After-shield Spectrum2");
   analysisManager->CreateNtupleDColumn("Edep in Crystal");
   analysisManager->FinishNtuple();
 

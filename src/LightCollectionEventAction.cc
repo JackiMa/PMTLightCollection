@@ -105,11 +105,14 @@ void LightCollectionEventAction::EndOfEventAction(const G4Event *event)
   }
 
   fEngPassingSD1 = G4SDManager::GetSDMpointer()->GetCollectionID("SD1/PassingEng");
+  fEngPassing2SD1 = G4SDManager::GetSDMpointer()->GetCollectionID("SD1/PassingEng2");
   fEdepInCrystal = G4SDManager::GetSDMpointer()->GetCollectionID("sc_crystal/Edep");
   auto EngPassingSD1 = GetSum(GetHitsCollection(fEngPassingSD1, event));
+  auto EngPassing2SD1 = GetSum(GetHitsCollection(fEngPassing2SD1, event));
   auto EdepInCrystal = GetSum(GetHitsCollection(fEdepInCrystal, event));
   analysisManager->FillNtupleDColumn(0, 1, EngPassingSD1);
-  analysisManager->FillNtupleDColumn(0, 2, EdepInCrystal);
+  analysisManager->FillNtupleDColumn(0, 2, EngPassing2SD1);
+  analysisManager->FillNtupleDColumn(0, 3, EdepInCrystal);
   analysisManager->AddNtupleRow(0);
 
   processedTrackIDs.clear(); // 清空已处理的 track ID (用于统计哪些光子进入数值孔径)

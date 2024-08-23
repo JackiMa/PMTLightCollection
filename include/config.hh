@@ -20,7 +20,7 @@ struct ShieldLayer {
 // g_ means global_
 
 // switch
-inline G4bool g_has_opticalPhysics = true;  // 是否模拟光学过程
+inline G4bool g_has_opticalPhysics = false;  // 是否模拟光学过程
 inline G4bool g_has_cherenkov = true;       // 是否考虑切伦科夫光
 
 /*
@@ -43,12 +43,12 @@ inline G4Material *g_world_material = MyMaterials::Vacuum();
 inline G4double g_shieldX = 0.99 * g_worldX;
 inline G4double g_shieldY = 0.99 * g_worldY;
 inline std::vector<ShieldLayer> g_custom_shield = {     // 自定义遮挡层
-    {2*um, MyMaterials::Cu()},
-    {2*um, MyMaterials::Cu()},
-    {2*um, MyMaterials::Cu()},
-    {2*um, MyMaterials::Cu()},
-    {2*um, MyMaterials::Cu()},
     {2*um, MyMaterials::Cu()}
+    // {2*um, MyMaterials::Cu()},
+    // {2*um, MyMaterials::Cu()},
+    // {2*um, MyMaterials::Cu()},
+    // {2*um, MyMaterials::Cu()},
+    // {2*um, MyMaterials::Cu()}
     }; 
 inline G4int g_shield_layers = g_custom_shield.size();                                                             // 遮挡层层数n
 inline G4double g_shield_thickness = std::accumulate(g_custom_shield.begin(), g_custom_shield.end(), 0.0, [](double sum, const ShieldLayer& layer) {return sum + layer.thickness;});

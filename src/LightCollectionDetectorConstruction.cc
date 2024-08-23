@@ -320,7 +320,9 @@ void LightCollectionDetectorConstruction::ConstructSDandField()
   G4String SD1_name = "SD1";
   auto SD1 = new G4MultiFunctionalDetector(SD1_name);
   G4SDManager::GetSDMpointer()->AddNewDetector(SD1);
-  primitive = new PassingEnergyScorer("PassingEng");
+  primitive = new PassingEnergyScorer("PassingEng",SD1_name);
+  SD1->RegisterPrimitive(primitive);
+  primitive = new PassingEnergyScorer2("PassingEng2",SD1_name);
   SD1->RegisterPrimitive(primitive);
   SetSensitiveDetector(SD1_name, SD1);
 
