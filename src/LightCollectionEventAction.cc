@@ -105,14 +105,11 @@ void LightCollectionEventAction::EndOfEventAction(const G4Event *event)
   }
 
   fEngPassingSD1 = G4SDManager::GetSDMpointer()->GetCollectionID("SD1/PassingEng");
-  fEngPassing2SD1 = G4SDManager::GetSDMpointer()->GetCollectionID("SD1/PassingEng2");
   fEdepInCrystal = G4SDManager::GetSDMpointer()->GetCollectionID("sc_crystal/Edep");
   auto EngPassingSD1 = GetSum(GetHitsCollection(fEngPassingSD1, event));
-  auto EngPassing2SD1 = GetSum(GetHitsCollection(fEngPassing2SD1, event));
   auto EdepInCrystal = GetSum(GetHitsCollection(fEdepInCrystal, event));
   analysisManager->FillNtupleDColumn(0, 1, EngPassingSD1);
-  analysisManager->FillNtupleDColumn(0, 2, EngPassing2SD1);
-  analysisManager->FillNtupleDColumn(0, 3, EdepInCrystal);
+  analysisManager->FillNtupleDColumn(0, 2, EdepInCrystal);
   analysisManager->AddNtupleRow(0);
 
   processedTrackIDs.clear(); // 清空已处理的 track ID (用于统计哪些光子进入数值孔径)
@@ -141,19 +138,22 @@ if (fAbsoEdepHCID == -1) {
 
         // 获取当前层的HitsCollection ID
         int totalEnergyHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_" + std::to_string(layerID) + "/TotalEnergy");
+        int passingEnergyHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_" + std::to_string(layerID) + "/PassingEnergy");
         int hepPhotonHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_" + std::to_string(layerID) + "/HEPhotonEnergy");
         int neutEdepHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_" + std::to_string(layerID) + "/NeutronEnergy");
 
         // 获取当前层的HitsCollection数据
         auto totalEdep = GetSum(GetHitsCollection(totalEnergyHCID, event));
+        auto passingEng = GetSum(GetHitsCollection(passingEnergyHCID, event));
         auto hepEdep = GetSum(GetHitsCollection(hepPhotonHCID, event));
         auto neutEdep = GetSum(GetHitsCollection(neutEdepHCID, event));
 
         // 填充数据到对应的Ntuple
         // 第一个Ntuple存放别的信息，从第二个开始用于存放shield_layers的信息
         analysisManager->FillNtupleDColumn(layerID+1, 0, totalEdep);
-        analysisManager->FillNtupleDColumn(layerID+1, 1, hepEdep);
-        analysisManager->FillNtupleDColumn(layerID+1, 2, neutEdep);
+        analysisManager->FillNtupleDColumn(layerID+1, 1, passingEng);
+        analysisManager->FillNtupleDColumn(layerID+1, 2, hepEdep);
+        analysisManager->FillNtupleDColumn(layerID+1, 3, neutEdep);
         analysisManager->AddNtupleRow(layerID+1);
     }
 

@@ -88,14 +88,17 @@ G4bool PassingEnergyScorer2::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
 
     // 获取动量方向
     G4ThreeVector momentumDirection = aStep->GetPreStepPoint()->GetMomentumDirection();
-    // 检查 preVolume，动量方向是否向下（Z 轴方向 < 0），并且粒子是否离开当前体积
-    if (preVolume->GetName() == scorerName && momentumDirection.z() < 0 && preVolume != postVolume) {
+
+    // 获取粒子的 ParentID
+    G4int parentID = aStep->GetTrack()->GetParentID();
+
+    // 检查 preVolume，动量方向是否向下（Z 轴方向 < 0），粒子是否离开当前体积，并且粒子是次级粒子
+    if (preVolume->GetName() == scorerName && momentumDirection.z() < 0 && preVolume != postVolume && parentID > 0) {
         G4double energy = aStep->GetPreStepPoint()->GetKineticEnergy();
         G4int copyNo = preVolume->GetCopyNo();
         fHitsMap->add(copyNo, energy);     
     }
     return true;
-
 }
 
 void PassingEnergyScorer2::EndOfEvent(G4HCofThisEvent*) {

@@ -67,7 +67,6 @@ class LightCollectionEventAction : public G4UserEventAction
 
   G4int fEdepInCrystal = -1;
   G4int fEngPassingSD1 = -1;
-  G4int fEngPassing2SD1 = -1;
 
 };
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

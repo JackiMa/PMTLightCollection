@@ -322,8 +322,6 @@ void LightCollectionDetectorConstruction::ConstructSDandField()
   G4SDManager::GetSDMpointer()->AddNewDetector(SD1);
   primitive = new PassingEnergyScorer("PassingEng",SD1_name);
   SD1->RegisterPrimitive(primitive);
-  primitive = new PassingEnergyScorer2("PassingEng2",SD1_name);
-  SD1->RegisterPrimitive(primitive);
   SetSensitiveDetector(SD1_name, SD1);
 
   // declare shield as a MultiFunctionalDetector scorer
@@ -339,15 +337,19 @@ void LightCollectionDetectorConstruction::ConstructSDandField()
     primitive = new G4PSEnergyDeposit("Edep");
     shield_layer->RegisterPrimitive(primitive);
 
-    // 注册自定义的全能量探测器
+    // 全能量探测器
     primitive = new TotalEnergyScorer("TotalEnergy");
     shield_layer->RegisterPrimitive(primitive);
 
-    // 注册自定义的中子探测器
+    // 自上而下穿过该层能量的探测器
+    primitive = new PassingEnergyScorer2("PassingEnergy", layer_name);
+    shield_layer->RegisterPrimitive(primitive);
+
+    // 中子探测器
     primitive = new NeutronScorer("NeutronEnergy");
     shield_layer->RegisterPrimitive(primitive);
 
-    // 注册自定义的光子探测器
+    // 光子探测器
     primitive = new HEPhotonScorer("HEPhotonEnergy");
     shield_layer->RegisterPrimitive(primitive);
 
