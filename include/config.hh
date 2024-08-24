@@ -70,15 +70,15 @@ inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, 0); // crystal位置，
 // inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, g_sc_wrapper_thickness); // crystal位置，相对闪烁体。可以调节该项，调整晶体在封装中的位置
 
 // lightguide = fiber + wrapper
-// lightguide实际的尺寸是 g_lightguide_r - 2*g_lg_wrapper_thickness
-inline G4double g_lg_wrapper_thickness = 0.1 * mm;                // 光导封装层厚度
+// fiber实际的尺寸是 fiber_d =  g_lightguide_d - 2*g_lg_wrapper_thickness
+inline G4double g_lg_wrapper_thickness = 450 * um;                // 光导封装层厚度
 inline G4double g_lightguide_length = 1 * cm;                     // 光导长度
-inline G4double g_lightguide_r = 8 * mm + g_lg_wrapper_thickness; // 光导半径
+inline G4double g_lightguide_d = 25 * um + 2*g_lg_wrapper_thickness; // 光导半径
 inline G4ThreeVector g_lightguide_pos = g_scintillator_pos;       // 光导位置，相对闪烁体
 inline G4Material *g_lg_fiber_material = MyMaterials::Quartz();   // 光导材料
 inline G4Material *g_lg_wrapper_material = MyMaterials::PVC();    // 光导封装层材料，PVC的折射率数值给的随意供参考
 inline G4int g_lg_nums = 1;                                       // 光导数量
-inline G4double g_lg_gap = 1.1 * g_lightguide_r;                  // 光导间隙，应大于光导直径
+inline G4double g_lg_gap = 1.1 * g_lightguide_d;                  // 光导间隙，应大于光导直径
 inline G4double g_lg_depth = 0.618 * cm;                          // 穿过depth的光子才被计数
 inline G4double g_lg_na = -1;                                     // 光导数值孔径。-1表示根据前面定义的材料和实际光子能量进行计算
 

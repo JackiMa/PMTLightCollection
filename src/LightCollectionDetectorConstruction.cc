@@ -147,7 +147,7 @@ G4ThreeVector holes_pos;
 // wrapper_hole for lightguide
   std::vector<G4ThreeVector> coordinates = generateCoordinates(g_lg_nums, g_lg_gap); // 根据lightguide的数量生成坐标
   // 创建初始几何体
-  G4Tubs *s_wrapper_hole = new G4Tubs("wrapper_hole", 0, 1.1 * 0.5 * g_lightguide_r, 0.5 * (g_sc_wrapper_thickness+diff), 0, 360 * deg);
+  G4Tubs *s_wrapper_hole = new G4Tubs("wrapper_hole", 0, 1.1 * 0.5 * g_lightguide_d, 0.5 * (g_sc_wrapper_thickness+diff), 0, 360 * deg);
   
   G4VSolid *s_sc_wrapper_wrapper_with_hole = s_sc_wrapper;
   // 遍历 coordinates，依次减去所有的 hole
@@ -177,11 +177,11 @@ G4ThreeVector holes_pos;
 
   //
   // lightguide
-  G4Tubs *s_lightguide = new G4Tubs("lightguide", 0, 0.5 * g_lightguide_r, 0.5 * g_lightguide_length, 0, 360 * deg);
+  G4Tubs *s_lightguide = new G4Tubs("lightguide", 0, 0.5 * g_lightguide_d, 0.5 * g_lightguide_length, 0, 360 * deg);
   G4LogicalVolume *l_lightguide = new G4LogicalVolume(s_lightguide, g_lg_wrapper_material, "lightguide");
 
   // lg_fiber
-  G4double fiber_r = g_lightguide_r - 2 * g_lg_wrapper_thickness;
+  G4double fiber_r = g_lightguide_d - 2 * g_lg_wrapper_thickness;
   G4Tubs *s_lg_fiber = new G4Tubs("lg_fiber", 0, 0.5 * fiber_r, 0.5 * g_lightguide_length, 0, 360 * deg);
   G4LogicalVolume *l_lg_fiber = new G4LogicalVolume(s_lg_fiber, g_lg_fiber_material, "lg_fiber");
   // 将 lg_fiber 放置在 lightguide 中
