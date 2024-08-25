@@ -68,36 +68,41 @@ G4VPhysicalVolume *LightCollectionDetectorConstruction::Construct()
   G4LogicalVolume *l_world = new G4LogicalVolume(s_world, g_world_material, "World");
   MyPhysicalVolume *p_world = new MyPhysicalVolume(0, G4ThreeVector(), "World", l_world, nullptr, false, 0, checkOverlaps);
 
+  // ====================================
+  // ============== Shield ==============
+  // ====================================
   //
-  // shield
+
+  // Shield = n*layers + SD1
   G4Box *s_shield = new G4Box("shield", 0.5 * g_shieldX, 0.5 * g_shieldY, 0.5 * g_shield_thickness);
   G4LogicalVolume *l_shield = new G4LogicalVolume(s_shield, g_world_material, "shield");
   MyPhysicalVolume *p_shield = new MyPhysicalVolume(0, g_shield_pos, "shield", l_shield, p_world, false, checkOverlaps);
   fVolumeMap["shield"] = p_shield;
   for (long unsigned int i = 0; i < g_custom_shield.size(); ++i)
   {
-      const auto& layer = g_custom_shield[i];
-      G4cout << "layer.thickness: " << layer.thickness << " layer.material: " << layer.material->GetName() << G4endl;
-      G4String layer_name = "shield_layer_" + std::to_string(i);
-      G4Box *s_layer = new G4Box(layer_name, 0.5 * g_shieldX, 0.5 * g_shieldY, 0.5 * layer.thickness);
-      G4LogicalVolume *l_layer = new G4LogicalVolume(s_layer, layer.material, layer_name);
-      G4ThreeVector layer_pos = G4ThreeVector(0, 0, (g_shield_thickness / 2.0 - 0.5 * layer.thickness - std::accumulate(g_custom_shield.begin(), g_custom_shield.begin() + i, 0.0, [](double sum, const ShieldLayer& l) { return sum + l.thickness; })));
-      MyPhysicalVolume *p_layer = new MyPhysicalVolume(0, layer_pos, layer_name, l_layer, p_shield, false, checkOverlaps);
-      fVolumeMap[layer_name] = p_layer;
-      // set shield layers colour
-      double ratio = static_cast<double>(i) / (g_custom_shield.size() - 1);
-      double red = ratio; // 从0到1
-      double green = 0.0;
-      double blue = 1.0 - ratio;
-      G4VisAttributes *layer_VisAtt = new G4VisAttributes(G4Colour(red, green, blue, 0.8));
-      layer_VisAtt->SetForceSolid(true); // 设置为实心，以便可以看到透明度
-      layer_VisAtt->SetVisibility(true);
-      l_layer->SetVisAttributes(layer_VisAtt);
+    const auto &layer = g_custom_shield[i];
+    G4cout << "layer.thickness: " << layer.thickness << " layer.material: " << layer.material->GetName() << G4endl;
+    G4String layer_name = "shield_layer_" + std::to_string(i);
+    G4Box *s_layer = new G4Box(layer_name, 0.5 * g_shieldX, 0.5 * g_shieldY, 0.5 * layer.thickness);
+    G4LogicalVolume *l_layer = new G4LogicalVolume(s_layer, layer.material, layer_name);
+    G4ThreeVector layer_pos = G4ThreeVector(0, 0, (g_shield_thickness / 2.0 - 0.5 * layer.thickness - std::accumulate(g_custom_shield.begin(), g_custom_shield.begin() + i, 0.0, [](double sum, const ShieldLayer &l)
+                                                                                                                      { return sum + l.thickness; })));
+    MyPhysicalVolume *p_layer = new MyPhysicalVolume(0, layer_pos, layer_name, l_layer, p_shield, false, checkOverlaps);
+    fVolumeMap[layer_name] = p_layer;
+    // set shield layers colour
+    double ratio = static_cast<double>(i) / (g_custom_shield.size() - 1);
+    double red = ratio; // 从0到1
+    double green = 0.0;
+    double blue = 1.0 - ratio;
+    G4VisAttributes *layer_VisAtt = new G4VisAttributes(G4Colour(red, green, blue, 0.8));
+    layer_VisAtt->SetForceSolid(true); // 设置为实心，以便可以看到透明度
+    layer_VisAtt->SetVisibility(true);
+    l_layer->SetVisAttributes(layer_VisAtt);
   }
 
   // SD1
   G4double SD1_thickness = 1 * mm;
-  G4ThreeVector SD1_pos = g_shield_pos - G4ThreeVector(0, 0, 2*mm+0.5 * g_shield_thickness + 0.5 * SD1_thickness);
+  G4ThreeVector SD1_pos = g_shield_pos - G4ThreeVector(0, 0, 2 * mm + 0.5 * g_shield_thickness + 0.5 * SD1_thickness);
   G4Box *s_SD1 = new G4Box("SD1", 0.5 * g_shieldX, 0.5 * g_shieldY, SD1_thickness);
   G4LogicalVolume *l_SD1 = new G4LogicalVolume(s_SD1, g_world_material, "SD1");
   MyPhysicalVolume *p_SD1 = new MyPhysicalVolume(0, SD1_pos, "SD1", l_SD1, p_world, false, checkOverlaps);
@@ -107,48 +112,57 @@ G4VPhysicalVolume *LightCollectionDetectorConstruction::Construct()
   SD1_VisAtt->SetVisibility(true);
   l_SD1->SetVisAttributes(SD1_VisAtt);
 
+  // ====================================
+  // =========== Scintillator ===========
+  // ====================================
+  //
+
   // ▣
-  // scintillator
-G4VSolid* s_sc_wrapper = nullptr;
-G4VSolid* s_sc_crystal = nullptr;
-G4RotationMatrix *rotationMatrix = new G4RotationMatrix(); 
-G4RotationMatrix *detector_RM = new G4RotationMatrix();  
-G4RotationMatrix *detector_RM_inverse= new G4RotationMatrix(); 
-G4ThreeVector holes_pos;
-  if(g_is_Tub_sc == true){
-      g_lg_orientation = 0; // 闪烁体是圆柱时，只考虑沿X读出
-      s_sc_wrapper = new G4Tubs("sc_wrapper", 0, 0.5 * g_scintillatorR, 0.5 * g_scintillatorZ, 0, 360 * deg);
-      s_sc_crystal = new G4Tubs("sc_crystal", 0, 0.5 * g_scintillatorR - g_sc_wrapper_thickness, 0.5 * g_scintillatorZ - g_sc_wrapper_thickness, 0, 360 * deg);
-      holes_pos = G4ThreeVector(0, 0, 0.5 * g_scintillatorZ - 0.5 * (g_sc_wrapper_thickness)); 
-      detector_RM->rotateY(270 * deg);
-    } else {
-      s_sc_wrapper = new G4Box("sc_wrapper", 0.5 * g_scintillatorX, 0.5 * g_scintillatorY, 0.5 * g_scintillatorZ);
-      s_sc_crystal = new G4Box("sc_crystal", 0.5 * g_scintillatorX - g_sc_wrapper_thickness, 0.5 * g_scintillatorY - g_sc_wrapper_thickness, 0.5 * g_scintillatorZ - g_sc_wrapper_thickness);
-      rotationMatrix->rotateY(90 * deg);
-      holes_pos = G4ThreeVector(0.5 * g_scintillatorX - 0.5 * (g_sc_wrapper_thickness), 0, 0); 
+  // scintillator = crystal + wrapper
+  G4VSolid *s_sc_wrapper = nullptr;
+  G4VSolid *s_sc_crystal = nullptr;
+  G4RotationMatrix *rotationMatrix = new G4RotationMatrix();
+  G4RotationMatrix *detector_RM = new G4RotationMatrix();
+  G4RotationMatrix *detector_RM_inverse = new G4RotationMatrix();
+  G4ThreeVector holes_pos;
+  if (g_is_Tub_sc == true)
+  {
+    g_lg_orientation = 0; // 闪烁体是圆柱时，只考虑沿X读出
+    s_sc_wrapper = new G4Tubs("sc_wrapper", 0, 0.5 * g_scintillatorR, 0.5 * g_scintillatorZ, 0, 360 * deg);
+    s_sc_crystal = new G4Tubs("sc_crystal", 0, 0.5 * g_scintillatorR - g_sc_wrapper_thickness, 0.5 * g_scintillatorZ - g_sc_wrapper_thickness, 0, 360 * deg);
+    holes_pos = G4ThreeVector(0, 0, 0.5 * g_scintillatorZ - 0.5 * (g_sc_wrapper_thickness));
+    detector_RM->rotateY(270 * deg);
+  }
+  else
+  {
+    s_sc_wrapper = new G4Box("sc_wrapper", 0.5 * g_scintillatorX, 0.5 * g_scintillatorY, 0.5 * g_scintillatorZ);
+    s_sc_crystal = new G4Box("sc_crystal", 0.5 * g_scintillatorX - g_sc_wrapper_thickness, 0.5 * g_scintillatorY - g_sc_wrapper_thickness, 0.5 * g_scintillatorZ - g_sc_wrapper_thickness);
+    rotationMatrix->rotateY(90 * deg);
+    holes_pos = G4ThreeVector(0.5 * g_scintillatorX - 0.5 * (g_sc_wrapper_thickness), 0, 0);
   }
 
   // ==0，沿X读出。==1，沿Z读出
   G4double diff = 0;
-  if(g_lg_orientation==0){
-    g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0.5 *g_scintillatorX - 0.99*g_sc_wrapper_thickness + 0.5 * g_lightguide_length, 0, 0); // 光纤紧贴晶体
+  if (g_lg_orientation == 0)
+  {
+    g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0.5 * g_scintillatorX - 0.99 * g_sc_wrapper_thickness + 0.5 * g_lightguide_length, 0, 0); // 光纤紧贴晶体
     // g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0.5 * g_scintillatorX + 0.5 * g_lightguide_length, 0, 0); // 光纤在晶体封装外面
   }
-  else if (g_lg_orientation==1)
+  else if (g_lg_orientation == 1)
   {
     detector_RM->rotateY(270 * deg);
     detector_RM_inverse->rotateY(270 * deg);
-    diff = g_crystal_pos.mag();
-    g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0, 0, 0.99*g_sc_wrapper_thickness+diff-(0.5 * g_scintillatorX + 0.5 * g_lightguide_length)); // 光纤紧贴晶体
+    diff = g_crystal_pos.mag();                                                                                                                            // 晶体在封装中的位置偏移的绝对值。晶体偏移后，封装开洞的位置和厚度也要变
+    g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0, 0, 0.99 * g_sc_wrapper_thickness + diff - (0.5 * g_scintillatorX + 0.5 * g_lightguide_length)); // 光纤紧贴晶体
     // g_lightguide_pos = g_lightguide_pos + G4ThreeVector(0, 0, -(0.5 * g_scintillatorX + 0.5 * g_lightguide_length)); // 光纤在晶体封装外面
-    holes_pos = G4ThreeVector(0.5 * g_scintillatorX - 0.5 * (g_sc_wrapper_thickness+diff), 0, 0); 
+    holes_pos = G4ThreeVector(0.5 * g_scintillatorX - 0.5 * (g_sc_wrapper_thickness + diff), 0, 0);
   }
 
-// wrapper_hole for lightguide
+  // wrapper_hole for lightguide
   std::vector<G4ThreeVector> coordinates = generateCoordinates(g_lg_nums, g_lg_gap); // 根据lightguide的数量生成坐标
   // 创建初始几何体
-  G4Tubs *s_wrapper_hole = new G4Tubs("wrapper_hole", 0, 1.1 * 0.5 * g_lightguide_r, 0.5 * (g_sc_wrapper_thickness+diff), 0, 360 * deg);
-  
+  G4Tubs *s_wrapper_hole = new G4Tubs("wrapper_hole", 0, 1.1 * 0.5 * g_lightguide_d, 0.5 * (g_sc_wrapper_thickness + diff), 0, 360 * deg);
+
   G4VSolid *s_sc_wrapper_wrapper_with_hole = s_sc_wrapper;
   // 遍历 coordinates，依次减去所有的 hole
   for (const auto &coord : coordinates)
@@ -157,6 +171,8 @@ G4ThreeVector holes_pos;
     s_sc_wrapper_wrapper_with_hole = new G4SubtractionSolid("sc_wrapper_wrapper_with_hole", s_sc_wrapper_wrapper_with_hole, s_wrapper_hole, rotationMatrix, hole_position);
   }
   G4LogicalVolume *l_sc_wrapper = new G4LogicalVolume(s_sc_wrapper_wrapper_with_hole, g_sc_wrapper_material, "sc_wrapper");
+  // 如果是沿Z读出，那么把沿X读出设置的scintillator的位置绕Y轴旋转90° or 270°
+  // 这里要注意，scintillator的位置绕Y轴后，需要提前把crystal的坐标反向旋转，以保证crystal的位置不变
   MyPhysicalVolume *p_sc_wrapper = new MyPhysicalVolume(detector_RM, g_scintillator_pos, "sc_wrapper", l_sc_wrapper, p_world, false, 0, checkOverlaps);
   fVolumeMap["sc_wrapper"] = p_sc_wrapper;
   G4VisAttributes *sc_wrapper_VisAtt = new G4VisAttributes(G4Colour(1.0, 1, 1, 0.3));
@@ -166,22 +182,24 @@ G4ThreeVector holes_pos;
 
   // crystal
   G4LogicalVolume *l_sc_crystal = new G4LogicalVolume(s_sc_crystal, g_sc_crystal_material, "sc_crystal");
-  MyPhysicalVolume *p_sc_crystal = new MyPhysicalVolume(0, *detector_RM_inverse*g_crystal_pos, "sc_crystal", l_sc_crystal, p_sc_wrapper, false, checkOverlaps);
+  MyPhysicalVolume *p_sc_crystal = new MyPhysicalVolume(0, *detector_RM_inverse * g_crystal_pos, "sc_crystal", l_sc_crystal, p_sc_wrapper, false, checkOverlaps);
   fVolumeMap["sc_crystal"] = p_sc_crystal;
   G4VisAttributes *sc_crystal_VisAtt = new G4VisAttributes(G4Colour(1.0, 0.65, 0, 0.3));
   sc_crystal_VisAtt->SetForceSolid(true); // 设置为实心，以便可以看到透明度
   sc_crystal_VisAtt->SetVisibility(true);
   l_sc_crystal->SetVisAttributes(sc_crystal_VisAtt);
 
+  // ====================================
+  // ============ Lightguide ============
+  // ====================================
   //
 
-  //
-  // lightguide
-  G4Tubs *s_lightguide = new G4Tubs("lightguide", 0, 0.5 * g_lightguide_r, 0.5 * g_lightguide_length, 0, 360 * deg);
+  // lightguide = fiber + wrapper
+  G4Tubs *s_lightguide = new G4Tubs("lightguide", 0, 0.5 * g_lightguide_d, 0.5 * g_lightguide_length, 0, 360 * deg);
   G4LogicalVolume *l_lightguide = new G4LogicalVolume(s_lightguide, g_lg_wrapper_material, "lightguide");
 
   // lg_fiber
-  G4double fiber_r = g_lightguide_r - 2 * g_lg_wrapper_thickness;
+  G4double fiber_r = g_lightguide_d - 2 * g_lg_wrapper_thickness;
   G4Tubs *s_lg_fiber = new G4Tubs("lg_fiber", 0, 0.5 * fiber_r, 0.5 * g_lightguide_length, 0, 360 * deg);
   G4LogicalVolume *l_lg_fiber = new G4LogicalVolume(s_lg_fiber, g_lg_fiber_material, "lg_fiber");
   // 将 lg_fiber 放置在 lightguide 中
@@ -207,10 +225,10 @@ G4ThreeVector holes_pos;
   // }
   for (const auto &coord : coordinates)
   {
-      G4ThreeVector lg_pos = coord;
-      G4Transform3D transform(*rotationMatrix, lg_pos);
-      assembly->AddPlacedVolume(l_lightguide, transform);
-      copyNumber++;
+    G4ThreeVector lg_pos = coord;
+    G4Transform3D transform(*rotationMatrix, lg_pos);
+    assembly->AddPlacedVolume(l_lightguide, transform);
+    copyNumber++;
   }
   G4Transform3D assembly_transform(*detector_RM, g_lightguide_pos);
   assembly->MakeImprint(l_world, assembly_transform, 0, checkOverlaps);
@@ -320,7 +338,7 @@ void LightCollectionDetectorConstruction::ConstructSDandField()
   G4String SD1_name = "SD1";
   auto SD1 = new G4MultiFunctionalDetector(SD1_name);
   G4SDManager::GetSDMpointer()->AddNewDetector(SD1);
-  primitive = new PassingEnergyScorer("PassingEng",SD1_name);
+  primitive = new PassingEnergyScorer("PassingEng", SD1_name);
   SD1->RegisterPrimitive(primitive);
   SetSensitiveDetector(SD1_name, SD1);
 

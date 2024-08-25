@@ -82,6 +82,14 @@ namespace
 
 int main(int argc, char **argv)
 {
+
+  // 开始之前的操作，由config.hh控制
+  // --- 👇
+  TransformCoordinates();
+  
+  // --- 👆
+
+
   // Evaluate arguments
   //
   if (argc > 9)
