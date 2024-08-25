@@ -43,10 +43,26 @@ inline G4Material *g_world_material = MyMaterials::Vacuum();
 inline G4double g_shieldX = 0.99 * g_worldX;
 inline G4double g_shieldY = 0.99 * g_worldY;
 inline std::vector<ShieldLayer> g_custom_shield = {     // 自定义遮挡层
-    {20*um, MyMaterials::Cu()},
-    {20*um, MyMaterials::Cu()},
-    {20*um, MyMaterials::Cu()},
-    {20*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
+    {30*um, MyMaterials::Cu()},
     {20*um, MyMaterials::Cu()}
     }; 
 inline G4int g_shield_layers = g_custom_shield.size();                                                             // 遮挡层层数n

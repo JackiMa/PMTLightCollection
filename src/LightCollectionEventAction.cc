@@ -115,7 +115,7 @@ void LightCollectionEventAction::EndOfEventAction(const G4Event *event)
   processedTrackIDs.clear(); // 清空已处理的 track ID (用于统计哪些光子进入数值孔径)
     // Print per event (modulo n)
     // 判断是否是主进程，在主进程中打印进度
-    if (G4Threading::IsMasterThread()) {
+    if (1) {
       auto eventID = event->GetEventID();
       auto totalEvents = G4RunManager::GetRunManager()->GetCurrentRun()->GetNumberOfEventToBeProcessed();
       auto printModulo = totalEvents / 100; // 每1%的事件数
@@ -124,15 +124,6 @@ void LightCollectionEventAction::EndOfEventAction(const G4Event *event)
           G4cout << "---> End of event: " << eventID << ", " << (eventID / printModulo) << "% completed" << std::endl;
       }
     }
-
-if (fAbsoEdepHCID == -1) {
-    fAbsoEdepHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_0/Edep");
-    fTotalEnergyHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_0/TotalEnergy");
-    fHEPhotonHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_0/HEPhotonEnergy");
-    fNeutEdepHCID = G4SDManager::GetSDMpointer()->GetCollectionID("shield_layer_0/NeutronEnergy");
-}
-
-
 
     for (int layerID = 0; layerID < g_shield_layers; ++layerID) {
 
@@ -157,22 +148,5 @@ if (fAbsoEdepHCID == -1) {
         analysisManager->AddNtupleRow(layerID+1);
     }
 
-//   LightCollectionRun *run = static_cast<LightCollectionRun *>(
-//       G4RunManager::GetRunManager()->GetNonConstCurrentRun());
-
-//   G4int sc_PhotonCount_ID, sc_Wavelengths_ID;
-//   sc_PhotonCount_ID = 0; // 假设 ntuple ID 0 对应 NPhotonGenerated
-//   sc_Wavelengths_ID = analysisManager->GetH1Id("ScintillationWavelength");
-//     auto stackingAction = static_cast<const LightCollectionStackingAction*>(
-//         G4RunManager::GetRunManager()->GetUserStackingAction());
-
-//     // 获取闪烁光的光子数和波长
-//     G4int scintillationPhotonCount = stackingAction->GetScintillationPhotonCount();
-//     const auto& scintillationWavelengths = stackingAction->GetScintillationWavelengths();
-
-//     // 填充闪烁光的波长
-//     for (auto wavelength : scintillationWavelengths) {
-//         analysisManager->FillH1(sc_Wavelengths_ID, wavelength); // 假设直方图 ID 0 对应 ScintillationWavelength
-//     }
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
