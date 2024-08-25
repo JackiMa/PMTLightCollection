@@ -102,9 +102,7 @@ void LightCollectionPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
     msg << "Detector construction is not found!";
     G4Exception("LightCollectionPrimaryGeneratorAction::GeneratePrimaries()", "LightCollection_001", FatalException, msg);
   }
-  // if (isInitialized == false){
-  // InitializeProjectionArea();
-  // }
+
   InitializeProjectionArea();
   
     // 在投影区域内随机抽样一个点
@@ -187,7 +185,7 @@ void LightCollectionPrimaryGeneratorAction::InitializeProjectionArea() {
     MyPhysicalVolume* physicalScintillator = detector->GetMyVolume("sc_crystal");
     G4ThreeVector position = physicalScintillator->GetAbsolutePosition();
     G4VSolid* solid = physicalScintillator->GetLogicalVolume()->GetSolid();
-    G4RotationMatrix* rotation = physicalScintillator->GetRotation();
+    G4RotationMatrix* rotation = physicalScintillator->GetAbsoluteRotation();
 
     if (G4Box* box = dynamic_cast<G4Box*>(solid)) {
         // 闪烁体是 G4Box

@@ -20,7 +20,7 @@ struct ShieldLayer {
 // g_ means global_
 
 // switch
-inline G4bool g_has_opticalPhysics = false;  // 是否模拟光学过程
+inline G4bool g_has_opticalPhysics = true;  // 是否模拟光学过程
 inline G4bool g_has_cherenkov = true;       // 是否考虑切伦科夫光
 
 /*
@@ -47,7 +47,6 @@ inline std::vector<ShieldLayer> g_custom_shield = {     // 自定义遮挡层
     {20*um, MyMaterials::Cu()},
     {20*um, MyMaterials::Cu()},
     {20*um, MyMaterials::Cu()},
-    {20*um, MyMaterials::Cu()},
     {20*um, MyMaterials::Cu()}
     }; 
 inline G4int g_shield_layers = g_custom_shield.size();                                                             // 遮挡层层数n
@@ -58,16 +57,16 @@ inline G4ThreeVector g_shield_pos = G4ThreeVector(0, 0, 0.4 * g_worldZ - g_shiel
 // 闪烁体实际的尺寸是 scintillator - 2*g_sc_wrapper_thickness
 inline G4bool g_is_Tub_sc = false; // 闪烁体是否是圆柱形的。圆柱形时只考虑沿X轴读出
 inline G4int g_lg_orientation = 1; // 0: 沿X轴读出，1: 沿Z轴读出
-inline G4double g_scintillatorY = 1 * cm;
-inline G4double g_scintillatorZ = 1 * cm;
+inline G4double g_scintillatorY = 2 * cm;
+inline G4double g_scintillatorZ = 2 * cm;
 inline G4double g_scintillatorR = 1 * cm;                                                                              // 径向
 inline G4double g_scintillatorX = 1 * cm;                                                                              // 轴向
 inline G4ThreeVector g_scintillator_pos = G4ThreeVector(-0.2 * g_worldX, 0, -0.25 * g_worldZ + 0.5 * g_scintillatorZ); // 闪烁体位置，相对世界体
 inline G4Material *g_sc_crystal_material = MyMaterials::LYSO(1000, 1, -1);                                     // 闪烁体材料
 inline G4double g_sc_wrapper_thickness = 1 * mm;                                                                       // 闪烁体封装层厚度
 inline G4Material *g_sc_wrapper_material = MyMaterials::PVC();
-inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, 0); // crystal位置，相对闪烁体。可以调节该项，调整晶体在封装中的位置
-// inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, g_sc_wrapper_thickness); // crystal位置，相对闪烁体。可以调节该项，调整晶体在封装中的位置
+// inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, 0); // crystal位置，相对闪烁体。可以调节该项，调整晶体在封装中的位置
+inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, g_sc_wrapper_thickness); // crystal位置，相对闪烁体。可以调节该项，调整晶体在封装中的位置
 
 // lightguide = fiber + wrapper
 // fiber实际的尺寸是 fiber_d =  g_lightguide_d - 2*g_lg_wrapper_thickness
@@ -92,5 +91,13 @@ inline G4double g_source_scale = 1; // 源的尺度是scintillator投影的若�
 
 //  --------- 其他东西 ---------
 // 
+// 坐标变换函数
+inline void TransformCoordinates() {
+    if (!g_is_Tub_sc && g_lg_orientation == 1) {
+        G4double temp = g_scintillatorX;
+        g_scintillatorX = g_scintillatorZ;
+        g_scintillatorZ = temp;
+    }
+}
 
 #endif // CONFIG_HH
