@@ -69,19 +69,19 @@ void PassingEnergyScorer::EndOfEvent(G4HCofThisEvent*) {
 }
 
 
-// PassingEnergyScorer2 implementation
-PassingEnergyScorer2::PassingEnergyScorer2(const G4String& name,const G4String& scorer, G4int depth)
+// PassingEnergyScorer_Secondary implementation
+PassingEnergyScorer_Secondary::PassingEnergyScorer_Secondary(const G4String& name,const G4String& scorer, G4int depth)
     : G4VPrimitiveScorer(name, depth),fHitsMap(nullptr),scorerName(scorer) {}
 
-PassingEnergyScorer2::~PassingEnergyScorer2() {}
+PassingEnergyScorer_Secondary::~PassingEnergyScorer_Secondary() {}
 
-void PassingEnergyScorer2::Initialize(G4HCofThisEvent* HCE) {
+void PassingEnergyScorer_Secondary::Initialize(G4HCofThisEvent* HCE) {
     fHitsMap = new G4THitsMap<G4double>(GetMultiFunctionalDetector()->GetName(), GetName());
     G4int hcID = GetCollectionID(0);
     HCE->AddHitsCollection(hcID, fHitsMap);
 }
 
-G4bool PassingEnergyScorer2::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
+G4bool PassingEnergyScorer_Secondary::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
     // 获取 preVolume 和 postVolume
     G4VPhysicalVolume* preVolume = aStep->GetPreStepPoint()->GetTouchable()->GetVolume();
     G4VPhysicalVolume* postVolume = aStep->GetPostStepPoint()->GetTouchable()->GetVolume();
@@ -101,7 +101,7 @@ G4bool PassingEnergyScorer2::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
     return true;
 }
 
-void PassingEnergyScorer2::EndOfEvent(G4HCofThisEvent*) {
+void PassingEnergyScorer_Secondary::EndOfEvent(G4HCofThisEvent*) {
 }
 
 
