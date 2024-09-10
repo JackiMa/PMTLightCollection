@@ -43,66 +43,7 @@ inline G4Material *g_world_material = MyMaterials::Vacuum();
 inline G4double g_shieldX = 0.99 * g_worldX;
 inline G4double g_shieldY = 0.99 * g_worldY;
 inline std::vector<ShieldLayer> g_custom_shield = {     // 自定义遮挡层
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()},
-    {1*um, MyMaterials::Aluminium()}
+    {1*um, MyMaterials::Vacuum()}
     }; 
 inline G4int g_shield_layers = g_custom_shield.size();                                                             // 遮挡层层数n
 inline G4double g_shield_thickness = std::accumulate(g_custom_shield.begin(), g_custom_shield.end(), 0.0, [](double sum, const ShieldLayer& layer) {return sum + layer.thickness;});
@@ -112,13 +53,13 @@ inline G4ThreeVector g_shield_pos = G4ThreeVector(0, 0, 0.4 * g_worldZ - g_shiel
 // 闪烁体实际的尺寸是 scintillator - 2*g_sc_wrapper_thickness
 inline G4bool g_is_Tub_sc = false; // 闪烁体是否是圆柱形的。圆柱形时只考虑沿X轴读出
 inline G4int g_lg_orientation = 1; // 0: 沿X轴读出，1: 沿Z轴读出
-inline G4double g_scintillatorY = 2 * cm;
-inline G4double g_scintillatorZ = 2 * cm;
+inline G4double g_scintillatorY = 1.71 * cm;
+inline G4double g_scintillatorZ = 0.21 * cm;
 inline G4double g_scintillatorR = 1 * cm;                                                                              // 径向
-inline G4double g_scintillatorX = 1 * cm;                                                                              // 轴向
+inline G4double g_scintillatorX = 1.71 * cm;                                                                              // 轴向
 inline G4ThreeVector g_scintillator_pos = G4ThreeVector(-0.2 * g_worldX, 0, -0.25 * g_worldZ + 0.5 * g_scintillatorZ); // 闪烁体位置，相对世界体
-inline G4Material *g_sc_crystal_material = MyMaterials::LYSO(1000, 1, -1);                                     // 闪烁体材料
-inline G4double g_sc_wrapper_thickness = 1 * mm;                                                                       // 闪烁体封装层厚度
+inline G4Material *g_sc_crystal_material = MyMaterials::LYSO(30000, 1, -1);                                     // 闪烁体材料
+inline G4double g_sc_wrapper_thickness = 0.05 * mm;                                                                       // 闪烁体封装层厚度
 inline G4Material *g_sc_wrapper_material = MyMaterials::PVC();
 // inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, 0); // crystal位置，相对闪烁体。可以调节该项，调整晶体在封装中的位置
 inline G4ThreeVector g_crystal_pos = G4ThreeVector(0, 0, g_sc_wrapper_thickness); // crystal位置，相对闪烁体。可以调节该项，调整晶体在封装中的位置

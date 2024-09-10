@@ -18,6 +18,12 @@ public:
   MyMaterials();
   ~MyMaterials();
 
+  // new 
+  static G4Material* Boron();
+  static G4Material* TantalumFoil();
+  static G4Material* Graphite();
+
+  // old 
   static G4Material* Vacuum();
   static G4Material* Air();
   static G4Material* AirKiller(); // special material with same prop of air but absorbing light

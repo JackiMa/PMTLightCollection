@@ -16,7 +16,39 @@ MyMaterials::MyMaterials()
 MyMaterials::~MyMaterials()
 {}
 
+G4Material* MyMaterials::Boron()
+// Boron Sputtering Target 1000035066-technical-data.pdf
+{
+  G4double a, z, density;
+  G4int nelements;
+  G4Element *B = new G4Element("Boron", "B", z = 5., a = 10.810 * g / mole);
+  G4Element *C = new G4Element("Carbon", "C", z = 6., a = 12.01 * g / mole);
+  G4Material *mat = new G4Material("Boron", density = 2.355 * g / cm3, nelements = 2);
+  mat->AddElement(B, 99.5 * perCent);
+  mat->AddElement(C, 0.5 * perCent);
+  return mat;
+}
+G4Material* MyMaterials::TantalumFoil()
+// Tantalum Foil, property data from 1000042754-technical-data.pdf
+{
+  G4double a, z, density;
+  G4int nelements;
+  G4Element *Ta = new G4Element("Tantalum", "Ta", z = 73, a = 180.9479 * g / mole);
+  G4Material *mat = new G4Material("TantalumFoil", density = 16.6 * g / cm3, nelements = 1);
+  mat->AddElement(Ta, 100 * perCent);
+  return mat;
+}
 
+G4Material* MyMaterials::Graphite()
+// Graphite, property data from https://poco.entegris.com/content/dam/poco/resources/reference-materials/brochures/brochure-graphite-properties-and-characteristics-11043.pdf
+{
+  G4double a, z, density;
+  G4int nelements;
+  G4Element *C = new G4Element("Carbon", "C", z = 6., a = 12.01 * g / mole);
+  G4Material *mat = new G4Material("Graphite", density = 2.26 * g / cm3, nelements = 1);
+  mat->AddElement(C, 100 * perCent);
+  return mat;
+}
 
 G4Material* MyMaterials::Air()
 {
