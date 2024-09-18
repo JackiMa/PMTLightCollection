@@ -7,6 +7,7 @@
 #### Shield_layer_#
 - energyDeposit: 在当前层中沉积的总能量
 - PassingEnergy: 从上到下穿透该层的总能量
+- PassingEnergy_Secondary: 穿过当层并向下传播的所有二次粒子的总能量
 - HEphotonEnergy: 该层产生，并且离开该层的总次级 xray/gamma 能谱
 - NeutronEnergy: 该层产生，并且离开该层的总次级 中子 能谱
 说明：PassingEnergy可能小于HEphotonEnergy，因为并不一定所有的次级射线都从下表面离开
