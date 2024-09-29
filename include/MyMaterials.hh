@@ -22,6 +22,7 @@ public:
   static G4Material* Boron();
   static G4Material* TantalumFoil();
   static G4Material* Graphite();
+  static G4Material* PEEK();
 
   // old 
   static G4Material* Vacuum();
